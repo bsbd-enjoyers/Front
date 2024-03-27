@@ -29,101 +29,100 @@ namespace Freelance_IT
         /// </summary>
         private void InitializeComponent()
         {
-            this.enterLabel = new System.Windows.Forms.Label();
-            this.enter = new System.Windows.Forms.Button();
-            this.loginBox = new System.Windows.Forms.TextBox();
-            this.passwordBox = new System.Windows.Forms.TextBox();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
+            this.fillfieldsLabel = new System.Windows.Forms.Label();
+            this.acceptButton = new System.Windows.Forms.Button();
+            this.emailBox = new System.Windows.Forms.TextBox();
+            this.phoneBox = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.phoneLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // enterLabel
+            // fillfieldsLabel
             // 
-            this.enterLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.enterLabel.AutoSize = true;
-            this.enterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enterLabel.Location = new System.Drawing.Point(71, 76);
-            this.enterLabel.Name = "enterLabel";
-            this.enterLabel.Size = new System.Drawing.Size(355, 40);
-            this.enterLabel.TabIndex = 0;
-            this.enterLabel.Text = "Заполните все поля";
-            this.enterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.fillfieldsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.fillfieldsLabel.AutoSize = true;
+            this.fillfieldsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fillfieldsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.fillfieldsLabel.Location = new System.Drawing.Point(71, 76);
+            this.fillfieldsLabel.Name = "fillfieldsLabel";
+            this.fillfieldsLabel.Size = new System.Drawing.Size(355, 40);
+            this.fillfieldsLabel.TabIndex = 0;
+            this.fillfieldsLabel.Text = "Заполните все поля";
+            this.fillfieldsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // enter
+            // acceptButton
             // 
-            this.enter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enter.Location = new System.Drawing.Point(90, 390);
-            this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(322, 72);
-            this.enter.TabIndex = 1;
-            this.enter.Text = "Подтвердить";
-            this.enter.UseVisualStyleBackColor = false;
-            this.enter.Click += new System.EventHandler(this.enter_Click);
+            this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.acceptButton.Location = new System.Drawing.Point(90, 390);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(322, 72);
+            this.acceptButton.TabIndex = 1;
+            this.acceptButton.Text = "Подтвердить";
+            this.acceptButton.UseVisualStyleBackColor = false;
+            this.acceptButton.Click += new System.EventHandler(this.enter_Click);
             // 
-            // loginBox
+            // emailBox
             // 
-            this.loginBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginBox.BackColor = System.Drawing.SystemColors.Window;
-            this.loginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginBox.Location = new System.Drawing.Point(90, 172);
-            this.loginBox.Multiline = true;
-            this.loginBox.Name = "loginBox";
-            this.loginBox.Size = new System.Drawing.Size(308, 54);
-            this.loginBox.TabIndex = 2;
+            this.emailBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailBox.BackColor = System.Drawing.SystemColors.Window;
+            this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailBox.Location = new System.Drawing.Point(90, 172);
+            this.emailBox.Multiline = true;
+            this.emailBox.Name = "emailBox";
+            this.emailBox.Size = new System.Drawing.Size(308, 54);
+            this.emailBox.TabIndex = 2;
             // 
-            // passwordBox
+            // phoneBox
             // 
-            this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordBox.Location = new System.Drawing.Point(90, 297);
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(308, 48);
-            this.passwordBox.TabIndex = 3;
-            this.passwordBox.UseSystemPasswordChar = true;
+            this.phoneBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneBox.Location = new System.Drawing.Point(90, 297);
+            this.phoneBox.Multiline = true;
+            this.phoneBox.Name = "phoneBox";
+            this.phoneBox.Size = new System.Drawing.Size(308, 54);
+            this.phoneBox.TabIndex = 3;
             // 
-            // loginLabel
+            // emailLabel
             // 
-            this.loginLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.loginLabel.Location = new System.Drawing.Point(85, 140);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(125, 29);
-            this.loginLabel.TabIndex = 0;
-            this.loginLabel.Text = "Эл. почта";
-            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.emailLabel.Location = new System.Drawing.Point(85, 140);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(125, 29);
+            this.emailLabel.TabIndex = 0;
+            this.emailLabel.Text = "Эл. почта";
+            this.emailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // passwordLabel
+            // phoneLabel
             // 
-            this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.passwordLabel.Location = new System.Drawing.Point(85, 265);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(119, 29);
-            this.passwordLabel.TabIndex = 0;
-            this.passwordLabel.Text = "Телефон";
-            this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.phoneLabel.Location = new System.Drawing.Point(85, 265);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(119, 29);
+            this.phoneLabel.TabIndex = 0;
+            this.phoneLabel.Text = "Телефон";
+            this.phoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AboutMeClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 510);
-            this.Controls.Add(this.passwordBox);
-            this.Controls.Add(this.loginBox);
-            this.Controls.Add(this.enter);
-            this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.loginLabel);
-            this.Controls.Add(this.enterLabel);
+            this.Controls.Add(this.phoneBox);
+            this.Controls.Add(this.emailBox);
+            this.Controls.Add(this.acceptButton);
+            this.Controls.Add(this.phoneLabel);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(this.fillfieldsLabel);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(145)))), ((int)(((byte)(128)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AboutMeClientForm";
@@ -134,11 +133,11 @@ namespace Freelance_IT
 
         #endregion
 
-        private System.Windows.Forms.Label enterLabel;
-        private System.Windows.Forms.Button enter;
-        private System.Windows.Forms.TextBox loginBox;
-        private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label fillfieldsLabel;
+        private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.TextBox emailBox;
+        private System.Windows.Forms.TextBox phoneBox;
+        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.Label phoneLabel;
     }
 }

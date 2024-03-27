@@ -16,7 +16,8 @@ namespace Freelance_IT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
+            Application.Run(new AboutMeMasterForm());
         }
     }
 }

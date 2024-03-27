@@ -15,13 +15,6 @@ namespace Freelance_IT
         public AboutMeClientForm()
         {
             InitializeComponent();
-            this.passwordBox.AutoSize = false;
-            this.passwordBox.Size = new Size(this.loginBox.Size.Width, this.loginBox.Size.Height);
-        }
-
-        private void registerLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
 
         private void enter_Click(object sender, EventArgs e)
