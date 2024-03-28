@@ -58,6 +58,24 @@
     <Compile Include="AboutMeClientForm.Designer.cs">
       <DependentUpon>AboutMeClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientHandleOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientHandleOrderForm.Designer.cs">
+      <DependentUpon>ClientHandleOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterHandleOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterHandleOrderForm.Designer.cs">
+      <DependentUpon>MasterHandleOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientCreateOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCreateOrderForm.Designer.cs">
+      <DependentUpon>ClientCreateOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +101,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AboutMeClientForm.resx">
       <DependentUpon>AboutMeClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientHandleOrderForm.resx">
+      <DependentUpon>ClientHandleOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterHandleOrderForm.resx">
+      <DependentUpon>MasterHandleOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientCreateOrderForm.resx">
+      <DependentUpon>ClientCreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
