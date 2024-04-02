@@ -31,9 +31,9 @@ namespace Freelance_IT
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.avatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.logutLabel = new System.Windows.Forms.LinkLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@ namespace Freelance_IT
             this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,44 +59,47 @@ namespace Freelance_IT
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.linkLabel1);
+            this.panel3.Controls.Add(this.loginLabel);
+            this.panel3.Controls.Add(this.avatarPictureBox);
+            this.panel3.Controls.Add(this.logutLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(858, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(260, 208);
             this.panel3.TabIndex = 1;
             // 
-            // label1
+            // loginLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(90, 146);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 29);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Логин";
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Location = new System.Drawing.Point(90, 146);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(83, 29);
+            this.loginLabel.TabIndex = 4;
+            this.loginLabel.Text = "Логин";
             // 
-            // pictureBox1
+            // avatarPictureBox
             // 
-            this.pictureBox1.Image = global::Freelance_IT.Properties.Resources.admin;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.avatarPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.avatarPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.avatarPictureBox.Location = new System.Drawing.Point(71, 23);
+            this.avatarPictureBox.Name = "avatarPictureBox";
+            this.avatarPictureBox.Size = new System.Drawing.Size(120, 120);
+            this.avatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.avatarPictureBox.TabIndex = 3;
+            this.avatarPictureBox.TabStop = false;
+            this.avatarPictureBox.Click += new System.EventHandler(this.avatarPictureBox_Click);
             // 
-            // linkLabel1
+            // logutLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(100, 175);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(58, 20);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Выйти";
+            this.logutLabel.AutoSize = true;
+            this.logutLabel.Location = new System.Drawing.Point(100, 175);
+            this.logutLabel.Name = "logutLabel";
+            this.logutLabel.Size = new System.Drawing.Size(58, 20);
+            this.logutLabel.TabIndex = 2;
+            this.logutLabel.TabStop = true;
+            this.logutLabel.Text = "Выйти";
+            this.logutLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logutLabel_LinkClicked);
             // 
             // panel2
             // 
@@ -175,7 +178,7 @@ namespace Freelance_IT
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -191,10 +194,10 @@ namespace Freelance_IT
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel logutLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox avatarPictureBox;
+        private System.Windows.Forms.Label loginLabel;
     }
 }

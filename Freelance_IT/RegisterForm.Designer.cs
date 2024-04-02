@@ -64,7 +64,7 @@ namespace Freelance_IT
             this.master_registration.TabIndex = 1;
             this.master_registration.Text = "Я исполнитель";
             this.master_registration.UseVisualStyleBackColor = false;
-            this.master_registration.Click += new System.EventHandler(this.registration_Click);
+            this.master_registration.Click += new System.EventHandler(this.master_registration_Click);
             // 
             // loginBox
             // 
@@ -127,7 +127,7 @@ namespace Freelance_IT
             this.client_registration.TabIndex = 1;
             this.client_registration.Text = "Я клиент";
             this.client_registration.UseVisualStyleBackColor = false;
-            this.client_registration.Click += new System.EventHandler(this.registration_Click);
+            this.client_registration.Click += new System.EventHandler(this.client_registration_Click);
             // 
             // RegisterForm
             // 
