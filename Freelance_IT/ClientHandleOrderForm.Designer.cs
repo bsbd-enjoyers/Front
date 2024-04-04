@@ -51,6 +51,8 @@ namespace Freelance_IT
             this.masterEnterLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.masterNameLabel = new System.Windows.Forms.LinkLabel();
+            this.statusLineLabel = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -154,9 +156,9 @@ namespace Freelance_IT
             this.clientEnterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.clientEnterLabel.Location = new System.Drawing.Point(67, 218);
             this.clientEnterLabel.Name = "clientEnterLabel";
-            this.clientEnterLabel.Size = new System.Drawing.Size(256, 40);
+            this.clientEnterLabel.Size = new System.Drawing.Size(332, 40);
             this.clientEnterLabel.TabIndex = 6;
-            this.clientEnterLabel.Text = "Введено вами";
+            this.clientEnterLabel.Text = "Введено клиентом";
             this.clientEnterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // readyLabel
@@ -322,6 +324,8 @@ namespace Freelance_IT
             // panel3
             // 
             this.panel3.Controls.Add(this.masterNameLabel);
+            this.panel3.Controls.Add(this.statusLineLabel);
+            this.panel3.Controls.Add(this.statusLabel);
             this.panel3.Controls.Add(this.orderInfoLabel);
             this.panel3.Controls.Add(this.readyLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -344,6 +348,32 @@ namespace Freelance_IT
             this.masterNameLabel.TabStop = true;
             this.masterNameLabel.Text = "Имя исполнителя";
             this.masterNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // statusLineLabel
+            // 
+            this.statusLineLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusLineLabel.AutoSize = true;
+            this.statusLineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusLineLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.statusLineLabel.Location = new System.Drawing.Point(863, 26);
+            this.statusLineLabel.Name = "statusLineLabel";
+            this.statusLineLabel.Size = new System.Drawing.Size(344, 55);
+            this.statusLineLabel.TabIndex = 0;
+            this.statusLineLabel.Text = "Статус заказа";
+            this.statusLineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.statusLabel.Location = new System.Drawing.Point(868, 94);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(236, 29);
+            this.statusLabel.TabIndex = 12;
+            this.statusLabel.Text = "Тут какой-то статус";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ClientHandleOrderForm
             // 
@@ -390,5 +420,7 @@ namespace Freelance_IT
         private System.Windows.Forms.Label clientEnterLabel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.LinkLabel masterNameLabel;
+        private System.Windows.Forms.Label statusLineLabel;
+        private System.Windows.Forms.Label statusLabel;
     }
 }

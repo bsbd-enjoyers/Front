@@ -26,6 +26,8 @@ namespace Freelance_IT
             skillDataTable.Columns.Clear();
             skillDataTable.Columns.Add("Тип навыка", typeof(string));
             skillDataTable.Columns.Add("Подробное описание", typeof(string));
+
+            skillsDataGridView.DataSource = skillDataTable;
         }
 
         private void addSkillTableRow(string skill_type, string description)
@@ -49,8 +51,8 @@ namespace Freelance_IT
             {
                 return;
             }
-            skilltypeBox.Text = skillsDataGridView.Rows[selectedRow].Cells[0].Value.ToString();
-            moreBox.Text = skillsDataGridView.Rows[selectedRow].Cells[1].Value.ToString();
+            skilltypeBox.Text = skillDataTable.Rows[selectedRow]["Тип навыка"].ToString();
+            moreBox.Text = skillDataTable.Rows[selectedRow]["Подробное описание"].ToString();
         }
 
         private void editSkillButton_Click(object sender, EventArgs e)
@@ -59,8 +61,8 @@ namespace Freelance_IT
             {
                 return;
             }
-            skillsDataGridView.Rows[selectedRow].Cells[0].Value = skilltypeBox.Text;
-            skillsDataGridView.Rows[selectedRow].Cells[1].Value = moreBox.Text;
+            skillDataTable.Rows[selectedRow]["Тип навыка"] = skilltypeBox.Text;
+            skillDataTable.Rows[selectedRow]["Подробное описание"] = moreBox.Text;
             selectedRow = -1;
         }
 
@@ -70,7 +72,7 @@ namespace Freelance_IT
             {
                 return;
             }
-            skillsDataGridView.Rows.RemoveAt(selectedRow);
+            skillDataTable.Rows.RemoveAt(selectedRow);
             selectedRow = -1;
         }
 
