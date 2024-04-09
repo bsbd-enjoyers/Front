@@ -58,11 +58,11 @@
     <Compile Include="AboutMeClientForm.Designer.cs">
       <DependentUpon>AboutMeClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientHandleOrderForm.cs">
+    <Compile Include="HandleOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientHandleOrderForm.Designer.cs">
-      <DependentUpon>ClientHandleOrderForm.cs</DependentUpon>
+    <Compile Include="HandleOrderForm.Designer.cs">
+      <DependentUpon>HandleOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MasterHandleOrderForm.cs">
       <SubType>Form</SubType>
@@ -102,8 +102,8 @@
     <EmbeddedResource Include="AboutMeClientForm.resx">
       <DependentUpon>AboutMeClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientHandleOrderForm.resx">
-      <DependentUpon>ClientHandleOrderForm.cs</DependentUpon>
+    <EmbeddedResource Include="HandleOrderForm.resx">
+      <DependentUpon>HandleOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MasterHandleOrderForm.resx">
       <DependentUpon>MasterHandleOrderForm.cs</DependentUpon>

@@ -25,7 +25,12 @@ namespace Freelance_IT
         private User _user;
 
         private DataTable DataTable = new DataTable();
-        private int selectedRow = -1;
+        private int _selectedRow = -1;
+
+        private MainFormTabs _selectedTab;
+        private List<Order> _searchedOrders;
+        private List<Client> _searchedClients;
+        private List<Master> _searchedMasters;
 
         private void initializeAdmin()
         {
@@ -36,7 +41,7 @@ namespace Freelance_IT
             clientButton.Show();
 
             DataGridView.Show();
-            createButton.Show();
+
             deleteButton.Show();
             checkButton.Show();
         }
@@ -51,8 +56,7 @@ namespace Freelance_IT
             clientButton.Hide();
 
             DataGridView.Show();
-            createButton.Show();
-            deleteButton.Show();
+
             checkButton.Show();
         }
 
@@ -66,6 +70,7 @@ namespace Freelance_IT
             clientButton.Hide();
 
             DataGridView.Show();
+
             createButton.Show();
             deleteButton.Show();
             checkButton.Show();
@@ -87,7 +92,12 @@ namespace Freelance_IT
             DataTable.Columns.Add("Адрес эл почты", typeof(string));
             DataTable.Columns.Add("Номер телефона", typeof(string));
 
-            selectedRow = -1;
+            _selectedRow = -1;
+        }
+
+        private void updateClientTable()
+        {
+
         }
 
         private void initializeMasterTable()
@@ -97,8 +107,13 @@ namespace Freelance_IT
             DataTable.Columns.Add("ФИО", typeof(string));
             DataTable.Columns.Add("Адрес эл почты", typeof(string));
             DataTable.Columns.Add("Номер телефона", typeof(string));
-            
-            selectedRow = -1;
+
+            _selectedRow = -1;
+        }
+
+        private void updateMasterTable()
+        {
+
         }
 
         private void initializeOrderTable()
@@ -109,7 +124,12 @@ namespace Freelance_IT
             DataTable.Columns.Add("Полное название продукта", typeof(string));
             DataTable.Columns.Add("Статус заказа", typeof(string));
 
-            selectedRow = -1;
+            _selectedRow = -1;
+        }
+
+        private void updateOrderTable()
+        {
+
         }
 
         private int authenticateUser()
@@ -173,18 +193,82 @@ namespace Freelance_IT
 
         private void orderButton_Click(object sender, EventArgs e)
         {
+            _selectedTab = MainFormTabs.Orders;
             initializeOrderTable();
         }
 
         private void masterButton_Click(object sender, EventArgs e)
         {
+            _selectedTab = MainFormTabs.Masters;
             initializeMasterTable();
         }
 
         private void clientButton_Click(object sender, EventArgs e)
         {
+            _selectedTab = MainFormTabs.Clients;
             initializeClientTable();
         }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            Order order = ClientCreateOrderForm.createOrder();
+
+            if (order == null)
+            {
+                MessageBox.Show("Заказ не был создан");
+                return;
+            }
+
+            // Отправить запрос на создание заказа
+            return;
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            if (_selectedRow == -1)
+            {
+                MessageBox.Show("Не выбран заказ");
+                return;
+            }
+
+            // Открыть окно просмотра заказа, тут зависить от роли, кнопка перегружена
+            _selectedRow = -1;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (_selectedRow == -1)
+            {
+                MessageBox.Show("Не выбран заказ");
+                return;
+            }
+
+            // Удалить заказ, тут зависит от статуса заказа, его не всегда можно удалить
+            _selectedRow = -1;
+        }
+
+        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedRow = e.RowIndex;
+
+            if (_selectedRow == -1)
+            {
+                return;
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            // Отправить запрос, используя _selectedTab
+        }
+    }
+
+
+    public enum MainFormTabs
+    {
+        Clients,
+        Masters,
+        Orders
     }
 
     public class User
@@ -209,6 +293,28 @@ namespace Freelance_IT
     public class Admin : User
     {
 
+    }
+
+    public class Product
+    {
+        public uint id_product;
+        public string type;
+        public string fullname;
+        public string client_description;
+        public string master_specification;
+
+    }
+
+    public class Order
+    {
+        public uint id_order;
+        public uint id_client;
+        public uint id_master;
+
+        public Product product;
+        public string deadline;
+        public uint totalcost;
+        public string status;
     }
 
 }

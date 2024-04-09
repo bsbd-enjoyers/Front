@@ -1,7 +1,7 @@
 ﻿
 namespace Freelance_IT
 {
-    partial class ClientHandleOrderForm
+    partial class HandleOrderForm
     {
         /// <summary>
         /// Required designer variable.

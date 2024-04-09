@@ -40,7 +40,7 @@ namespace Freelance_IT
             }
             else
             {
-                string temp_role = "admin";
+                string temp_role = "client";
                 switch (temp_role)
                 {
                     case "admin":
@@ -63,7 +63,7 @@ namespace Freelance_IT
         // Public
         public static User authenticate()
         {
-            var loginWindow = new LoginForm();
+            LoginForm loginWindow = new LoginForm();
 
             if (loginWindow.ShowDialog() == DialogResult.OK)
             {

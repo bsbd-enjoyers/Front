@@ -144,6 +144,7 @@ namespace Freelance_IT
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Найти";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // masterButton
             // 
@@ -176,42 +177,46 @@ namespace Freelance_IT
             this.DataGridView.RowTemplate.Height = 28;
             this.DataGridView.Size = new System.Drawing.Size(909, 299);
             this.DataGridView.TabIndex = 12;
+            this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
             // 
             // deleteButton
             // 
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.deleteButton.Location = new System.Drawing.Point(953, 399);
+            this.deleteButton.Location = new System.Drawing.Point(953, 295);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(141, 64);
             this.deleteButton.TabIndex = 9;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // checkButton
             // 
             this.checkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.checkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.checkButton.Location = new System.Drawing.Point(953, 312);
+            this.checkButton.Location = new System.Drawing.Point(953, 225);
             this.checkButton.Name = "checkButton";
             this.checkButton.Size = new System.Drawing.Size(141, 64);
             this.checkButton.TabIndex = 10;
             this.checkButton.Text = "Просмотреть";
             this.checkButton.UseVisualStyleBackColor = false;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // createButton
             // 
             this.createButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.createButton.Location = new System.Drawing.Point(953, 225);
+            this.createButton.Location = new System.Drawing.Point(953, 365);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(141, 64);
             this.createButton.TabIndex = 11;
             this.createButton.Text = "Создать";
             this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // MainForm
             // 

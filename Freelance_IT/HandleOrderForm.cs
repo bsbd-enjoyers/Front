@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Freelance_IT
 {
-    public partial class ClientHandleOrderForm : Form
+    public partial class HandleOrderForm : Form
     {
-        public ClientHandleOrderForm()
+        public HandleOrderForm()
         {
             InitializeComponent();
         }
