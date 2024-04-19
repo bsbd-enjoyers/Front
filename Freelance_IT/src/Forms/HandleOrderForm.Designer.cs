@@ -1,5 +1,5 @@
 ﻿
-namespace Freelance_IT
+namespace Freelance_IT.Forms
 {
     partial class HandleOrderForm
     {

@@ -8,8 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Freelance_IT
+using Freelance_IT.Classes;
+
+namespace Freelance_IT.Forms
 {
+    public enum MainFormTabs
+    {
+        Clients,
+        Masters,
+        Orders,
+        Unknown
+    }
+
     public partial class MainForm : Form
     {
         // public
@@ -17,24 +27,23 @@ namespace Freelance_IT
         {
             InitializeComponent();
 
-            DataGridView.DataSource = DataTable;
+            DataGridView.DataSource = _dataTable;
             deinitializeUser();
         }
 
         // private 
         private User _user;
 
-        private DataTable DataTable = new DataTable();
+        private DataTable _dataTable = new DataTable();
         private int _selectedRow = -1;
 
         private MainFormTabs _selectedTab;
-        private List<Order> _searchedOrders;
-        private List<Client> _searchedClients;
-        private List<Master> _searchedMasters;
 
         private void initializeAdmin()
         {
             avatarPictureBox.Image = Freelance_IT.Properties.Resources.admin;
+
+            initializeOrderTable();
 
             orderButton.Show();
             masterButton.Show();
@@ -86,50 +95,74 @@ namespace Freelance_IT
 
         private void initializeClientTable()
         {
-            DataTable.Columns.Clear();
-            DataTable.Columns.Add("ID мастера", typeof(string));
-            DataTable.Columns.Add("ФИО", typeof(string));
-            DataTable.Columns.Add("Адрес эл почты", typeof(string));
-            DataTable.Columns.Add("Номер телефона", typeof(string));
+            _selectedTab = MainFormTabs.Clients;
+
+            _dataTable.Columns.Clear();
+            _dataTable.Columns.Add("ID клиента", typeof(string));
+            _dataTable.Columns.Add("ФИО", typeof(string));
+            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
+            _dataTable.Columns.Add("Номер телефона", typeof(string));
 
             _selectedRow = -1;
         }
 
-        private void updateClientTable()
+        private void updateClientTable(List<Client> searchedClients)
         {
+            _dataTable.Rows.Clear();
+            _selectedRow = -1;
 
+            foreach (Client client in searchedClients)
+            {
+                _dataTable.Rows.Add(client.id, client.fullname, client.email, client.phone);
+            }
         }
 
         private void initializeMasterTable()
         {
-            DataTable.Columns.Clear();
-            DataTable.Columns.Add("ID исполнителя", typeof(string));
-            DataTable.Columns.Add("ФИО", typeof(string));
-            DataTable.Columns.Add("Адрес эл почты", typeof(string));
-            DataTable.Columns.Add("Номер телефона", typeof(string));
+            _selectedTab = MainFormTabs.Masters;
+
+            _dataTable.Columns.Clear();
+            _dataTable.Columns.Add("ID исполнителя", typeof(string));
+            _dataTable.Columns.Add("ФИО", typeof(string));
+            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
+            _dataTable.Columns.Add("Номер телефона", typeof(string));
 
             _selectedRow = -1;
         }
 
-        private void updateMasterTable()
+        private void updateMasterTable(List<Master> searchedMasters)
         {
+            _dataTable.Rows.Clear();
+            _selectedRow = -1;
 
+            foreach (Master master in searchedMasters)
+            {
+                _dataTable.Rows.Add(master.id, master.fullname, master.email, master.phone);
+            }
         }
 
         private void initializeOrderTable()
         {
-            DataTable.Columns.Clear();
-            DataTable.Columns.Add("ID заказа", typeof(string));
-            DataTable.Columns.Add("Тип продукта", typeof(string));
-            DataTable.Columns.Add("Полное название продукта", typeof(string));
-            DataTable.Columns.Add("Статус заказа", typeof(string));
+            _selectedTab = MainFormTabs.Orders;
+
+            _dataTable.Columns.Clear();
+            _dataTable.Columns.Add("ID заказа", typeof(string));
+            _dataTable.Columns.Add("Тип продукта", typeof(string));
+            _dataTable.Columns.Add("Полное название продукта", typeof(string));
+            _dataTable.Columns.Add("Статус заказа", typeof(string));
 
             _selectedRow = -1;
         }
 
-        private void updateOrderTable()
+        private void updateOrderTable(List<Order> searchedOrders)
         {
+            _dataTable.Rows.Clear();
+            _selectedRow = -1;
 
+            foreach (Order order in searchedOrders)
+            {
+                _dataTable.Rows.Add(order.id_order, order.product.type, order.product.fullname, order.status);
+            }
         }
 
         private int authenticateUser()
@@ -159,13 +192,13 @@ namespace Freelance_IT
 
                 switch (_user.GetType().ToString())
                 {
-                    case "Freelance_IT.Admin":
+                    case "Freelance_IT.Classes.Admin":
                         initializeAdmin();
                         break;
-                    case "Freelance_IT.Master":
+                    case "Freelance_IT.Classes.Master":
                         initializeMaster();
                         break;
-                    case "Freelance_IT.Client":
+                    case "Freelance_IT.Classes.Client":
                         initializeClient();
                         break;
                 }
@@ -193,19 +226,16 @@ namespace Freelance_IT
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            _selectedTab = MainFormTabs.Orders;
             initializeOrderTable();
         }
 
         private void masterButton_Click(object sender, EventArgs e)
         {
-            _selectedTab = MainFormTabs.Masters;
             initializeMasterTable();
         }
 
         private void clientButton_Click(object sender, EventArgs e)
         {
-            _selectedTab = MainFormTabs.Clients;
             initializeClientTable();
         }
 
@@ -259,62 +289,20 @@ namespace Freelance_IT
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            // Отправить запрос, используя _selectedTab
+            // Получить данные и распарсить
+            // Клиент и мастер получают только свои заказы
+            switch (_selectedTab)
+            {
+                case MainFormTabs.Clients:
+                    updateClientTable(null);
+                    break;
+                case MainFormTabs.Masters:
+                    updateMasterTable(null);
+                    break;
+                case MainFormTabs.Orders:
+                    updateOrderTable(null);
+                    break;
+            }
         }
     }
-
-
-    public enum MainFormTabs
-    {
-        Clients,
-        Masters,
-        Orders
-    }
-
-    public class User
-    {
-        public string login;
-        public string fullname;
-        public string email;
-        public string phone;
-    }
-
-    public class Master: User
-    {
-        public string about_me;
-        public SortedDictionary<string, string> skills;
-    }
-
-    public class Client: User
-    {
-
-    }
-
-    public class Admin : User
-    {
-
-    }
-
-    public class Product
-    {
-        public uint id_product;
-        public string type;
-        public string fullname;
-        public string client_description;
-        public string master_specification;
-
-    }
-
-    public class Order
-    {
-        public uint id_order;
-        public uint id_client;
-        public uint id_master;
-
-        public Product product;
-        public string deadline;
-        public uint totalcost;
-        public string status;
-    }
-
 }

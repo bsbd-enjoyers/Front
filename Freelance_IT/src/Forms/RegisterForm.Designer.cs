@@ -1,7 +1,7 @@
 ﻿
-namespace Freelance_IT
+namespace Freelance_IT.Forms
 {
-    partial class LoginForm
+    partial class RegisterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,42 +29,42 @@ namespace Freelance_IT
         /// </summary>
         private void InitializeComponent()
         {
-            this.enterLabel = new System.Windows.Forms.Label();
-            this.enter = new System.Windows.Forms.Button();
+            this.registrationLabel = new System.Windows.Forms.Label();
+            this.master_registration = new System.Windows.Forms.Button();
             this.loginBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.registerLabel = new System.Windows.Forms.LinkLabel();
             this.loginLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.client_registration = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // enterLabel
+            // registrationLabel
             // 
-            this.enterLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.enterLabel.AutoSize = true;
-            this.enterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enterLabel.Location = new System.Drawing.Point(185, 66);
-            this.enterLabel.Name = "enterLabel";
-            this.enterLabel.Size = new System.Drawing.Size(135, 55);
-            this.enterLabel.TabIndex = 0;
-            this.enterLabel.Text = "Вход";
-            this.enterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.registrationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.registrationLabel.AutoSize = true;
+            this.registrationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registrationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.registrationLabel.Location = new System.Drawing.Point(104, 48);
+            this.registrationLabel.Name = "registrationLabel";
+            this.registrationLabel.Size = new System.Drawing.Size(309, 55);
+            this.registrationLabel.TabIndex = 0;
+            this.registrationLabel.Text = "Регистрация";
+            this.registrationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // enter
+            // master_registration
             // 
-            this.enter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enter.Location = new System.Drawing.Point(159, 398);
-            this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(190, 72);
-            this.enter.TabIndex = 1;
-            this.enter.Text = "Войти";
-            this.enter.UseVisualStyleBackColor = false;
-            this.enter.Click += new System.EventHandler(this.enter_Click);
+            this.master_registration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.master_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.master_registration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.master_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.master_registration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.master_registration.Location = new System.Drawing.Point(93, 364);
+            this.master_registration.Name = "master_registration";
+            this.master_registration.Size = new System.Drawing.Size(330, 49);
+            this.master_registration.TabIndex = 1;
+            this.master_registration.Text = "Я исполнитель";
+            this.master_registration.UseVisualStyleBackColor = false;
+            this.master_registration.Click += new System.EventHandler(this.master_registration_Click);
             // 
             // loginBox
             // 
@@ -87,21 +87,6 @@ namespace Freelance_IT
             this.passwordBox.Size = new System.Drawing.Size(308, 48);
             this.passwordBox.TabIndex = 3;
             this.passwordBox.UseSystemPasswordChar = true;
-            // 
-            // registerLabel
-            // 
-            this.registerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerLabel.AutoSize = true;
-            this.registerLabel.ForeColor = System.Drawing.Color.White;
-            this.registerLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.registerLabel.Location = new System.Drawing.Point(201, 358);
-            this.registerLabel.Name = "registerLabel";
-            this.registerLabel.Size = new System.Drawing.Size(106, 20);
-            this.registerLabel.TabIndex = 4;
-            this.registerLabel.TabStop = true;
-            this.registerLabel.Text = "Регистрация";
-            this.registerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.registerLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.registerLabel_LinkClicked);
             // 
             // loginLabel
             // 
@@ -129,21 +114,36 @@ namespace Freelance_IT
             this.passwordLabel.Text = "Пароль";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LoginForm
+            // client_registration
+            // 
+            this.client_registration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.client_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.client_registration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.client_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.client_registration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.client_registration.Location = new System.Drawing.Point(93, 428);
+            this.client_registration.Name = "client_registration";
+            this.client_registration.Size = new System.Drawing.Size(330, 48);
+            this.client_registration.TabIndex = 1;
+            this.client_registration.Text = "Я клиент";
+            this.client_registration.UseVisualStyleBackColor = false;
+            this.client_registration.Click += new System.EventHandler(this.client_registration_Click);
+            // 
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 510);
-            this.Controls.Add(this.registerLabel);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.loginBox);
-            this.Controls.Add(this.enter);
+            this.Controls.Add(this.client_registration);
+            this.Controls.Add(this.master_registration);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
-            this.Controls.Add(this.enterLabel);
+            this.Controls.Add(this.registrationLabel);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(145)))), ((int)(((byte)(128)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "LoginForm";
+            this.Name = "RegisterForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,12 +151,12 @@ namespace Freelance_IT
 
         #endregion
 
-        private System.Windows.Forms.Label enterLabel;
-        private System.Windows.Forms.Button enter;
+        private System.Windows.Forms.Label registrationLabel;
+        private System.Windows.Forms.Button master_registration;
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.LinkLabel registerLabel;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Button client_registration;
     }
 }

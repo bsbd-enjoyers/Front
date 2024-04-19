@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Freelance_IT
+using Freelance_IT.Classes;
+
+namespace Freelance_IT.Forms
 {
     public partial class AboutMeMasterForm : Form
     {
@@ -30,7 +32,7 @@ namespace Freelance_IT
             skillsDataGridView.DataSource = skillDataTable;
         }
 
-        private void addSkillTableRow(string skill_type, string description)
+        private void setTextSkillTextBoxes(string skill_type, string description)
         {
             skilltypeBox.Text = skill_type;
             moreBox.Text = description;
@@ -40,7 +42,7 @@ namespace Freelance_IT
         private void createSkillButton_Click(object sender, EventArgs e)
         {
             skillDataTable.Rows.Add(skilltypeBox.Text, moreBox.Text);
-            addSkillTableRow("", "");
+            setTextSkillTextBoxes("", "");
         }
 
         private void skillsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -106,7 +108,7 @@ namespace Freelance_IT
                 aboutMasterWindow.aboutMeTextBox.Text = master.about_me;
                 foreach(KeyValuePair<string, string> skill in master.skills)
                 {
-                    aboutMasterWindow.addSkillTableRow(skill.Key, skill.Value);
+                    aboutMasterWindow.skillDataTable.Rows.Add(skill.Key, skill.Value);
                 }
             }
             else

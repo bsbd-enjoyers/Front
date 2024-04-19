@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Freelance_IT
+using Freelance_IT.Classes;
+
+namespace Freelance_IT.Forms
 {
     public partial class HandleOrderForm : Form
     {
