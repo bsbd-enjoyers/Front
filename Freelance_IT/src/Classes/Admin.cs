@@ -8,6 +8,5 @@ namespace Freelance_IT.Classes
 {
     public class Admin : User
     {
-
     }
 }

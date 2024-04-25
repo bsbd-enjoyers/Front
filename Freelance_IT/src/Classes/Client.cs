@@ -8,6 +8,7 @@ namespace Freelance_IT.Classes
 {
     public class Client : User
     {
+
         public string fullname;
         public string email;
         public string phone;

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Freelance_IT.Network
 {
-    public enum RequestResult
+    public class RequestResult
     {
-        Success,
-        Failure
+        public bool result { get; set; }
     }
 }
