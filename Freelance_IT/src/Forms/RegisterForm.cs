@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Freelance_IT.Classes;
+using Freelance_IT.Network;
 
 namespace Freelance_IT.Forms
 {
@@ -23,11 +24,6 @@ namespace Freelance_IT.Forms
             passwordBox.Size = new Size(loginBox.Size.Width, loginBox.Size.Height);
         }
 
-        private void registerLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void client_registration_Click(object sender, EventArgs e)
         {
             _user = AboutMeClientForm.getDetailedInfo((Client)_user);
@@ -37,8 +33,31 @@ namespace Freelance_IT.Forms
                 MessageBox.Show("Заполните информацию о себе");
                 return;
             }
-            DialogResult = DialogResult.OK;
-            Close();
+
+            _user.login = loginBox.Text;
+
+            try
+            {
+                BackendClient backendClient = BackendClient.getInstance();
+
+                var result = backendClient.registerClient((Client)_user, passwordBox.Text);
+
+                if (!result.Result.result)
+                {
+                    MessageBox.Show("Регистрация не прошла, попробуйте еще раз");
+                    return;
+                }
+
+                MessageBox.Show("Вы зарегестрированы, поздравляем");
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
+            return;
         }
 
         private void master_registration_Click(object sender, EventArgs e)
@@ -50,8 +69,31 @@ namespace Freelance_IT.Forms
                 MessageBox.Show("Заполните информацию о себе");
                 return;
             }
-            DialogResult = DialogResult.OK;
-            Close();
+
+            _user.login = loginBox.Text;
+
+            try
+            {
+                BackendClient backendClient = BackendClient.getInstance();
+
+                var result = backendClient.registerMaster((Master)_user, passwordBox.Text);
+
+                if (!result.Result.result)
+                {
+                    MessageBox.Show("Регистрация не прошла, попробуйте еще раз");
+                    return;
+                }
+
+                MessageBox.Show("Вы зарегестрированы, поздравляем");
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
+            return;
         }
 
         // Public

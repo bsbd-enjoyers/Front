@@ -18,9 +18,17 @@ namespace Freelance_IT.Network
 
     public class BackendClient
     {
-        // look ma, no client!
         private string _baseUrl;
         private FlurlCookie _cookie;
+
+
+        // У вас синглтон воняет, в курсе?
+        private static BackendClient backendClient = new BackendClient();
+
+        public static BackendClient getInstance()
+        {
+            return backendClient;
+        }
 
         public BackendClient()
         {
@@ -94,6 +102,11 @@ namespace Freelance_IT.Network
                 });
 
             _cookie = response.Cookies.First();
+        }
+
+        public bool isAuthorized()
+        {
+            return _cookie != null;
         }
 
 

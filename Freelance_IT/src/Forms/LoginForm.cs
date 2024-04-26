@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Freelance_IT.Classes;
+using Freelance_IT.Network;
 
 namespace Freelance_IT.Forms
 {
@@ -33,33 +34,50 @@ namespace Freelance_IT.Forms
 
         private void enter_Click(object sender, EventArgs e)
         {
-            // Check authentication thorugh back
-            // back_res == null
-            if (false)
+            try
             {
-                MessageBox.Show("Невалидная попытка входа");
-                return;
-            }
-            else
-            {
-                string temp_role = "client";
-                switch (temp_role)
+                BackendClient backendClient = BackendClient.getInstance();
+
+                var result = backendClient.checkLoginOccupied(this.loginBox.Text);
+
+                if (result.Result.result)
+                {
+                    MessageBox.Show("Логин занят, придумайте другой");
+                    return;
+                }
+
+                backendClient.login(this.loginBox.Text, this.passwordBox.Text);
+
+                if (!backendClient.isAuthorized())
+                {
+                    MessageBox.Show("Не получилось авторизоваться");
+                    return;
+                }
+
+                var user_info = backendClient.getMyInfo();
+
+                //switch (user_info.Result.role)
+                switch("client")
                 {
                     case "admin":
-                        _user = new Admin();
+                        _user = new Admin(user_info.Result);
                         break;
                     case "master":
-                        _user = new Master();
+                        _user = new Master(user_info.Result);
                         break;
                     case "client":
-                        _user = new Client();
+                        _user = new Client(user_info.Result);
                         break;
                 }
-                
-                _user.login = this.loginBox.Text;
+
                 DialogResult = DialogResult.OK;
                 Close();
+
             }
+            catch (Exception){
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
+            return;
         }
 
         // Public
