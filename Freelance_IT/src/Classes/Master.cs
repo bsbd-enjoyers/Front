@@ -16,7 +16,9 @@ namespace Freelance_IT.Classes
         public string about_me;
         public SortedDictionary<string, string> skills;
 
-        public Master() { }
+        public Master() {
+            skills = new SortedDictionary<string, string>();
+        }
 
         public Master(UserInfo user_info)
         {

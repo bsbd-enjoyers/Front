@@ -46,21 +46,22 @@ namespace Freelance_IT.Forms
                     return;
                 }
 
-                var user_info = backendClient.getMyInfo();
+                var user_info = await backendClient.getMyInfo();
 
-                //switch (user_info.Result.role)
-                switch("client")
+                switch (user_info.role)
+                //switch("client")
                 {
                     case "admin":
-                        _user = new Admin(user_info.Result);
+                        _user = new Admin(user_info);
                         break;
                     case "master":
-                        _user = new Master(user_info.Result);
+                        _user = new Master(user_info);
                         break;
                     case "client":
-                        _user = new Client(user_info.Result);
+                        _user = new Client(user_info);
                         break;
                 }
+                _user.login = loginBox.Text;
 
                 DialogResult = DialogResult.OK;
                 Close();
