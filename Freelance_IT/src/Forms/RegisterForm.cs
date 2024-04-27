@@ -24,8 +24,27 @@ namespace Freelance_IT.Forms
             passwordBox.Size = new Size(loginBox.Size.Width, loginBox.Size.Height);
         }
 
-        private void client_registration_Click(object sender, EventArgs e)
+        private async void client_registration_Click(object sender, EventArgs e)
         {
+            BackendClient backendClient = BackendClient.getInstance();
+
+            try
+            {
+                var check_result = await backendClient.checkLoginOccupied(this.loginBox.Text);
+
+                if (check_result.result)
+                {
+                    MessageBox.Show("Логин занят, придумайте другой");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
+            }
+
+
             _user = AboutMeClientForm.getDetailedInfo((Client)_user);
 
             if (_user == null)
@@ -38,11 +57,9 @@ namespace Freelance_IT.Forms
 
             try
             {
-                BackendClient backendClient = BackendClient.getInstance();
+                var register_result = await backendClient.registerClient((Client)_user, passwordBox.Text);
 
-                var result = backendClient.registerClient((Client)_user, passwordBox.Text);
-
-                if (!result.Result.result)
+                if (!register_result.result)
                 {
                     MessageBox.Show("Регистрация не прошла, попробуйте еще раз");
                     return;
@@ -56,12 +73,31 @@ namespace Freelance_IT.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
             }
             return;
         }
 
-        private void master_registration_Click(object sender, EventArgs e)
+        private async void master_registration_Click(object sender, EventArgs e)
         {
+            BackendClient backendClient = BackendClient.getInstance();
+
+            try
+            {
+                var check_result = await backendClient.checkLoginOccupied(this.loginBox.Text);
+
+                if (check_result.result)
+                {
+                    MessageBox.Show("Логин занят, придумайте другой");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
+            }
+
             _user = AboutMeMasterForm.getDetailedInfo((Master)_user);
 
             if (_user == null)
@@ -74,11 +110,9 @@ namespace Freelance_IT.Forms
 
             try
             {
-                BackendClient backendClient = BackendClient.getInstance();
+                var register_result = await backendClient.registerMaster((Master)_user, passwordBox.Text);
 
-                var result = backendClient.registerMaster((Master)_user, passwordBox.Text);
-
-                if (!result.Result.result)
+                if (!register_result.result)
                 {
                     MessageBox.Show("Регистрация не прошла, попробуйте еще раз");
                     return;
@@ -92,6 +126,7 @@ namespace Freelance_IT.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
             }
             return;
         }

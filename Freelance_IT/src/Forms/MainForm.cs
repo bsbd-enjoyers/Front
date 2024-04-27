@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Freelance_IT.Classes;
+using Freelance_IT.Network;
 
 namespace Freelance_IT.Forms
 {
@@ -17,6 +18,7 @@ namespace Freelance_IT.Forms
         Clients,
         Masters,
         Orders,
+
         Unknown
     }
 
@@ -257,11 +259,11 @@ namespace Freelance_IT.Forms
         {
             if (_selectedRow == -1)
             {
-                MessageBox.Show("Не выбран заказ");
+                MessageBox.Show("Ничего не было выбрано");
                 return;
             }
 
-            // Открыть окно просмотра заказа, тут зависить от роли, кнопка перегружена
+            // Открыть окно просмотра заказа, тут зависит от роли, кнопка перегружена
             _selectedRow = -1;
         }
 
@@ -269,7 +271,7 @@ namespace Freelance_IT.Forms
         {
             if (_selectedRow == -1)
             {
-                MessageBox.Show("Не выбран заказ");
+                MessageBox.Show("Ничего не было выбрано");
                 return;
             }
 
@@ -287,22 +289,40 @@ namespace Freelance_IT.Forms
             }
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            // Получить данные и распарсить
-            // Клиент и мастер получают только свои заказы
-            switch (_selectedTab)
+        // Дописать десериализацию классов Master, Client, Orders и протестировать
+        private async void searchButton_Click(object sender, EventArgs e)
+        {            
+            try
             {
-                case MainFormTabs.Clients:
-                    updateClientTable(null);
-                    break;
-                case MainFormTabs.Masters:
-                    updateMasterTable(null);
-                    break;
-                case MainFormTabs.Orders:
-                    updateOrderTable(null);
-                    break;
+                BackendClient backendClient = BackendClient.getInstance();
+
+                switch (_selectedTab)
+                {
+                    case MainFormTabs.Clients:
+                        var search_clients_result = await backendClient.searchClients(searchTextBox.Text);
+                        
+                        updateClientTable(search_clients_result);
+
+                        break;
+                    case MainFormTabs.Masters:
+                        var search_masters_result = await backendClient.searchMasters(searchTextBox.Text);
+
+                        updateMasterTable(null);
+
+                        break;
+                    case MainFormTabs.Orders:
+                        var search_orders_result = await backendClient.searchOrders(searchTextBox.Text);
+
+                        updateOrderTable(search_orders_result);
+                        break;
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
+            }
+            return;
         }
     }
 }

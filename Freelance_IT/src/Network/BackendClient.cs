@@ -91,7 +91,7 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async void login(string login, string password)
+        public async Task<RequestResult> login(string login, string password)
         {
             var response =  await _baseUrl
                 .AppendPathSegment("login")
@@ -101,7 +101,15 @@ namespace Freelance_IT.Network
                     password = password
                 });
 
-            _cookie = response.Cookies.First();
+            // Shitted
+            if (response.Cookies.Count() > 0)
+            {
+                _cookie = response.Cookies.First();
+            }
+
+            var json_body = Encoding.UTF8.GetString(await response.GetBytesAsync());
+
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
         public bool isAuthorized()
@@ -127,7 +135,57 @@ namespace Freelance_IT.Network
                 .GetBytesAsync();
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
+
             return JsonSerializer.Deserialize<UserInfo>(json_body);
+        }
+
+        // Нужно создать еще контрактов для клиента, мастера и заказа
+        public async Task<List<Client>> searchClients(string search_info)
+        {
+            var response_bytes = await _baseUrl
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie)
+                .PostJsonAsync(new
+                {
+                    search_info = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+
+            return JsonSerializer.Deserialize<List<Client>>(json_body);
+        }
+
+        public async Task<List<Master>> searchMasters(string search_info)
+        {
+            var response_bytes = await _baseUrl
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie)
+                .PostJsonAsync(new
+                {
+                    search_info = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+
+            return JsonSerializer.Deserialize<List<Master>>(json_body);
+        }
+
+        public async Task<List<Order>> searchOrders(string search_info)
+        {
+            var response_bytes = await _baseUrl
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie)
+                .PostJsonAsync(new
+                {
+                    search_info = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+
+            return JsonSerializer.Deserialize<List<Order>>(json_body);
         }
 
 

@@ -32,23 +32,15 @@ namespace Freelance_IT.Forms
             registerForm.ShowDialog();
         }
 
-        private void enter_Click(object sender, EventArgs e)
+        private async void enter_Click(object sender, EventArgs e)
         {
             try
             {
                 BackendClient backendClient = BackendClient.getInstance();
 
-                var result = backendClient.checkLoginOccupied(this.loginBox.Text);
+                var login_result = await backendClient.login(this.loginBox.Text, this.passwordBox.Text);
 
-                if (result.Result.result)
-                {
-                    MessageBox.Show("Логин занят, придумайте другой");
-                    return;
-                }
-
-                backendClient.login(this.loginBox.Text, this.passwordBox.Text);
-
-                if (!backendClient.isAuthorized())
+                if (!login_result.result)
                 {
                     MessageBox.Show("Не получилось авторизоваться");
                     return;
