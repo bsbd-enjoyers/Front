@@ -14,19 +14,40 @@ namespace Freelance_IT.Forms
 {
     public partial class MasterHandleOrderForm : Form
     {
-        public MasterHandleOrderForm()
+        private MasterHandleOrderForm()
         {
             InitializeComponent();
         }
 
-        private void registerLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        // public
+        /*public static Order masterRespondOrder(Order order)
         {
+            MasterHandleOrderForm masterHandleOrderForm = new MasterHandleOrderForm();
 
-        }
+            if (order == null)
+            {
+                throw new Exception("Заказ пуст, показывать нечего");
+            }
 
-        private void enter_Click(object sender, EventArgs e)
-        {
+            if (client != null)
+            {
+                aboutClientWindow._client = client;
+                aboutClientWindow.fullnameTextBox.Text = client.fullname;
+                aboutClientWindow.phoneBox.Text = client.phone;
+                aboutClientWindow.emailBox.Text = client.email;
+            }
+            else
+            {
+                aboutClientWindow._client = new Client();
+            }
 
-        }
+            if (masterHandleOrderForm.ShowDialog() == DialogResult.OK)
+            {
+                return masterHandleOrderForm._order;
+            }
+
+            return null;
+        }*/
+
     }
 }

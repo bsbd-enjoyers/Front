@@ -30,11 +30,20 @@ namespace Freelance_IT.Forms
             InitializeComponent();
 
             DataGridView.DataSource = _dataTable;
+            _searchedClients = new List<Client>();
+            _searchedMasters = new List<Master>();
+            _searchedOrders = new List<Order>();
+
             deinitializeUser();
         }
 
         // private 
         private User _user;
+
+        private List<Order> _searchedOrders;
+        private List<Client> _searchedClients;
+        private List<Master> _searchedMasters;
+
 
         private DataTable _dataTable = new DataTable();
         private int _selectedRow = -1;
@@ -108,12 +117,12 @@ namespace Freelance_IT.Forms
             _selectedRow = -1;
         }
 
-        private void updateClientTable(List<Client> searchedClients)
+        private void updateClientTable()
         {
             _dataTable.Rows.Clear();
             _selectedRow = -1;
 
-            foreach (Client client in searchedClients)
+            foreach (Client client in _searchedClients)
             {
                 _dataTable.Rows.Add(client.id, client.fullname, client.email, client.phone);
             }
@@ -132,12 +141,12 @@ namespace Freelance_IT.Forms
             _selectedRow = -1;
         }
 
-        private void updateMasterTable(List<Master> searchedMasters)
+        private void updateMasterTable()
         {
             _dataTable.Rows.Clear();
             _selectedRow = -1;
 
-            foreach (Master master in searchedMasters)
+            foreach (Master master in _searchedMasters)
             {
                 _dataTable.Rows.Add(master.id, master.fullname, master.email, master.phone);
             }
@@ -156,12 +165,12 @@ namespace Freelance_IT.Forms
             _selectedRow = -1;
         }
 
-        private void updateOrderTable(List<Order> searchedOrders)
+        private void updateOrderTable()
         {
             _dataTable.Rows.Clear();
             _selectedRow = -1;
 
-            foreach (Order order in searchedOrders)
+            foreach (Order order in _searchedOrders)
             {
                 _dataTable.Rows.Add(order.id_order, order.product.type, order.product.fullname, order.status);
             }
@@ -182,7 +191,7 @@ namespace Freelance_IT.Forms
             return 0;
         }
 
-        private void logUser()
+        private void logOrShowUser()
         {
             if (_user == null)
             {
@@ -207,23 +216,44 @@ namespace Freelance_IT.Forms
             }
             else
             {
-                //SHow and update user info
+                switch (_user.GetType().ToString())
+                {
+                    case "Freelance_IT.Classes.Admin":
+                        break;
+                    case "Freelance_IT.Classes.Master":
+                        AboutMeMasterForm.getDetailedInfo((Master)_user);
+                        // Возможно, тут надо заапдейтить инфо о мастере запросом
+                        break;
+                    case "Freelance_IT.Classes.Client":
+                        AboutMeClientForm.getDetailedInfo((Client)_user);
+                        // Возможно, тут надо заапдейтить инфо о клиенте запросом
+                        break;
+                }
             }
         }
 
-        private void logutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void logutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _user = null;
             loginLabel.Text = "Логин";
             avatarPictureBox.Image = null;
             deinitializeUser();
 
-            logUser();
+            try
+            {
+                await BackendClient.getInstance().logout();
+            }
+            catch (Exception)
+            {
+                // Без понятия, должно ли тут быть что-то
+            }
+
+            logOrShowUser();
         }
 
         private void avatarPictureBox_Click(object sender, EventArgs e)
         {
-            logUser();
+            logOrShowUser();
         }
 
         private void orderButton_Click(object sender, EventArgs e)
@@ -241,7 +271,7 @@ namespace Freelance_IT.Forms
             initializeClientTable();
         }
 
-        private void createButton_Click(object sender, EventArgs e)
+        private async void createButton_Click(object sender, EventArgs e)
         {
             Order order = ClientCreateOrderForm.createOrder();
 
@@ -251,7 +281,17 @@ namespace Freelance_IT.Forms
                 return;
             }
 
-            // Отправить запрос на создание заказа
+            try
+            {
+                BackendClient backendClient = BackendClient.getInstance();
+
+                var create_order_result = await backendClient.createOrder(order);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                return;
+            }
             return;
         }
 
@@ -263,7 +303,19 @@ namespace Freelance_IT.Forms
                 return;
             }
 
-            // Открыть окно просмотра заказа, тут зависит от роли, кнопка перегружена
+            switch (_selectedTab)
+            {
+                case MainFormTabs.Clients:
+                    AboutMeClientForm.getDetailedInfo(_searchedClients[_selectedRow]);
+                    break;
+                case MainFormTabs.Masters:
+                    AboutMeMasterForm.getDetailedInfo(_searchedMasters[_selectedRow]);
+                    break;
+                case MainFormTabs.Orders:
+                    // Открыть окно просмотра заказа, тут зависит от роли, кнопка перегружена
+                    // Зависит от роли и от статуса заказа
+                    break;
+            }
             _selectedRow = -1;
         }
 
@@ -299,21 +351,21 @@ namespace Freelance_IT.Forms
                 switch (_selectedTab)
                 {
                     case MainFormTabs.Clients:
-                        var search_clients_result = await backendClient.searchClients(searchTextBox.Text);
+                        _searchedClients = await backendClient.searchClients(searchTextBox.Text);
                         
-                        updateClientTable(search_clients_result);
+                        updateClientTable();
 
                         break;
                     case MainFormTabs.Masters:
-                        var search_masters_result = await backendClient.searchMasters(searchTextBox.Text);
+                        _searchedMasters = await backendClient.searchMasters(searchTextBox.Text);
 
-                        updateMasterTable(null);
+                        updateMasterTable();
 
                         break;
                     case MainFormTabs.Orders:
-                        var search_orders_result = await backendClient.searchOrders(searchTextBox.Text);
+                        _searchedOrders = await backendClient.searchOrders(searchTextBox.Text);
 
-                        updateOrderTable(search_orders_result);
+                        updateOrderTable();
                         break;
                 }
             }

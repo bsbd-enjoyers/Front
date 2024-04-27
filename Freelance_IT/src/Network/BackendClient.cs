@@ -36,7 +36,6 @@ namespace Freelance_IT.Network
             _cookie = null;
         }
 
-
         public async Task<RequestResult> checkLoginOccupied(string login)
         {
             var response_bytes =  await _baseUrl
@@ -118,20 +117,27 @@ namespace Freelance_IT.Network
         }
 
 
-        // not implemented
+        // not Checked
         public async Task<RequestResult> logout()
         {
-            return await _baseUrl
+
+            var response_bytes = await _baseUrl
                 .AppendPathSegment("")
-                .GetJsonAsync<RequestResult>();
-            
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .GetBytesAsync();
+
+            _cookie = null;
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
         public async Task<UserInfo> getMyInfo()
         {
             var response_bytes = await _baseUrl
                 .AppendPathSegment("login")
-                .WithCookie("AuthTokenJWT", _cookie)
+                .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
@@ -140,11 +146,12 @@ namespace Freelance_IT.Network
         }
 
         // Нужно создать еще контрактов для клиента, мастера и заказа
+        // not Checked
         public async Task<List<Client>> searchClients(string search_info)
         {
             var response_bytes = await _baseUrl
                 .AppendPathSegment("")
-                .WithCookie("AuthTokenJWT", _cookie)
+                .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
                     search_info = search_info
@@ -156,11 +163,12 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<List<Client>>(json_body);
         }
 
+        // not Checked
         public async Task<List<Master>> searchMasters(string search_info)
         {
             var response_bytes = await _baseUrl
                 .AppendPathSegment("")
-                .WithCookie("AuthTokenJWT", _cookie)
+                .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
                     search_info = search_info
@@ -172,11 +180,12 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<List<Master>>(json_body);
         }
 
+        // not Checked
         public async Task<List<Order>> searchOrders(string search_info)
         {
             var response_bytes = await _baseUrl
                 .AppendPathSegment("")
-                .WithCookie("AuthTokenJWT", _cookie)
+                .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
                     search_info = search_info
@@ -188,21 +197,23 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<List<Order>>(json_body);
         }
 
-
-        public async Task bullshit()
+        // not Checked
+        public async Task<RequestResult> createOrder(Order order)
         {
-            var result = await _baseUrl
-                .WithCookie("AuthTokenJWT", _cookie)
+            var response_bytes = await _baseUrl
+                .AppendPathSegment("")
                 .PostJsonAsync(new
                 {
-                    first_name = "Claire",
-                    last_name = "Underwood"
-                });
+                    id_client = order.id_client,
+                    deadline = order.deadline,
+                    client_totalcost = order.totalcost,
+                    product_fullname = order.product.fullname,
+                    product_client_description = order.product.client_description
+                })
+                .ReceiveBytes();
 
-            Console.WriteLine("###############################");
-            Console.WriteLine(result.ResponseMessage);
-
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
     }
-
 }
