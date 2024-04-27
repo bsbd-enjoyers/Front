@@ -37,10 +37,10 @@ namespace Freelance_IT.Forms
             this.clientDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.clientDescriptionLabel = new System.Windows.Forms.Label();
             this.clientEnterLabel = new System.Windows.Forms.Label();
-            this.readyLabel = new System.Windows.Forms.Label();
+            this.masterIDLabel = new System.Windows.Forms.Label();
             this.orderInfoLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.masterTextBox = new System.Windows.Forms.TextBox();
+            this.masterCostTextBox = new System.Windows.Forms.TextBox();
             this.masterDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.productTypeBox = new System.Windows.Forms.TextBox();
             this.masterCostLabel = new System.Windows.Forms.Label();
@@ -50,9 +50,11 @@ namespace Freelance_IT.Forms
             this.productTypeLabel = new System.Windows.Forms.Label();
             this.masterEnterLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.masterNameLabel = new System.Windows.Forms.LinkLabel();
+            this.masterIDLinkLabel = new System.Windows.Forms.LinkLabel();
             this.statusLineLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.clientIDLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.clientIDLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -161,19 +163,18 @@ namespace Freelance_IT.Forms
             this.clientEnterLabel.Text = "Введено клиентом";
             this.clientEnterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // readyLabel
+            // masterIDLabel
             // 
-            this.readyLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.readyLabel.AutoSize = true;
-            this.readyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.readyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.readyLabel.Location = new System.Drawing.Point(70, 123);
-            this.readyLabel.Name = "readyLabel";
-            this.readyLabel.Size = new System.Drawing.Size(704, 52);
-            this.readyLabel.TabIndex = 11;
-            this.readyLabel.Text = "готов взяться за заказ, \r\nпросмотрите заполненную им информацию и закажите/откажи" +
-    "тесь\r\n";
-            this.readyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.masterIDLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.masterIDLabel.AutoSize = true;
+            this.masterIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.masterIDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.masterIDLabel.Location = new System.Drawing.Point(70, 97);
+            this.masterIDLabel.Name = "masterIDLabel";
+            this.masterIDLabel.Size = new System.Drawing.Size(177, 26);
+            this.masterIDLabel.TabIndex = 11;
+            this.masterIDLabel.Text = "ID исполнителя:\r\n";
+            this.masterIDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // orderInfoLabel
             // 
@@ -190,7 +191,7 @@ namespace Freelance_IT.Forms
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.masterTextBox);
+            this.panel2.Controls.Add(this.masterCostTextBox);
             this.panel2.Controls.Add(this.masterDescriptionTextBox);
             this.panel2.Controls.Add(this.productTypeBox);
             this.panel2.Controls.Add(this.masterCostLabel);
@@ -205,17 +206,17 @@ namespace Freelance_IT.Forms
             this.panel2.Size = new System.Drawing.Size(1250, 385);
             this.panel2.TabIndex = 10;
             // 
-            // masterTextBox
+            // masterCostTextBox
             // 
-            this.masterTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.masterTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.masterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.masterTextBox.Location = new System.Drawing.Point(74, 227);
-            this.masterTextBox.Multiline = true;
-            this.masterTextBox.Name = "masterTextBox";
-            this.masterTextBox.ReadOnly = true;
-            this.masterTextBox.Size = new System.Drawing.Size(308, 54);
-            this.masterTextBox.TabIndex = 9;
+            this.masterCostTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.masterCostTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.masterCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.masterCostTextBox.Location = new System.Drawing.Point(74, 227);
+            this.masterCostTextBox.Multiline = true;
+            this.masterCostTextBox.Name = "masterCostTextBox";
+            this.masterCostTextBox.ReadOnly = true;
+            this.masterCostTextBox.Size = new System.Drawing.Size(308, 54);
+            this.masterCostTextBox.TabIndex = 9;
             // 
             // masterDescriptionTextBox
             // 
@@ -267,6 +268,7 @@ namespace Freelance_IT.Forms
             this.declineButton.TabIndex = 7;
             this.declineButton.Text = "Отклонить";
             this.declineButton.UseVisualStyleBackColor = false;
+            this.declineButton.Click += new System.EventHandler(this.declineButton_Click);
             // 
             // orderButton
             // 
@@ -281,6 +283,7 @@ namespace Freelance_IT.Forms
             this.orderButton.TabIndex = 8;
             this.orderButton.Text = "Заказать";
             this.orderButton.UseVisualStyleBackColor = false;
+            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
             // masterDecriptionLabel
             // 
@@ -323,31 +326,33 @@ namespace Freelance_IT.Forms
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.masterNameLabel);
+            this.panel3.Controls.Add(this.clientIDLinkLabel);
+            this.panel3.Controls.Add(this.masterIDLinkLabel);
             this.panel3.Controls.Add(this.statusLineLabel);
             this.panel3.Controls.Add(this.statusLabel);
             this.panel3.Controls.Add(this.orderInfoLabel);
-            this.panel3.Controls.Add(this.readyLabel);
+            this.panel3.Controls.Add(this.clientIDLabel);
+            this.panel3.Controls.Add(this.masterIDLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1250, 191);
             this.panel3.TabIndex = 18;
             // 
-            // masterNameLabel
+            // masterIDLinkLabel
             // 
-            this.masterNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.masterNameLabel.AutoSize = true;
-            this.masterNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.masterNameLabel.ForeColor = System.Drawing.Color.White;
-            this.masterNameLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.masterNameLabel.Location = new System.Drawing.Point(70, 94);
-            this.masterNameLabel.Name = "masterNameLabel";
-            this.masterNameLabel.Size = new System.Drawing.Size(225, 29);
-            this.masterNameLabel.TabIndex = 12;
-            this.masterNameLabel.TabStop = true;
-            this.masterNameLabel.Text = "Имя исполнителя";
-            this.masterNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.masterIDLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.masterIDLinkLabel.AutoSize = true;
+            this.masterIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.masterIDLinkLabel.ForeColor = System.Drawing.Color.White;
+            this.masterIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.masterIDLinkLabel.Location = new System.Drawing.Point(261, 97);
+            this.masterIDLinkLabel.Name = "masterIDLinkLabel";
+            this.masterIDLinkLabel.Size = new System.Drawing.Size(198, 29);
+            this.masterIDLinkLabel.TabIndex = 12;
+            this.masterIDLinkLabel.TabStop = true;
+            this.masterIDLinkLabel.Text = "ID исполнителя";
+            this.masterIDLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // statusLineLabel
             // 
@@ -375,7 +380,35 @@ namespace Freelance_IT.Forms
             this.statusLabel.Text = "Тут какой-то статус";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ClientHandleOrderForm
+            // clientIDLinkLabel
+            // 
+            this.clientIDLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clientIDLinkLabel.AutoSize = true;
+            this.clientIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clientIDLinkLabel.ForeColor = System.Drawing.Color.White;
+            this.clientIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.clientIDLinkLabel.Location = new System.Drawing.Point(261, 144);
+            this.clientIDLinkLabel.Name = "clientIDLinkLabel";
+            this.clientIDLinkLabel.Size = new System.Drawing.Size(138, 29);
+            this.clientIDLinkLabel.TabIndex = 12;
+            this.clientIDLinkLabel.TabStop = true;
+            this.clientIDLinkLabel.Text = "ID клиента";
+            this.clientIDLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // clientIDLabel
+            // 
+            this.clientIDLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clientIDLabel.AutoSize = true;
+            this.clientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clientIDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.clientIDLabel.Location = new System.Drawing.Point(70, 144);
+            this.clientIDLabel.Name = "clientIDLabel";
+            this.clientIDLabel.Size = new System.Drawing.Size(128, 26);
+            this.clientIDLabel.TabIndex = 11;
+            this.clientIDLabel.Text = "ID клиента:";
+            this.clientIDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // HandleOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +418,7 @@ namespace Freelance_IT.Forms
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(145)))), ((int)(((byte)(128)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "ClientHandleOrderForm";
+            this.Name = "HandleOrderForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -401,14 +434,14 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox dateTextBox;
         private System.Windows.Forms.TextBox fullnameTextBox;
-        private System.Windows.Forms.Label readyLabel;
+        private System.Windows.Forms.Label masterIDLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label fullnameLabel;
         private System.Windows.Forms.TextBox clientDescriptionTextBox;
         private System.Windows.Forms.Label clientDescriptionLabel;
         private System.Windows.Forms.Label orderInfoLabel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox masterTextBox;
+        private System.Windows.Forms.TextBox masterCostTextBox;
         private System.Windows.Forms.TextBox masterDescriptionTextBox;
         private System.Windows.Forms.TextBox productTypeBox;
         private System.Windows.Forms.Label masterCostLabel;
@@ -419,8 +452,10 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.Label masterEnterLabel;
         private System.Windows.Forms.Label clientEnterLabel;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.LinkLabel masterNameLabel;
+        private System.Windows.Forms.LinkLabel masterIDLinkLabel;
         private System.Windows.Forms.Label statusLineLabel;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.LinkLabel clientIDLinkLabel;
+        private System.Windows.Forms.Label clientIDLabel;
     }
 }
