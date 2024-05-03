@@ -20,9 +20,9 @@ namespace Freelance_IT
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new AboutMeMasterForm());
+            Forms.FeedbackForm.getFeedback();
+
             Application.Run(new Forms.MainForm());
-            //Application.Run(new ClientHandleOrderForm());
         }
     }
 }

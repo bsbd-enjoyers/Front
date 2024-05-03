@@ -44,6 +44,7 @@ namespace Freelance_IT.Forms
             this.deleteButton = new System.Windows.Forms.Button();
             this.checkButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
+            this.feedbackButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.userPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
@@ -184,7 +185,7 @@ namespace Freelance_IT.Forms
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.deleteButton.Location = new System.Drawing.Point(953, 295);
+            this.deleteButton.Location = new System.Drawing.Point(953, 365);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(141, 64);
             this.deleteButton.TabIndex = 9;
@@ -197,7 +198,7 @@ namespace Freelance_IT.Forms
             this.checkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.checkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.checkButton.Location = new System.Drawing.Point(953, 225);
+            this.checkButton.Location = new System.Drawing.Point(953, 295);
             this.checkButton.Name = "checkButton";
             this.checkButton.Size = new System.Drawing.Size(141, 64);
             this.checkButton.TabIndex = 10;
@@ -210,13 +211,26 @@ namespace Freelance_IT.Forms
             this.createButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.createButton.Location = new System.Drawing.Point(953, 365);
+            this.createButton.Location = new System.Drawing.Point(953, 435);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(141, 64);
             this.createButton.TabIndex = 11;
             this.createButton.Text = "Создать";
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // feedbackButton
+            // 
+            this.feedbackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.feedbackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.feedbackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.feedbackButton.Location = new System.Drawing.Point(953, 225);
+            this.feedbackButton.Name = "feedbackButton";
+            this.feedbackButton.Size = new System.Drawing.Size(141, 64);
+            this.feedbackButton.TabIndex = 10;
+            this.feedbackButton.Text = "Оставить отзыв";
+            this.feedbackButton.UseVisualStyleBackColor = false;
+            this.feedbackButton.Click += new System.EventHandler(this.feedbackButton_Click);
             // 
             // MainForm
             // 
@@ -225,6 +239,7 @@ namespace Freelance_IT.Forms
             this.ClientSize = new System.Drawing.Size(1118, 550);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.feedbackButton);
             this.Controls.Add(this.checkButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.panel1);
@@ -257,5 +272,6 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button checkButton;
         private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button feedbackButton;
     }
 }

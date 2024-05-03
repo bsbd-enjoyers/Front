@@ -94,6 +94,7 @@ namespace Freelance_IT.Forms
             createButton.Show();
             deleteButton.Show();
             checkButton.Show();
+            feedbackButton.Show();
         }
 
         private void deinitializeUser()
@@ -102,6 +103,7 @@ namespace Freelance_IT.Forms
             createButton.Hide();
             deleteButton.Hide();
             checkButton.Hide();
+            feedbackButton.Hide();
         }
 
         private void initializeClientTable()
@@ -295,6 +297,30 @@ namespace Freelance_IT.Forms
             return;
         }
 
+        private void feedbackButton_Click(object sender, EventArgs e)
+        {
+            if (_selectedRow == -1)
+            {
+                MessageBox.Show("Ничего не было выбрано");
+                return;
+            }
+
+            Feedback feedback = FeedbackForm.getFeedback(
+                new Feedback(_searchedOrders[_selectedRow].id_order)
+                );
+
+            _selectedRow = -1;
+
+            feedback = FeedbackForm.getFeedback(feedback);
+
+            if (feedback == null)
+            {
+                MessageBox.Show("Отзыв не был оставлен");
+                return;
+            }
+            // Послать запрос на создание отзыва
+        }
+
         private void checkButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
@@ -376,5 +402,7 @@ namespace Freelance_IT.Forms
             }
             return;
         }
+
+
     }
 }
