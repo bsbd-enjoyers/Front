@@ -49,6 +49,7 @@ namespace Freelance_IT.Forms
             this.masterDescriptionLabel = new System.Windows.Forms.Label();
             this.productTypeLabel = new System.Windows.Forms.Label();
             this.enterInfoLabel = new System.Windows.Forms.Label();
+            this.skipButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -202,6 +203,7 @@ namespace Freelance_IT.Forms
             this.panel2.Controls.Add(this.masterDecriptionTextBox);
             this.panel2.Controls.Add(this.productTypeBox);
             this.panel2.Controls.Add(this.masterCostLabel);
+            this.panel2.Controls.Add(this.skipButton);
             this.panel2.Controls.Add(this.respondButton);
             this.panel2.Controls.Add(this.masterDescriptionLabel);
             this.panel2.Controls.Add(this.productTypeLabel);
@@ -263,14 +265,15 @@ namespace Freelance_IT.Forms
             this.respondButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.respondButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.respondButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.respondButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.respondButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.respondButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.respondButton.Location = new System.Drawing.Point(52, 341);
             this.respondButton.Name = "respondButton";
-            this.respondButton.Size = new System.Drawing.Size(206, 48);
+            this.respondButton.Size = new System.Drawing.Size(175, 48);
             this.respondButton.TabIndex = 8;
             this.respondButton.Text = "Откликнуться";
             this.respondButton.UseVisualStyleBackColor = false;
+            this.respondButton.Click += new System.EventHandler(this.respondButton_Click);
             // 
             // masterDescriptionLabel
             // 
@@ -310,6 +313,21 @@ namespace Freelance_IT.Forms
             this.enterInfoLabel.TabIndex = 6;
             this.enterInfoLabel.Text = "Заполните информацию";
             this.enterInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // skipButton
+            // 
+            this.skipButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.skipButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.skipButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.skipButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.skipButton.Location = new System.Drawing.Point(245, 341);
+            this.skipButton.Name = "skipButton";
+            this.skipButton.Size = new System.Drawing.Size(175, 48);
+            this.skipButton.TabIndex = 8;
+            this.skipButton.Text = "Пропустить";
+            this.skipButton.UseVisualStyleBackColor = false;
+            this.skipButton.Click += new System.EventHandler(this.skipButton_Click);
             // 
             // MasterHandleOrderForm
             // 
@@ -353,5 +371,6 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.Label masterDescriptionLabel;
         private System.Windows.Forms.Label productTypeLabel;
         private System.Windows.Forms.Label enterInfoLabel;
+        private System.Windows.Forms.Button skipButton;
     }
 }

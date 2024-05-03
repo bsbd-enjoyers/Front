@@ -283,6 +283,9 @@ namespace Freelance_IT.Forms
                 return;
             }
 
+            order.status = "created";
+            order.id_client = _user.id;
+
             try
             {
                 BackendClient backendClient = BackendClient.getInstance();
@@ -311,8 +314,6 @@ namespace Freelance_IT.Forms
 
             _selectedRow = -1;
 
-            feedback = FeedbackForm.getFeedback(feedback);
-
             if (feedback == null)
             {
                 MessageBox.Show("Отзыв не был оставлен");
@@ -338,8 +339,38 @@ namespace Freelance_IT.Forms
                     AboutMeMasterForm.getDetailedInfo(_searchedMasters[_selectedRow]);
                     break;
                 case MainFormTabs.Orders:
-                    // Открыть окно просмотра заказа, тут зависит от роли, кнопка перегружена
-                    // Зависит от роли и от статуса заказа
+
+                    if (_user.GetType().ToString() == "Freelance_IT.Classes.Master" &&
+                        _searchedOrders[_selectedRow].status == "created")
+                    {
+                        Order order = MasterHandleOrderForm.masterRespondOrder(_searchedOrders[_selectedRow]);
+                        if(order != null)
+                        {
+                            order.status = "responded";
+                            order.id_master = _user.id;
+                            // Обновить инфу о заказе через запрос
+                        }
+                        break;
+                    }
+
+                    if (_user.GetType().ToString() == "Freelance_IT.Classes.Client" &&
+                        _searchedOrders[_selectedRow].status == "responded")
+                    {
+                        switch (HandleOrderForm.lastStepAcceptingOrder(_searchedOrders[_selectedRow]))
+                        {
+                            case DialogResult.Yes:
+                                _searchedOrders[_selectedRow].status = "agreed";
+                                // Обновить инфу о заказе, клиент согласен
+                                break;
+                            case DialogResult.No:
+                                _searchedOrders[_selectedRow].status = "created";
+                                // Обновить инфу о заказе, клиент не согласен
+                                break;
+                        }
+                        break;
+                    }
+
+                    HandleOrderForm.showOrderInfo(_searchedOrders[_selectedRow]);
                     break;
             }
             _selectedRow = -1;
@@ -353,7 +384,23 @@ namespace Freelance_IT.Forms
                 return;
             }
 
-            // Удалить заказ, тут зависит от статуса заказа, его не всегда можно удалить
+            switch (_selectedTab)
+            {
+                case MainFormTabs.Clients:
+                    MessageBox.Show("Пока клиентов удалять нельзя!");
+                    break;
+                case MainFormTabs.Masters:
+                    MessageBox.Show("Пока исполнителей удалять нельзя!");
+                    break;
+                case MainFormTabs.Orders:
+                    if (_searchedOrders[_selectedRow].status == "created" ||
+                        _searchedOrders[_selectedRow].status == "responded"
+                        )
+                    {
+                        // Послать запрос на удаление заказа
+                    }
+                    break;
+            }
             _selectedRow = -1;
         }
 
@@ -402,7 +449,5 @@ namespace Freelance_IT.Forms
             }
             return;
         }
-
-
     }
 }

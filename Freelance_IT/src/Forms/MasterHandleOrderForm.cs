@@ -14,13 +14,9 @@ namespace Freelance_IT.Forms
 {
     public partial class MasterHandleOrderForm : Form
     {
-        private MasterHandleOrderForm()
-        {
-            InitializeComponent();
-        }
 
         // public
-        /*public static Order masterRespondOrder(Order order)
+        public static Order masterRespondOrder(Order order)
         {
             MasterHandleOrderForm masterHandleOrderForm = new MasterHandleOrderForm();
 
@@ -29,25 +25,39 @@ namespace Freelance_IT.Forms
                 throw new Exception("Заказ пуст, показывать нечего");
             }
 
-            if (client != null)
-            {
-                aboutClientWindow._client = client;
-                aboutClientWindow.fullnameTextBox.Text = client.fullname;
-                aboutClientWindow.phoneBox.Text = client.phone;
-                aboutClientWindow.emailBox.Text = client.email;
-            }
-            else
-            {
-                aboutClientWindow._client = new Client();
-            }
+            masterHandleOrderForm._order = order;
 
-            if (masterHandleOrderForm.ShowDialog() == DialogResult.OK)
+            if (masterHandleOrderForm.ShowDialog() == DialogResult.Yes)
             {
                 return masterHandleOrderForm._order;
             }
 
             return null;
-        }*/
+        }
 
+        // private 
+        private MasterHandleOrderForm()
+        {
+            InitializeComponent();
+        }
+
+        private Order _order;
+
+        private void respondButton_Click(object sender, EventArgs e)
+        {
+            _order.product.type = productTypeBox.Text;
+            _order.product.master_specification = masterDecriptionTextBox.Text;
+
+            _order.totalcost = Convert.ToUInt32(masterCostLabel.Text);
+
+            DialogResult = DialogResult.Yes;
+            Close();
+        }
+
+        private void skipButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.No;
+            Close();
+        }
     }
 }
