@@ -20,7 +20,7 @@ namespace Freelance_IT
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Forms.FeedbackForm.getFeedback();
+            //var Order = Forms.ClientCreateOrderForm.createOrder();
 
             Application.Run(new Forms.MainForm());
         }

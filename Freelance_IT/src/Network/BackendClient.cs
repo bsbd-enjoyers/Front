@@ -204,11 +204,10 @@ namespace Freelance_IT.Network
                 .AppendPathSegment("")
                 .PostJsonAsync(new
                 {
-                    id_client = order.id_client,
                     deadline = order.deadline,
-                    client_totalcost = order.totalcost,
-                    product_fullname = order.product.fullname,
-                    product_client_description = order.product.client_description
+                    cost = order.totalcost,
+                    name = order.product.fullname,
+                    desc = order.product.client_description
                 })
                 .ReceiveBytes();
 

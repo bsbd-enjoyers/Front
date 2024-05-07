@@ -38,7 +38,7 @@ namespace Freelance_IT.Forms
             this.costLabel = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
             // createOrderLabel
@@ -47,7 +47,7 @@ namespace Freelance_IT.Forms
             this.createOrderLabel.AutoSize = true;
             this.createOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createOrderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.createOrderLabel.Location = new System.Drawing.Point(40, 58);
+            this.createOrderLabel.Location = new System.Drawing.Point(49, 52);
             this.createOrderLabel.Name = "createOrderLabel";
             this.createOrderLabel.Size = new System.Drawing.Size(412, 55);
             this.createOrderLabel.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace Freelance_IT.Forms
             this.publishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.publishButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.publishButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.publishButton.Location = new System.Drawing.Point(50, 450);
+            this.publishButton.Location = new System.Drawing.Point(59, 645);
             this.publishButton.Name = "publishButton";
             this.publishButton.Size = new System.Drawing.Size(308, 72);
             this.publishButton.TabIndex = 1;
@@ -74,7 +74,7 @@ namespace Freelance_IT.Forms
             this.fullNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fullNameBox.BackColor = System.Drawing.SystemColors.Window;
             this.fullNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fullNameBox.Location = new System.Drawing.Point(50, 263);
+            this.fullNameBox.Location = new System.Drawing.Point(59, 157);
             this.fullNameBox.Multiline = true;
             this.fullNameBox.Name = "fullNameBox";
             this.fullNameBox.Size = new System.Drawing.Size(308, 54);
@@ -86,7 +86,7 @@ namespace Freelance_IT.Forms
             this.fullNameLabel.AutoSize = true;
             this.fullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fullNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fullNameLabel.Location = new System.Drawing.Point(45, 231);
+            this.fullNameLabel.Location = new System.Drawing.Point(54, 125);
             this.fullNameLabel.Name = "fullNameLabel";
             this.fullNameLabel.Size = new System.Drawing.Size(282, 29);
             this.fullNameLabel.TabIndex = 0;
@@ -99,7 +99,7 @@ namespace Freelance_IT.Forms
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.descriptionLabel.Location = new System.Drawing.Point(451, 131);
+            this.descriptionLabel.Location = new System.Drawing.Point(460, 125);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(410, 29);
             this.descriptionLabel.TabIndex = 0;
@@ -111,10 +111,10 @@ namespace Freelance_IT.Forms
             this.descriptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.descriptionTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.descriptionTextBox.Location = new System.Drawing.Point(456, 163);
+            this.descriptionTextBox.Location = new System.Drawing.Point(465, 157);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(579, 359);
+            this.descriptionTextBox.Size = new System.Drawing.Size(579, 560);
             this.descriptionTextBox.TabIndex = 2;
             // 
             // costLabel
@@ -123,7 +123,7 @@ namespace Freelance_IT.Forms
             this.costLabel.AutoSize = true;
             this.costLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.costLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.costLabel.Location = new System.Drawing.Point(45, 327);
+            this.costLabel.Location = new System.Drawing.Point(54, 221);
             this.costLabel.Name = "costLabel";
             this.costLabel.Size = new System.Drawing.Size(104, 29);
             this.costLabel.TabIndex = 0;
@@ -135,7 +135,7 @@ namespace Freelance_IT.Forms
             this.costTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.costTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.costTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.costTextBox.Location = new System.Drawing.Point(50, 368);
+            this.costTextBox.Location = new System.Drawing.Point(59, 262);
             this.costTextBox.Multiline = true;
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(308, 54);
@@ -147,32 +147,29 @@ namespace Freelance_IT.Forms
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.dateLabel.Location = new System.Drawing.Point(45, 131);
+            this.dateLabel.Location = new System.Drawing.Point(54, 334);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(141, 29);
             this.dateLabel.TabIndex = 0;
             this.dateLabel.Text = "Дата сдачи";
             this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTextBox
+            // monthCalendar
             // 
-            this.dateTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.dateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTextBox.Location = new System.Drawing.Point(50, 163);
-            this.dateTextBox.Multiline = true;
-            this.dateTextBox.Name = "dateTextBox";
-            this.dateTextBox.Size = new System.Drawing.Size(308, 54);
-            this.dateTextBox.TabIndex = 2;
+            this.monthCalendar.Location = new System.Drawing.Point(59, 372);
+            this.monthCalendar.MaxSelectionCount = 1;
+            this.monthCalendar.MinDate = new System.DateTime(2024, 5, 7, 17, 23, 42, 0);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 3;
             // 
             // ClientCreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 587);
+            this.ClientSize = new System.Drawing.Size(1090, 785);
+            this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.costTextBox);
-            this.Controls.Add(this.dateTextBox);
             this.Controls.Add(this.fullNameBox);
             this.Controls.Add(this.publishButton);
             this.Controls.Add(this.costLabel);
@@ -199,6 +196,6 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.Label costLabel;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.TextBox dateTextBox;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
     }
 }

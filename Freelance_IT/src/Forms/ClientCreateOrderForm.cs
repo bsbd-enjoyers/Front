@@ -18,6 +18,7 @@ namespace Freelance_IT.Forms
         public ClientCreateOrderForm()
         {
             InitializeComponent();
+            monthCalendar.MinDate = DateTime.Now;
         }
 
         public static Order createOrder()
@@ -45,7 +46,7 @@ namespace Freelance_IT.Forms
             _order.product.client_description = descriptionTextBox.Text;
 
 
-            _order.deadline = dateTextBox.Text;
+            _order.deadline = monthCalendar.SelectionStart.ToShortDateString();
 
             try
             {
