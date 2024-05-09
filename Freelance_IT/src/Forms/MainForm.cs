@@ -55,6 +55,7 @@ namespace Freelance_IT.Forms
             avatarPictureBox.Image = Freelance_IT.Properties.Resources.admin;
 
             initializeOrderTable();
+            updateOrderTable();
 
             orderButton.Show();
             masterButton.Show();
@@ -71,6 +72,8 @@ namespace Freelance_IT.Forms
             avatarPictureBox.Image = Freelance_IT.Properties.Resources.master;
 
             initializeOrderTable();
+            updateOrderTable();
+
             orderButton.Show();
             masterButton.Hide();
             clientButton.Hide();
@@ -85,6 +88,8 @@ namespace Freelance_IT.Forms
             avatarPictureBox.Image = Freelance_IT.Properties.Resources.client;
 
             initializeOrderTable();
+            updateOrderTable();
+
             orderButton.Show();
             masterButton.Hide();
             clientButton.Hide();
@@ -95,6 +100,9 @@ namespace Freelance_IT.Forms
             deleteButton.Show();
             checkButton.Show();
             feedbackButton.Show();
+
+            searchButton.Hide();
+            searchTextBox.Hide();
         }
 
         private void deinitializeUser()
@@ -104,6 +112,11 @@ namespace Freelance_IT.Forms
             deleteButton.Hide();
             checkButton.Hide();
             feedbackButton.Hide();
+
+            _searchedClients.Clear();
+            _searchedMasters.Clear();
+            _searchedOrders.Clear();
+            _user = null;
         }
 
         private void initializeClientTable()
@@ -154,7 +167,7 @@ namespace Freelance_IT.Forms
             }
         }
 
-        private void initializeOrderTable()
+        private async void initializeOrderTable()
         {
             _selectedTab = MainFormTabs.Orders;
 
@@ -163,6 +176,10 @@ namespace Freelance_IT.Forms
             _dataTable.Columns.Add("Тип продукта", typeof(string));
             _dataTable.Columns.Add("Полное название продукта", typeof(string));
             _dataTable.Columns.Add("Статус заказа", typeof(string));
+
+
+            _searchedOrders.Clear();
+            _searchedOrders.AddRange(await BackendClient.getInstance().getOrders());
 
             _selectedRow = -1;
         }
@@ -261,6 +278,7 @@ namespace Freelance_IT.Forms
         private void orderButton_Click(object sender, EventArgs e)
         {
             initializeOrderTable();
+            updateOrderTable();
         }
 
         private void masterButton_Click(object sender, EventArgs e)
@@ -291,6 +309,12 @@ namespace Freelance_IT.Forms
                 BackendClient backendClient = BackendClient.getInstance();
 
                 var create_order_result = await backendClient.createOrder(order);
+
+                if (!create_order_result.result)
+                {
+                    MessageBox.Show("Заказ не был создан");
+                    return;
+                }
             }
             catch (Exception)
             {
@@ -308,9 +332,10 @@ namespace Freelance_IT.Forms
                 return;
             }
 
-            Feedback feedback = FeedbackForm.getFeedback(
-                new Feedback(_searchedOrders[_selectedRow].id_order)
-                );
+            Feedback feedback = new Feedback();
+            feedback.id_order = _searchedOrders[_selectedRow].id_order;
+
+            feedback = FeedbackForm.getFeedback(feedback);
 
             _selectedRow = -1;
 
@@ -424,19 +449,22 @@ namespace Freelance_IT.Forms
                 switch (_selectedTab)
                 {
                     case MainFormTabs.Clients:
-                        _searchedClients = await backendClient.searchClients(searchTextBox.Text);
+                        _searchedClients.Clear();
+                        _searchedClients.AddRange(await backendClient.searchClients(searchTextBox.Text));
                         
                         updateClientTable();
 
                         break;
                     case MainFormTabs.Masters:
-                        _searchedMasters = await backendClient.searchMasters(searchTextBox.Text);
+                        _searchedMasters.Clear();
+                        _searchedMasters.AddRange(await backendClient.searchMasters(searchTextBox.Text));
 
                         updateMasterTable();
 
                         break;
                     case MainFormTabs.Orders:
-                        _searchedOrders = await backendClient.searchOrders(searchTextBox.Text);
+                        _searchedOrders.Clear();
+                        _searchedOrders.AddRange(await backendClient.searchOrders(searchTextBox.Text));
 
                         updateOrderTable();
                         break;

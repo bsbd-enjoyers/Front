@@ -20,9 +20,13 @@ namespace Freelance_IT
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //var Order = Forms.ClientCreateOrderForm.createOrder();
-
-            Application.Run(new Forms.MainForm());
+            try
+            {
+                Application.Run(new Forms.MainForm());
+            }
+            catch (Exception){
+                MessageBox.Show("Программа завершилась аварийно(");
+            }
         }
     }
 }

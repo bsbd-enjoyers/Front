@@ -146,6 +146,9 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Network\Contracts\MasterList.cs" />
+    <Compile Include="src\Network\Contracts\ClientList.cs" />
+    <Compile Include="src\Network\Contracts\OrderList.cs" />
     <Compile Include="src\Network\Contracts\RequestResult.cs" />
     <Compile Include="src\Network\Contracts\UserInfo.cs" />
     <EmbeddedResource Include="src\Forms\FeedbackForm.resx">

@@ -243,6 +243,7 @@ namespace Freelance_IT.Forms
             this.Controls.Add(this.checkButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.panel1.ResumeLayout(false);
             this.userPanel.ResumeLayout(false);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Text.Json;
+using System.Net.Http;
 
 using Flurl;
 using Flurl.Http;
@@ -18,12 +19,13 @@ namespace Freelance_IT.Network
 
     public class BackendClient
     {
-        private string _baseUrl;
         private FlurlCookie _cookie;
+        private FlurlClient _client;
 
 
         // У вас синглтон воняет, в курсе?
         private static BackendClient backendClient = new BackendClient();
+
 
         public static BackendClient getInstance()
         {
@@ -32,13 +34,18 @@ namespace Freelance_IT.Network
 
         public BackendClient()
         {
-            _baseUrl = "http://127.0.0.1:5000";
             _cookie = null;
+            _client = new FlurlClient(new HttpClient(new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain,
+                                                             errors) => true
+            }));
+            _client.BaseUrl = new Url("http://127.0.0.1:5000");
         }
 
         public async Task<RequestResult> checkLoginOccupied(string login)
         {
-            var response_bytes =  await _baseUrl
+            var response_bytes =  await _client.Request()
                 .AppendPathSegment("check_login")
                 .PostJsonAsync(new
                 {
@@ -52,7 +59,7 @@ namespace Freelance_IT.Network
 
         public async Task<RequestResult> registerMaster(Master master, string password)
         {
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("register")
                 .PostJsonAsync(new
                 {
@@ -73,7 +80,7 @@ namespace Freelance_IT.Network
 
         public async Task<RequestResult> registerClient(Client client, string password)
         {
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("register")
                 .PostJsonAsync(new
                 {
@@ -92,7 +99,7 @@ namespace Freelance_IT.Network
 
         public async Task<RequestResult> login(string login, string password)
         {
-            var response =  await _baseUrl
+            var response =  await _client.Request()
                 .AppendPathSegment("login")
                 .PostJsonAsync(new
                 {
@@ -121,7 +128,7 @@ namespace Freelance_IT.Network
         public async Task<RequestResult> logout()
         {
 
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
@@ -135,8 +142,8 @@ namespace Freelance_IT.Network
 
         public async Task<UserInfo> getMyInfo()
         {
-            var response_bytes = await _baseUrl
-                .AppendPathSegment("login")
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("session")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
 
@@ -149,7 +156,7 @@ namespace Freelance_IT.Network
         // not Checked
         public async Task<List<Client>> searchClients(string search_info)
         {
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
@@ -160,13 +167,20 @@ namespace Freelance_IT.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
 
-            return JsonSerializer.Deserialize<List<Client>>(json_body);
+            List<Client> client_list = new List<Client>();
+
+            foreach (UserInfo client_data in JsonSerializer.Deserialize<ClientList>(json_body).clients)
+            {
+                client_list.Add(new Client(client_data));
+            }
+
+            return client_list;
         }
 
         // not Checked
         public async Task<List<Master>> searchMasters(string search_info)
         {
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
@@ -177,13 +191,39 @@ namespace Freelance_IT.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
 
-            return JsonSerializer.Deserialize<List<Master>>(json_body);
+            List<Master> master_list = new List<Master>();
+
+            foreach (UserInfo master_data in JsonSerializer.Deserialize<MasterList>(json_body).masters)
+            {
+                master_list.Add(new Master(master_data));
+            }
+
+            return master_list;
+        }
+
+        public async Task<List<Order>> getOrders()
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .GetBytesAsync();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+
+            List<Order> order_list = new List<Order>();
+
+            foreach (OrderData order_data in JsonSerializer.Deserialize<OrderList>(json_body).orders)
+            {
+                order_list.Add(new Order(order_data));
+            }
+
+            return order_list;
         }
 
         // not Checked
         public async Task<List<Order>> searchOrders(string search_info)
         {
-            var response_bytes = await _baseUrl
+            var response_bytes = await _client.Request()
                 .AppendPathSegment("")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
@@ -194,20 +234,81 @@ namespace Freelance_IT.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
 
-            return JsonSerializer.Deserialize<List<Order>>(json_body);
+            List<Order> order_list = new List<Order>();
+
+            foreach (OrderData order_data in JsonSerializer.Deserialize<OrderList>(json_body).orders)
+            {
+                order_list.Add(new Order(order_data));
+            }
+
+            return order_list;
         }
 
-        // not Checked
         public async Task<RequestResult> createOrder(Order order)
         {
-            var response_bytes = await _baseUrl
-                .AppendPathSegment("")
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
                     deadline = order.deadline,
                     cost = order.totalcost,
                     name = order.product.fullname,
                     desc = order.product.client_description
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> masterRespondOrder(Order order)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    action = "update",
+                    id_order = order.id_order,
+                    type = order.product.type,
+                    cost = order.totalcost,
+                    master_desc = order.product.master_specification
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> clientHandleOrder(uint order_id, string action)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    id_order = order_id,
+                    action = action
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        public async Task<RequestResult> leaveFeedback(Feedback feedback)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    id_order = feedback.id_order,
+                    score = feedback.score,
+                    comment = feedback.comment
                 })
                 .ReceiveBytes();
 

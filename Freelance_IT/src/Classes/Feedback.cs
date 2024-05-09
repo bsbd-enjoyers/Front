@@ -12,12 +12,5 @@ namespace Freelance_IT.Classes
         public uint id_order;
         public uint score;
         public string comment;
-
-        public Feedback() { }
-
-        public Feedback(uint order_id)
-        {
-            id_order = order_id;
-        }
     }
 }

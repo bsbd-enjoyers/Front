@@ -45,7 +45,7 @@ namespace Freelance_IT.Forms
             this.fillfieldsLabel.AutoSize = true;
             this.fillfieldsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fillfieldsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fillfieldsLabel.Location = new System.Drawing.Point(76, 36);
+            this.fillfieldsLabel.Location = new System.Drawing.Point(20, 19);
             this.fillfieldsLabel.Name = "fillfieldsLabel";
             this.fillfieldsLabel.Size = new System.Drawing.Size(284, 40);
             this.fillfieldsLabel.TabIndex = 0;
@@ -57,11 +57,11 @@ namespace Freelance_IT.Forms
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.acceptButton.Location = new System.Drawing.Point(83, 417);
+            this.acceptButton.Location = new System.Drawing.Point(27, 381);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(245, 56);
+            this.acceptButton.Size = new System.Drawing.Size(230, 48);
             this.acceptButton.TabIndex = 1;
             this.acceptButton.Text = "Принять";
             this.acceptButton.UseVisualStyleBackColor = false;
@@ -72,10 +72,10 @@ namespace Freelance_IT.Forms
             this.commentBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.commentBox.BackColor = System.Drawing.SystemColors.Window;
             this.commentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.commentBox.Location = new System.Drawing.Point(83, 235);
+            this.commentBox.Location = new System.Drawing.Point(27, 199);
             this.commentBox.Multiline = true;
             this.commentBox.Name = "commentBox";
-            this.commentBox.Size = new System.Drawing.Size(672, 164);
+            this.commentBox.Size = new System.Drawing.Size(540, 164);
             this.commentBox.TabIndex = 2;
             // 
             // commentLabel
@@ -84,7 +84,7 @@ namespace Freelance_IT.Forms
             this.commentLabel.AutoSize = true;
             this.commentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.commentLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.commentLabel.Location = new System.Drawing.Point(78, 203);
+            this.commentLabel.Location = new System.Drawing.Point(22, 167);
             this.commentLabel.Name = "commentLabel";
             this.commentLabel.Size = new System.Drawing.Size(177, 29);
             this.commentLabel.TabIndex = 0;
@@ -97,7 +97,7 @@ namespace Freelance_IT.Forms
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.scoreLabel.Location = new System.Drawing.Point(78, 105);
+            this.scoreLabel.Location = new System.Drawing.Point(22, 83);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(101, 29);
             this.scoreLabel.TabIndex = 0;
@@ -111,7 +111,7 @@ namespace Freelance_IT.Forms
             this.orderIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderIDLinkLabel.ForeColor = System.Drawing.Color.White;
             this.orderIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.orderIDLinkLabel.Location = new System.Drawing.Point(366, 36);
+            this.orderIDLinkLabel.Location = new System.Drawing.Point(310, 19);
             this.orderIDLinkLabel.Name = "orderIDLinkLabel";
             this.orderIDLinkLabel.Size = new System.Drawing.Size(176, 40);
             this.orderIDLinkLabel.TabIndex = 13;
@@ -122,7 +122,7 @@ namespace Freelance_IT.Forms
             // scoreNumericUpDown
             // 
             this.scoreNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scoreNumericUpDown.Location = new System.Drawing.Point(83, 137);
+            this.scoreNumericUpDown.Location = new System.Drawing.Point(27, 115);
             this.scoreNumericUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -141,7 +141,7 @@ namespace Freelance_IT.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 514);
+            this.ClientSize = new System.Drawing.Size(649, 449);
             this.Controls.Add(this.scoreNumericUpDown);
             this.Controls.Add(this.orderIDLinkLabel);
             this.Controls.Add(this.commentBox);

@@ -56,7 +56,7 @@ namespace Freelance_IT.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.label1.Location = new System.Drawing.Point(53, 369);
+            this.label1.Location = new System.Drawing.Point(20, 347);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 29);
             this.label1.TabIndex = 5;
@@ -68,10 +68,10 @@ namespace Freelance_IT.Forms
             this.aboutMeTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.aboutMeTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.aboutMeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.aboutMeTextBox.Location = new System.Drawing.Point(58, 412);
+            this.aboutMeTextBox.Location = new System.Drawing.Point(25, 384);
             this.aboutMeTextBox.Multiline = true;
             this.aboutMeTextBox.Name = "aboutMeTextBox";
-            this.aboutMeTextBox.Size = new System.Drawing.Size(470, 232);
+            this.aboutMeTextBox.Size = new System.Drawing.Size(470, 227);
             this.aboutMeTextBox.TabIndex = 6;
             // 
             // acceptButton
@@ -79,11 +79,11 @@ namespace Freelance_IT.Forms
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.acceptButton.Location = new System.Drawing.Point(58, 662);
+            this.acceptButton.Location = new System.Drawing.Point(25, 626);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(322, 72);
+            this.acceptButton.Size = new System.Drawing.Size(220, 49);
             this.acceptButton.TabIndex = 1;
             this.acceptButton.Text = "Подтвердить";
             this.acceptButton.UseVisualStyleBackColor = false;
@@ -95,7 +95,7 @@ namespace Freelance_IT.Forms
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.phoneLabel.Location = new System.Drawing.Point(53, 269);
+            this.phoneLabel.Location = new System.Drawing.Point(20, 247);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(119, 29);
             this.phoneLabel.TabIndex = 0;
@@ -107,7 +107,7 @@ namespace Freelance_IT.Forms
             this.emailBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailBox.BackColor = System.Drawing.SystemColors.Window;
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailBox.Location = new System.Drawing.Point(58, 205);
+            this.emailBox.Location = new System.Drawing.Point(25, 183);
             this.emailBox.Multiline = true;
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(308, 54);
@@ -119,7 +119,7 @@ namespace Freelance_IT.Forms
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.emailLabel.Location = new System.Drawing.Point(53, 173);
+            this.emailLabel.Location = new System.Drawing.Point(20, 151);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(125, 29);
             this.emailLabel.TabIndex = 0;
@@ -130,7 +130,7 @@ namespace Freelance_IT.Forms
             // 
             this.phoneBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phoneBox.Location = new System.Drawing.Point(58, 301);
+            this.phoneBox.Location = new System.Drawing.Point(25, 279);
             this.phoneBox.Multiline = true;
             this.phoneBox.Name = "phoneBox";
             this.phoneBox.Size = new System.Drawing.Size(308, 54);
@@ -142,7 +142,7 @@ namespace Freelance_IT.Forms
             this.fillfieldsLabel.AutoSize = true;
             this.fillfieldsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fillfieldsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fillfieldsLabel.Location = new System.Drawing.Point(51, 28);
+            this.fillfieldsLabel.Location = new System.Drawing.Point(18, 17);
             this.fillfieldsLabel.Name = "fillfieldsLabel";
             this.fillfieldsLabel.Size = new System.Drawing.Size(517, 40);
             this.fillfieldsLabel.TabIndex = 0;
@@ -154,9 +154,9 @@ namespace Freelance_IT.Forms
             this.createSkillButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.createSkillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createSkillButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.createSkillButton.Location = new System.Drawing.Point(554, 662);
+            this.createSkillButton.Location = new System.Drawing.Point(521, 621);
             this.createSkillButton.Name = "createSkillButton";
-            this.createSkillButton.Size = new System.Drawing.Size(141, 64);
+            this.createSkillButton.Size = new System.Drawing.Size(141, 54);
             this.createSkillButton.TabIndex = 7;
             this.createSkillButton.Text = "Создать";
             this.createSkillButton.UseVisualStyleBackColor = false;
@@ -167,9 +167,9 @@ namespace Freelance_IT.Forms
             this.editSkillButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.editSkillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editSkillButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.editSkillButton.Location = new System.Drawing.Point(721, 662);
+            this.editSkillButton.Location = new System.Drawing.Point(688, 621);
             this.editSkillButton.Name = "editSkillButton";
-            this.editSkillButton.Size = new System.Drawing.Size(141, 64);
+            this.editSkillButton.Size = new System.Drawing.Size(141, 54);
             this.editSkillButton.TabIndex = 7;
             this.editSkillButton.Text = "Внести изменения";
             this.editSkillButton.UseVisualStyleBackColor = false;
@@ -180,9 +180,9 @@ namespace Freelance_IT.Forms
             this.deleteSkillButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
             this.deleteSkillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteSkillButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.deleteSkillButton.Location = new System.Drawing.Point(890, 662);
+            this.deleteSkillButton.Location = new System.Drawing.Point(852, 621);
             this.deleteSkillButton.Name = "deleteSkillButton";
-            this.deleteSkillButton.Size = new System.Drawing.Size(141, 64);
+            this.deleteSkillButton.Size = new System.Drawing.Size(141, 54);
             this.deleteSkillButton.TabIndex = 7;
             this.deleteSkillButton.Text = "Удалить";
             this.deleteSkillButton.UseVisualStyleBackColor = false;
@@ -194,7 +194,7 @@ namespace Freelance_IT.Forms
             this.moreLabel.AutoSize = true;
             this.moreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.moreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.moreLabel.Location = new System.Drawing.Point(549, 183);
+            this.moreLabel.Location = new System.Drawing.Point(516, 161);
             this.moreLabel.Name = "moreLabel";
             this.moreLabel.Size = new System.Drawing.Size(143, 29);
             this.moreLabel.TabIndex = 0;
@@ -206,7 +206,7 @@ namespace Freelance_IT.Forms
             this.skilltypeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.skilltypeBox.BackColor = System.Drawing.SystemColors.Window;
             this.skilltypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.skilltypeBox.Location = new System.Drawing.Point(554, 116);
+            this.skilltypeBox.Location = new System.Drawing.Point(521, 94);
             this.skilltypeBox.Multiline = true;
             this.skilltypeBox.Name = "skilltypeBox";
             this.skilltypeBox.Size = new System.Drawing.Size(308, 54);
@@ -218,7 +218,7 @@ namespace Freelance_IT.Forms
             this.skilltypeLabel.AutoSize = true;
             this.skilltypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.skilltypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.skilltypeLabel.Location = new System.Drawing.Point(549, 84);
+            this.skilltypeLabel.Location = new System.Drawing.Point(516, 62);
             this.skilltypeLabel.Name = "skilltypeLabel";
             this.skilltypeLabel.Size = new System.Drawing.Size(85, 29);
             this.skilltypeLabel.TabIndex = 0;
@@ -229,7 +229,7 @@ namespace Freelance_IT.Forms
             // 
             this.moreBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.moreBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.moreBox.Location = new System.Drawing.Point(554, 215);
+            this.moreBox.Location = new System.Drawing.Point(521, 193);
             this.moreBox.Multiline = true;
             this.moreBox.Name = "moreBox";
             this.moreBox.Size = new System.Drawing.Size(534, 164);
@@ -240,11 +240,11 @@ namespace Freelance_IT.Forms
             this.skillsDataGridView.AllowUserToAddRows = false;
             this.skillsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.skillsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.skillsDataGridView.Location = new System.Drawing.Point(554, 406);
+            this.skillsDataGridView.Location = new System.Drawing.Point(521, 384);
             this.skillsDataGridView.Name = "skillsDataGridView";
             this.skillsDataGridView.RowHeadersWidth = 62;
             this.skillsDataGridView.RowTemplate.Height = 28;
-            this.skillsDataGridView.Size = new System.Drawing.Size(534, 238);
+            this.skillsDataGridView.Size = new System.Drawing.Size(534, 227);
             this.skillsDataGridView.TabIndex = 8;
             this.skillsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.skillsDataGridView_CellClick);
             // 
@@ -253,7 +253,7 @@ namespace Freelance_IT.Forms
             this.fullnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fullnameTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.fullnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fullnameTextBox.Location = new System.Drawing.Point(58, 116);
+            this.fullnameTextBox.Location = new System.Drawing.Point(25, 94);
             this.fullnameTextBox.Multiline = true;
             this.fullnameTextBox.Name = "fullnameTextBox";
             this.fullnameTextBox.Size = new System.Drawing.Size(308, 54);
@@ -265,7 +265,7 @@ namespace Freelance_IT.Forms
             this.fullnameLlabel.AutoSize = true;
             this.fullnameLlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fullnameLlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fullnameLlabel.Location = new System.Drawing.Point(53, 84);
+            this.fullnameLlabel.Location = new System.Drawing.Point(20, 62);
             this.fullnameLlabel.Name = "fullnameLlabel";
             this.fullnameLlabel.Size = new System.Drawing.Size(70, 29);
             this.fullnameLlabel.TabIndex = 9;
@@ -276,7 +276,7 @@ namespace Freelance_IT.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 743);
+            this.ClientSize = new System.Drawing.Size(1088, 699);
             this.Controls.Add(this.fullnameTextBox);
             this.Controls.Add(this.fullnameLlabel);
             this.Controls.Add(this.skillsDataGridView);
