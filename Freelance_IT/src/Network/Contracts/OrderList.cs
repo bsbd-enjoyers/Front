@@ -8,13 +8,15 @@ using Freelance_IT.Classes;
 
 namespace Freelance_IT.Network
 {
-    public class OrderData
+
+	public class OrderData
 	{
         public uint order_id { get; set; }
 		public string deadline { get; set; }
-		public uint id_client { get; set; }
-		public uint id_master { get; set; }
-		public uint cost { get; set; }
+		public uint client_id { get; set; }
+		public uint? master_id { get; set; }
+		public uint? client_cost { get; set; }
+		public uint? master_cost { get; set; }
 		public string status { get; set; }
 
 		public string name { get; set; }

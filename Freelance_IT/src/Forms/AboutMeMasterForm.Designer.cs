@@ -171,7 +171,7 @@ namespace Freelance_IT.Forms
             this.editSkillButton.Name = "editSkillButton";
             this.editSkillButton.Size = new System.Drawing.Size(141, 54);
             this.editSkillButton.TabIndex = 7;
-            this.editSkillButton.Text = "Внести изменения";
+            this.editSkillButton.Text = "Изменить";
             this.editSkillButton.UseVisualStyleBackColor = false;
             this.editSkillButton.Click += new System.EventHandler(this.editSkillButton_Click);
             // 

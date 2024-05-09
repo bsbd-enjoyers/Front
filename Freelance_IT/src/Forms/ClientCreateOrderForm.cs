@@ -50,7 +50,7 @@ namespace Freelance_IT.Forms
 
             try
             {
-                _order.totalcost = Convert.ToUInt32(costTextBox.Text);
+                _order.client_cost = Convert.ToUInt32(costTextBox.Text);
             }
             catch(Exception)
             {

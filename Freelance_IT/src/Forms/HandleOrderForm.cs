@@ -71,7 +71,7 @@ namespace Freelance_IT.Forms
             masterIDLinkLabel.Text = _order.id_master.ToString();
             clientIDLinkLabel.Text = _order.id_client.ToString();
             dateTextBox.Text = _order.deadline;
-            masterCostTextBox.Text = _order.totalcost.ToString();
+            masterCostTextBox.Text = _order.master_cost.ToString();
 
             fullnameTextBox.Text = _order.product.fullname;
             clientDescriptionTextBox.Text = _order.product.client_description;

@@ -48,7 +48,7 @@ namespace Freelance_IT.Forms
             _order.product.type = productTypeBox.Text;
             _order.product.master_specification = masterDecriptionTextBox.Text;
 
-            _order.totalcost = Convert.ToUInt32(masterCostLabel.Text);
+            _order.master_cost = Convert.ToUInt32(masterCostLabel.Text);
 
             DialogResult = DialogResult.Yes;
             Close();

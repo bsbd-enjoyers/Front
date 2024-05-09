@@ -10,13 +10,14 @@ namespace Freelance_IT.Classes
 {
     public class Order
     {
-        public uint id_order = 0;
-        public uint id_client = 0;
-        public uint id_master = 0;
-        public Product product = null;
-        public string deadline = null;
-        public uint totalcost = 0;
-        public string status = null;
+        public uint id_order;
+        public uint id_client;
+        public uint? id_master;
+        public Product product;
+        public string deadline;
+        public uint? client_cost;
+        public uint? master_cost;
+        public string status;
 
         public Order() { 
         }
@@ -24,11 +25,12 @@ namespace Freelance_IT.Classes
         public Order(OrderData order_data)
         {
             id_order = order_data.order_id;
-            id_master = order_data.id_master;
-            id_client = order_data.id_client;
+            id_master = order_data.master_id;
+            id_client = order_data.client_id;
             status = order_data.status;
             deadline = order_data.deadline;
-            totalcost = order_data.cost;
+            client_cost = order_data.client_cost;
+            master_cost = order_data.master_cost;
 
             product = new Product();
             product.fullname = order_data.name;

@@ -40,7 +40,7 @@ namespace Freelance_IT.Network
                 ServerCertificateCustomValidationCallback = (message, cert, chain,
                                                              errors) => true
             }));
-            _client.BaseUrl = new Url("http://127.0.0.1:5000");
+            _client.BaseUrl = new Url("https://127.0.0.1:5000");
         }
 
         public async Task<RequestResult> checkLoginOccupied(string login)
@@ -201,14 +201,14 @@ namespace Freelance_IT.Network
             return master_list;
         }
 
-        public async Task<List<Order>> getOrders()
+        public List<Order> getOrders()
         {
-            var response_bytes = await _client.Request()
+            var task_response_bytes = _client.Request()
                 .AppendPathSegment("orders")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
 
-            var json_body = Encoding.UTF8.GetString(response_bytes);
+            var json_body = Encoding.UTF8.GetString(task_response_bytes.Result);
 
             List<Order> order_list = new List<Order>();
 
@@ -252,9 +252,25 @@ namespace Freelance_IT.Network
                 .PostJsonAsync(new
                 {
                     deadline = order.deadline,
-                    cost = order.totalcost,
+                    client_cost = order.client_cost,
                     name = order.product.fullname,
                     desc = order.product.client_description
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> deleteOrder(uint order_id)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    id_order = order_id
                 })
                 .ReceiveBytes();
 
@@ -273,7 +289,7 @@ namespace Freelance_IT.Network
                     action = "update",
                     id_order = order.id_order,
                     type = order.product.type,
-                    cost = order.totalcost,
+                    master_cost = order.master_cost,
                     master_desc = order.product.master_specification
                 })
                 .ReceiveBytes();
@@ -283,7 +299,7 @@ namespace Freelance_IT.Network
         }
 
         // not Checked
-        public async Task<RequestResult> clientHandleOrder(uint order_id, string action)
+        public async Task<RequestResult> clientHandleOrder(uint order_id, bool submit_or_refuse)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("")
@@ -291,7 +307,8 @@ namespace Freelance_IT.Network
                 .PostJsonAsync(new
                 {
                     id_order = order_id,
-                    action = action
+                    action = "submit",
+                    submit = submit_or_refuse
                 })
                 .ReceiveBytes();
 

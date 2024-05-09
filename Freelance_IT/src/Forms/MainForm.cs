@@ -65,6 +65,9 @@ namespace Freelance_IT.Forms
 
             deleteButton.Show();
             checkButton.Show();
+
+            searchButton.Show();
+            searchTextBox.Show();
         }
 
         private void initializeMaster()
@@ -81,6 +84,9 @@ namespace Freelance_IT.Forms
             DataGridView.Show();
 
             checkButton.Show();
+
+            searchButton.Show();
+            searchTextBox.Show();
         }
 
         private void initializeClient()
@@ -167,7 +173,7 @@ namespace Freelance_IT.Forms
             }
         }
 
-        private async void initializeOrderTable()
+        private void initializeOrderTable()
         {
             _selectedTab = MainFormTabs.Orders;
 
@@ -175,11 +181,18 @@ namespace Freelance_IT.Forms
             _dataTable.Columns.Add("ID заказа", typeof(string));
             _dataTable.Columns.Add("Тип продукта", typeof(string));
             _dataTable.Columns.Add("Полное название продукта", typeof(string));
-            _dataTable.Columns.Add("Статус заказа", typeof(string));
+            _dataTable.Columns.Add("Статус заказа", typeof(string));            
 
-
-            _searchedOrders.Clear();
-            _searchedOrders.AddRange(await BackendClient.getInstance().getOrders());
+            try
+            {
+                _searchedOrders.Clear();
+                var orders_task = BackendClient.getInstance().getOrders();
+                _searchedOrders.AddRange(orders_task);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
 
             _selectedRow = -1;
         }
@@ -347,7 +360,7 @@ namespace Freelance_IT.Forms
             // Послать запрос на создание отзыва
         }
 
-        private void checkButton_Click(object sender, EventArgs e)
+        private async void checkButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -364,6 +377,7 @@ namespace Freelance_IT.Forms
                     AboutMeMasterForm.getDetailedInfo(_searchedMasters[_selectedRow]);
                     break;
                 case MainFormTabs.Orders:
+                    BackendClient backendClient = BackendClient.getInstance();
 
                     if (_user.GetType().ToString() == "Freelance_IT.Classes.Master" &&
                         _searchedOrders[_selectedRow].status == "created")
@@ -371,28 +385,48 @@ namespace Freelance_IT.Forms
                         Order order = MasterHandleOrderForm.masterRespondOrder(_searchedOrders[_selectedRow]);
                         if(order != null)
                         {
-                            order.status = "responded";
+                            order.status = "updated";
                             order.id_master = _user.id;
-                            // Обновить инфу о заказе через запрос
+                            var respond_result = await backendClient.masterRespondOrder(order);
+                            if (!respond_result.result)
+                            {
+                                MessageBox.Show("Не получилось обновить статус заказа(");
+                            }
                         }
                         break;
                     }
 
                     if (_user.GetType().ToString() == "Freelance_IT.Classes.Client" &&
-                        _searchedOrders[_selectedRow].status == "responded")
+                        _searchedOrders[_selectedRow].status == "updated")
                     {
-                        switch (HandleOrderForm.lastStepAcceptingOrder(_searchedOrders[_selectedRow]))
+                        try
                         {
-                            case DialogResult.Yes:
-                                _searchedOrders[_selectedRow].status = "agreed";
-                                // Обновить инфу о заказе, клиент согласен
-                                break;
-                            case DialogResult.No:
-                                _searchedOrders[_selectedRow].status = "created";
-                                // Обновить инфу о заказе, клиент не согласен
-                                break;
+                            switch (HandleOrderForm.lastStepAcceptingOrder(_searchedOrders[_selectedRow]))
+                            {
+                                case DialogResult.Yes:
+                                    _searchedOrders[_selectedRow].status = "accepted";
+                                    var handle_result = await backendClient.clientHandleOrder(_searchedOrders[_selectedRow].id_order, true);
+                                    if (!handle_result.result)
+                                    {
+                                        MessageBox.Show("Не получилось обновить статус заказа(");
+                                    }
+                                    break;
+
+                                case DialogResult.No:
+                                    _searchedOrders[_selectedRow].status = "created";
+                                    handle_result = await backendClient.clientHandleOrder(_searchedOrders[_selectedRow].id_order, false);
+                                    if (!handle_result.result)
+                                    {
+                                        MessageBox.Show("Не получилось обновить статус заказа(");
+                                    }
+                                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                                    break;
+                            }
                         }
-                        break;
+                        catch(Exception)
+                        {
+                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                        }
                     }
 
                     HandleOrderForm.showOrderInfo(_searchedOrders[_selectedRow]);
@@ -401,7 +435,7 @@ namespace Freelance_IT.Forms
             _selectedRow = -1;
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private async void deleteButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -419,10 +453,22 @@ namespace Freelance_IT.Forms
                     break;
                 case MainFormTabs.Orders:
                     if (_searchedOrders[_selectedRow].status == "created" ||
-                        _searchedOrders[_selectedRow].status == "responded"
+                        _searchedOrders[_selectedRow].status == "updated"
                         )
                     {
-                        // Послать запрос на удаление заказа
+                        try
+                        {
+                            var delete_result = await BackendClient.getInstance().deleteOrder(_searchedOrders[_selectedRow].id_order);
+                            if (!delete_result.result)
+                            {
+                                MessageBox.Show("Не получилось обновить статус заказа(");
+                            }
+                        }
+                        
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                        }
                     }
                     break;
             }

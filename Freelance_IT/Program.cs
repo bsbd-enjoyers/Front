@@ -20,13 +20,15 @@ namespace Freelance_IT
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            try
+
+            Application.Run(new Forms.MainForm());
+/*            try
             {
-                Application.Run(new Forms.MainForm());
+                
             }
-            catch (Exception){
+            catch (Exception e){
                 MessageBox.Show("Программа завершилась аварийно(");
-            }
+            }*/
         }
     }
 }
