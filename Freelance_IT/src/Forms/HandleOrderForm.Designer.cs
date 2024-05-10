@@ -50,10 +50,10 @@ namespace Freelance_IT.Forms
             this.productTypeLabel = new System.Windows.Forms.Label();
             this.masterEnterLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.clientIDLinkLabel = new System.Windows.Forms.LinkLabel();
             this.masterIDLinkLabel = new System.Windows.Forms.LinkLabel();
             this.statusLineLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
-            this.clientIDLinkLabel = new System.Windows.Forms.LinkLabel();
             this.clientIDLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -339,6 +339,21 @@ namespace Freelance_IT.Forms
             this.panel3.Size = new System.Drawing.Size(1250, 191);
             this.panel3.TabIndex = 18;
             // 
+            // clientIDLinkLabel
+            // 
+            this.clientIDLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clientIDLinkLabel.AutoSize = true;
+            this.clientIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clientIDLinkLabel.ForeColor = System.Drawing.Color.White;
+            this.clientIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.clientIDLinkLabel.Location = new System.Drawing.Point(261, 144);
+            this.clientIDLinkLabel.Name = "clientIDLinkLabel";
+            this.clientIDLinkLabel.Size = new System.Drawing.Size(138, 29);
+            this.clientIDLinkLabel.TabIndex = 12;
+            this.clientIDLinkLabel.TabStop = true;
+            this.clientIDLinkLabel.Text = "ID клиента";
+            this.clientIDLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // masterIDLinkLabel
             // 
             this.masterIDLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -353,6 +368,7 @@ namespace Freelance_IT.Forms
             this.masterIDLinkLabel.TabStop = true;
             this.masterIDLinkLabel.Text = "ID исполнителя";
             this.masterIDLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.masterIDLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.masterIDLinkLabel_LinkClicked);
             // 
             // statusLineLabel
             // 
@@ -379,21 +395,6 @@ namespace Freelance_IT.Forms
             this.statusLabel.TabIndex = 12;
             this.statusLabel.Text = "Тут какой-то статус";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // clientIDLinkLabel
-            // 
-            this.clientIDLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clientIDLinkLabel.AutoSize = true;
-            this.clientIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clientIDLinkLabel.ForeColor = System.Drawing.Color.White;
-            this.clientIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
-            this.clientIDLinkLabel.Location = new System.Drawing.Point(261, 144);
-            this.clientIDLinkLabel.Name = "clientIDLinkLabel";
-            this.clientIDLinkLabel.Size = new System.Drawing.Size(138, 29);
-            this.clientIDLinkLabel.TabIndex = 12;
-            this.clientIDLinkLabel.TabStop = true;
-            this.clientIDLinkLabel.Text = "ID клиента";
-            this.clientIDLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // clientIDLabel
             // 

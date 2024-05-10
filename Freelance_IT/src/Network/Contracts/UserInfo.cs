@@ -14,7 +14,7 @@ namespace Freelance_IT.Network
         public string email { get; set; }
         public string phone { get; set; }
         public string about_me { get; set; }
-
+        public float? score { get; set; }
         public string role { get; set; }
         public SortedDictionary<string, string> skills { get; set; }
     }

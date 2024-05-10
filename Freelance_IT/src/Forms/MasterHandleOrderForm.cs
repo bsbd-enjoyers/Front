@@ -26,6 +26,11 @@ namespace Freelance_IT.Forms
             }
 
             masterHandleOrderForm._order = order;
+            masterHandleOrderForm.dateTextBox.Text = order.deadline;
+            masterHandleOrderForm.fullnameTextBox.Text = order.product.fullname;
+            masterHandleOrderForm.clientCostTextBox.Text = order.client_cost.ToString();
+            masterHandleOrderForm.clientTextBox.Text = order.product.client_description;
+
 
             if (masterHandleOrderForm.ShowDialog() == DialogResult.Yes)
             {
@@ -48,7 +53,16 @@ namespace Freelance_IT.Forms
             _order.product.type = productTypeBox.Text;
             _order.product.master_specification = masterDecriptionTextBox.Text;
 
-            _order.master_cost = Convert.ToUInt32(masterCostLabel.Text);
+            try
+            {
+                _order.master_cost = Convert.ToUInt32(masterCostTextBox.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неправильно указано поле разработки заказа");
+                masterCostTextBox.Text = "";
+                return;
+            }
 
             DialogResult = DialogResult.Yes;
             Close();

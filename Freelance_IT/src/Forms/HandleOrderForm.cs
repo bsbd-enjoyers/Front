@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Freelance_IT.Classes;
+using Freelance_IT.Network;
 
 namespace Freelance_IT.Forms
 {
@@ -89,6 +90,25 @@ namespace Freelance_IT.Forms
         {
             DialogResult = DialogResult.No;
             Close();
+        }
+
+        private async void masterIDLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(_order.id_master == null)
+            {
+                throw new Exception("No master in updated order!");
+            }
+
+            try
+            {
+                AboutMeMasterForm.getDetailedInfo(new Master(
+                    await BackendClient.getInstance().getMasterInfo((uint)_order.id_master)
+                    ));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось получить информацию об исполнителе(");
+            }
         }
     }
 }

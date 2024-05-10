@@ -15,6 +15,7 @@ namespace Freelance_IT.Classes
         public string phone;
         public string about_me;
         public SortedDictionary<string, string> skills;
+        public float? score;
 
         public Master() {
             skills = new SortedDictionary<string, string>();
@@ -29,6 +30,7 @@ namespace Freelance_IT.Classes
 
             about_me = user_info.about_me;
             skills = user_info.skills;
+            score = user_info.score;
         }
     }
 }

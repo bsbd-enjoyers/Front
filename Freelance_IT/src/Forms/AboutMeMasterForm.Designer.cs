@@ -47,6 +47,8 @@ namespace Freelance_IT.Forms
             this.skillsDataGridView = new System.Windows.Forms.DataGridView();
             this.fullnameTextBox = new System.Windows.Forms.TextBox();
             this.fullnameLlabel = new System.Windows.Forms.Label();
+            this.scoreLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.scoreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.skillsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -272,11 +274,40 @@ namespace Freelance_IT.Forms
             this.fullnameLlabel.Text = "ФИО";
             this.fullnameLlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // scoreLinkLabel
+            // 
+            this.scoreLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoreLinkLabel.AutoSize = true;
+            this.scoreLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLinkLabel.ForeColor = System.Drawing.Color.White;
+            this.scoreLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.scoreLinkLabel.Location = new System.Drawing.Point(976, 17);
+            this.scoreLinkLabel.Name = "scoreLinkLabel";
+            this.scoreLinkLabel.Size = new System.Drawing.Size(79, 40);
+            this.scoreLinkLabel.TabIndex = 13;
+            this.scoreLinkLabel.TabStop = true;
+            this.scoreLinkLabel.Text = "Нет";
+            this.scoreLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.scoreLabel.Location = new System.Drawing.Point(663, 17);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(303, 40);
+            this.scoreLabel.TabIndex = 0;
+            this.scoreLabel.Text = "Средняя оценка:";
+            this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AboutMeMasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 699);
+            this.Controls.Add(this.scoreLinkLabel);
             this.Controls.Add(this.fullnameTextBox);
             this.Controls.Add(this.fullnameLlabel);
             this.Controls.Add(this.skillsDataGridView);
@@ -287,6 +318,7 @@ namespace Freelance_IT.Forms
             this.Controls.Add(this.moreBox);
             this.Controls.Add(this.phoneBox);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.skilltypeLabel);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.aboutMeTextBox);
@@ -324,5 +356,7 @@ namespace Freelance_IT.Forms
         private System.Windows.Forms.DataGridView skillsDataGridView;
         private System.Windows.Forms.TextBox fullnameTextBox;
         private System.Windows.Forms.Label fullnameLlabel;
+        private System.Windows.Forms.LinkLabel scoreLinkLabel;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }

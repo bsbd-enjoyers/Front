@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Freelance_IT.Network;
 using Freelance_IT.Classes;
 
 namespace Freelance_IT.Forms
@@ -109,6 +110,11 @@ namespace Freelance_IT.Forms
                 foreach(KeyValuePair<string, string> skill in master.skills)
                 {
                     aboutMasterWindow.skillDataTable.Rows.Add(skill.Key, skill.Value);
+                }
+
+                if(master.score != null)
+                {
+                    aboutMasterWindow.scoreLinkLabel.Text = master.score.ToString();
                 }
             }
             else

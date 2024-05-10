@@ -332,8 +332,9 @@ namespace Freelance_IT.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                return;
             }
+
+            _searchedOrders.Add(order);
             return;
         }
 
@@ -382,16 +383,24 @@ namespace Freelance_IT.Forms
                     if (_user.GetType().ToString() == "Freelance_IT.Classes.Master" &&
                         _searchedOrders[_selectedRow].status == "created")
                     {
-                        Order order = MasterHandleOrderForm.masterRespondOrder(_searchedOrders[_selectedRow]);
-                        if(order != null)
+
+                        try
                         {
-                            order.status = "updated";
-                            order.id_master = _user.id;
-                            var respond_result = await backendClient.masterRespondOrder(order);
-                            if (!respond_result.result)
+                            Order order = MasterHandleOrderForm.masterRespondOrder(_searchedOrders[_selectedRow]);
+                            if (order != null)
                             {
-                                MessageBox.Show("Не получилось обновить статус заказа(");
+                                order.status = "updated";
+                                order.id_master = _user.id;
+                                var respond_result = await backendClient.masterRespondOrder(order);
+                                if (!respond_result.result)
+                                {
+                                    MessageBox.Show("Не получилось обновить статус заказа(");
+                                }
                             }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                         }
                         break;
                     }
@@ -419,7 +428,6 @@ namespace Freelance_IT.Forms
                                     {
                                         MessageBox.Show("Не получилось обновить статус заказа(");
                                     }
-                                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                                     break;
                             }
                         }
@@ -427,6 +435,7 @@ namespace Freelance_IT.Forms
                         {
                             MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                         }
+                        break;
                     }
 
                     HandleOrderForm.showOrderInfo(_searchedOrders[_selectedRow]);

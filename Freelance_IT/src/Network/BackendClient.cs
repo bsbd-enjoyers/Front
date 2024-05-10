@@ -152,7 +152,6 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<UserInfo>(json_body);
         }
 
-        // Нужно создать еще контрактов для клиента, мастера и заказа
         // not Checked
         public async Task<List<Client>> searchClients(string search_info)
         {
@@ -220,15 +219,15 @@ namespace Freelance_IT.Network
             return order_list;
         }
 
-        // not Checked
         public async Task<List<Order>> searchOrders(string search_info)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("/search")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
-                    search_info = search_info
+                    entity="order",
+                    query = search_info
                 })
                 .ReceiveBytes();
 
@@ -251,8 +250,9 @@ namespace Freelance_IT.Network
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
+                    action="create",
                     deadline = order.deadline,
-                    client_cost = order.client_cost,
+                    cost = order.client_cost,
                     name = order.product.fullname,
                     desc = order.product.client_description
                 })
@@ -266,7 +266,7 @@ namespace Freelance_IT.Network
         public async Task<RequestResult> deleteOrder(uint order_id)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("delete")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
@@ -278,18 +278,17 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        // not Checked
         public async Task<RequestResult> masterRespondOrder(Order order)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("orders")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
                     action = "update",
                     id_order = order.id_order,
                     type = order.product.type,
-                    master_cost = order.master_cost,
+                    cost = order.master_cost,
                     master_desc = order.product.master_specification
                 })
                 .ReceiveBytes();
@@ -298,11 +297,10 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        // not Checked
         public async Task<RequestResult> clientHandleOrder(uint order_id, bool submit_or_refuse)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("orders")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
@@ -316,6 +314,7 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
+        // not Checked
         public async Task<RequestResult> leaveFeedback(Feedback feedback)
         {
             var response_bytes = await _client.Request()
@@ -331,6 +330,22 @@ namespace Freelance_IT.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<UserInfo> getMasterInfo(uint master_id)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    id_master = master_id
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<UserInfo>(json_body);
         }
     }
 }

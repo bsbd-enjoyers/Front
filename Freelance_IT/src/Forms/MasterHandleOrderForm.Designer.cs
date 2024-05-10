@@ -60,7 +60,7 @@ namespace Freelance_IT.Forms
             this.enterLabel.AutoSize = true;
             this.enterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enterLabel.Location = new System.Drawing.Point(-31, -51);
+            this.enterLabel.Location = new System.Drawing.Point(-31, -86);
             this.enterLabel.Name = "enterLabel";
             this.enterLabel.Size = new System.Drawing.Size(508, 55);
             this.enterLabel.TabIndex = 0;
@@ -81,7 +81,7 @@ namespace Freelance_IT.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 389);
+            this.panel1.Size = new System.Drawing.Size(1073, 363);
             this.panel1.TabIndex = 9;
             // 
             // clientCostTextBox
@@ -89,7 +89,7 @@ namespace Freelance_IT.Forms
             this.clientCostTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clientCostTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.clientCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clientCostTextBox.Location = new System.Drawing.Point(28, 317);
+            this.clientCostTextBox.Location = new System.Drawing.Point(28, 271);
             this.clientCostTextBox.Multiline = true;
             this.clientCostTextBox.Name = "clientCostTextBox";
             this.clientCostTextBox.ReadOnly = true;
@@ -101,7 +101,7 @@ namespace Freelance_IT.Forms
             this.dateTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.dateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTextBox.Location = new System.Drawing.Point(28, 112);
+            this.dateTextBox.Location = new System.Drawing.Point(28, 83);
             this.dateTextBox.Multiline = true;
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.ReadOnly = true;
@@ -113,7 +113,7 @@ namespace Freelance_IT.Forms
             this.fullnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fullnameTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.fullnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fullnameTextBox.Location = new System.Drawing.Point(28, 212);
+            this.fullnameTextBox.Location = new System.Drawing.Point(28, 176);
             this.fullnameTextBox.Multiline = true;
             this.fullnameTextBox.Name = "fullnameTextBox";
             this.fullnameTextBox.ReadOnly = true;
@@ -126,7 +126,7 @@ namespace Freelance_IT.Forms
             this.clientCostLabel.AutoSize = true;
             this.clientCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clientCostLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.clientCostLabel.Location = new System.Drawing.Point(23, 276);
+            this.clientCostLabel.Location = new System.Drawing.Point(23, 236);
             this.clientCostLabel.Name = "clientCostLabel";
             this.clientCostLabel.Size = new System.Drawing.Size(104, 29);
             this.clientCostLabel.TabIndex = 11;
@@ -139,7 +139,7 @@ namespace Freelance_IT.Forms
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.dateLabel.Location = new System.Drawing.Point(23, 80);
+            this.dateLabel.Location = new System.Drawing.Point(23, 51);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(141, 29);
             this.dateLabel.TabIndex = 12;
@@ -152,7 +152,7 @@ namespace Freelance_IT.Forms
             this.fullnameLabel.AutoSize = true;
             this.fullnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fullnameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fullnameLabel.Location = new System.Drawing.Point(23, 180);
+            this.fullnameLabel.Location = new System.Drawing.Point(23, 144);
             this.fullnameLabel.Name = "fullnameLabel";
             this.fullnameLabel.Size = new System.Drawing.Size(282, 29);
             this.fullnameLabel.TabIndex = 13;
@@ -164,11 +164,11 @@ namespace Freelance_IT.Forms
             this.clientTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clientTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.clientTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clientTextBox.Location = new System.Drawing.Point(434, 112);
+            this.clientTextBox.Location = new System.Drawing.Point(421, 83);
             this.clientTextBox.Multiline = true;
             this.clientTextBox.Name = "clientTextBox";
             this.clientTextBox.ReadOnly = true;
-            this.clientTextBox.Size = new System.Drawing.Size(620, 259);
+            this.clientTextBox.Size = new System.Drawing.Size(620, 242);
             this.clientTextBox.TabIndex = 10;
             // 
             // clientDescriptionLabel
@@ -177,7 +177,7 @@ namespace Freelance_IT.Forms
             this.clientDescriptionLabel.AutoSize = true;
             this.clientDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clientDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.clientDescriptionLabel.Location = new System.Drawing.Point(427, 72);
+            this.clientDescriptionLabel.Location = new System.Drawing.Point(416, 46);
             this.clientDescriptionLabel.Name = "clientDescriptionLabel";
             this.clientDescriptionLabel.Size = new System.Drawing.Size(219, 29);
             this.clientDescriptionLabel.TabIndex = 9;
@@ -190,7 +190,7 @@ namespace Freelance_IT.Forms
             this.clientWishesLabel.AutoSize = true;
             this.clientWishesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clientWishesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.clientWishesLabel.Location = new System.Drawing.Point(21, 22);
+            this.clientWishesLabel.Location = new System.Drawing.Point(21, 9);
             this.clientWishesLabel.Name = "clientWishesLabel";
             this.clientWishesLabel.Size = new System.Drawing.Size(332, 37);
             this.clientWishesLabel.TabIndex = 0;
@@ -209,9 +209,9 @@ namespace Freelance_IT.Forms
             this.panel2.Controls.Add(this.productTypeLabel);
             this.panel2.Controls.Add(this.enterInfoLabel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 389);
+            this.panel2.Location = new System.Drawing.Point(0, 363);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1073, 391);
+            this.panel2.Size = new System.Drawing.Size(1073, 347);
             this.panel2.TabIndex = 10;
             // 
             // masterCostTextBox
@@ -219,7 +219,7 @@ namespace Freelance_IT.Forms
             this.masterCostTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.masterCostTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.masterCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.masterCostTextBox.Location = new System.Drawing.Point(28, 229);
+            this.masterCostTextBox.Location = new System.Drawing.Point(28, 190);
             this.masterCostTextBox.Multiline = true;
             this.masterCostTextBox.Name = "masterCostTextBox";
             this.masterCostTextBox.Size = new System.Drawing.Size(308, 54);
@@ -230,10 +230,10 @@ namespace Freelance_IT.Forms
             this.masterDecriptionTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.masterDecriptionTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.masterDecriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.masterDecriptionTextBox.Location = new System.Drawing.Point(436, 106);
+            this.masterDecriptionTextBox.Location = new System.Drawing.Point(421, 101);
             this.masterDecriptionTextBox.Multiline = true;
             this.masterDecriptionTextBox.Name = "masterDecriptionTextBox";
-            this.masterDecriptionTextBox.Size = new System.Drawing.Size(620, 259);
+            this.masterDecriptionTextBox.Size = new System.Drawing.Size(620, 210);
             this.masterDecriptionTextBox.TabIndex = 10;
             // 
             // productTypeBox
@@ -241,7 +241,7 @@ namespace Freelance_IT.Forms
             this.productTypeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.productTypeBox.BackColor = System.Drawing.SystemColors.Window;
             this.productTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productTypeBox.Location = new System.Drawing.Point(28, 106);
+            this.productTypeBox.Location = new System.Drawing.Point(28, 101);
             this.productTypeBox.Multiline = true;
             this.productTypeBox.Name = "productTypeBox";
             this.productTypeBox.Size = new System.Drawing.Size(308, 54);
@@ -253,7 +253,7 @@ namespace Freelance_IT.Forms
             this.masterCostLabel.AutoSize = true;
             this.masterCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.masterCostLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.masterCostLabel.Location = new System.Drawing.Point(23, 197);
+            this.masterCostLabel.Location = new System.Drawing.Point(23, 158);
             this.masterCostLabel.Name = "masterCostLabel";
             this.masterCostLabel.Size = new System.Drawing.Size(280, 29);
             this.masterCostLabel.TabIndex = 3;
@@ -267,7 +267,7 @@ namespace Freelance_IT.Forms
             this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skipButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.skipButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.skipButton.Location = new System.Drawing.Point(221, 317);
+            this.skipButton.Location = new System.Drawing.Point(221, 263);
             this.skipButton.Name = "skipButton";
             this.skipButton.Size = new System.Drawing.Size(175, 48);
             this.skipButton.TabIndex = 8;
@@ -282,7 +282,7 @@ namespace Freelance_IT.Forms
             this.respondButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.respondButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.respondButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.respondButton.Location = new System.Drawing.Point(28, 317);
+            this.respondButton.Location = new System.Drawing.Point(28, 263);
             this.respondButton.Name = "respondButton";
             this.respondButton.Size = new System.Drawing.Size(175, 48);
             this.respondButton.TabIndex = 8;
@@ -296,7 +296,7 @@ namespace Freelance_IT.Forms
             this.masterDescriptionLabel.AutoSize = true;
             this.masterDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.masterDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.masterDescriptionLabel.Location = new System.Drawing.Point(431, 74);
+            this.masterDescriptionLabel.Location = new System.Drawing.Point(416, 69);
             this.masterDescriptionLabel.Name = "masterDescriptionLabel";
             this.masterDescriptionLabel.Size = new System.Drawing.Size(485, 29);
             this.masterDescriptionLabel.TabIndex = 4;
@@ -309,7 +309,7 @@ namespace Freelance_IT.Forms
             this.productTypeLabel.AutoSize = true;
             this.productTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.productTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.productTypeLabel.Location = new System.Drawing.Point(23, 74);
+            this.productTypeLabel.Location = new System.Drawing.Point(23, 69);
             this.productTypeLabel.Name = "productTypeLabel";
             this.productTypeLabel.Size = new System.Drawing.Size(170, 29);
             this.productTypeLabel.TabIndex = 5;
@@ -322,7 +322,7 @@ namespace Freelance_IT.Forms
             this.enterInfoLabel.AutoSize = true;
             this.enterInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enterInfoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.enterInfoLabel.Location = new System.Drawing.Point(21, 24);
+            this.enterInfoLabel.Location = new System.Drawing.Point(21, 15);
             this.enterInfoLabel.Name = "enterInfoLabel";
             this.enterInfoLabel.Size = new System.Drawing.Size(354, 37);
             this.enterInfoLabel.TabIndex = 6;
@@ -333,7 +333,7 @@ namespace Freelance_IT.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1073, 780);
+            this.ClientSize = new System.Drawing.Size(1073, 710);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.enterLabel);
