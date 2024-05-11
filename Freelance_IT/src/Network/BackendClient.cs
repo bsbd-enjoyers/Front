@@ -270,7 +270,8 @@ namespace Freelance_IT.Network
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
-                    id_order = order_id
+                    entity = "order",
+                    id = order_id
                 })
                 .ReceiveBytes();
 

@@ -338,11 +338,17 @@ namespace Freelance_IT.Forms
             return;
         }
 
-        private void feedbackButton_Click(object sender, EventArgs e)
+        private async void feedbackButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
                 MessageBox.Show("Ничего не было выбрано");
+                return;
+            }
+
+            if(_searchedOrders[_selectedRow].status != "accepted")
+            {
+                MessageBox.Show("Оставлять отзыв можно только к заказам со статусом \"accepted\"!");
                 return;
             }
 
@@ -358,7 +364,19 @@ namespace Freelance_IT.Forms
                 MessageBox.Show("Отзыв не был оставлен");
                 return;
             }
-            // Послать запрос на создание отзыва
+            try
+            {
+                var feedback_res = await BackendClient.getInstance().leaveFeedback(feedback);
+
+                if (feedback_res.result == false)
+                {
+                    MessageBox.Show("Отзыв не был оставлен");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
         }
 
         private async void checkButton_Click(object sender, EventArgs e)
@@ -470,7 +488,7 @@ namespace Freelance_IT.Forms
                             var delete_result = await BackendClient.getInstance().deleteOrder(_searchedOrders[_selectedRow].id_order);
                             if (!delete_result.result)
                             {
-                                MessageBox.Show("Не получилось обновить статус заказа(");
+                                MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
                             }
                         }
                         
@@ -494,7 +512,6 @@ namespace Freelance_IT.Forms
             }
         }
 
-        // Дописать десериализацию классов Master, Client, Orders и протестировать
         private async void searchButton_Click(object sender, EventArgs e)
         {            
             try
