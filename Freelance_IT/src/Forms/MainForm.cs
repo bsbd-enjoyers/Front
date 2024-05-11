@@ -118,6 +118,7 @@ namespace Freelance_IT.Forms
             deleteButton.Hide();
             checkButton.Hide();
             feedbackButton.Hide();
+            searchTextBox.Text = "";
 
             _searchedClients.Clear();
             _searchedMasters.Clear();
@@ -181,7 +182,14 @@ namespace Freelance_IT.Forms
             _dataTable.Columns.Add("ID заказа", typeof(string));
             _dataTable.Columns.Add("Тип продукта", typeof(string));
             _dataTable.Columns.Add("Полное название продукта", typeof(string));
-            _dataTable.Columns.Add("Статус заказа", typeof(string));            
+            _dataTable.Columns.Add("Статус заказа", typeof(string));
+
+            _selectedRow = -1;
+
+            if (_user.GetType().ToString() == "Freelance_IT.Classes.Admin")
+            {
+                return;
+            }
 
             try
             {
@@ -193,8 +201,6 @@ namespace Freelance_IT.Forms
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
             }
-
-            _selectedRow = -1;
         }
 
         private void updateOrderTable()
@@ -370,7 +376,7 @@ namespace Freelance_IT.Forms
 
                 if (feedback_res.result == false)
                 {
-                    MessageBox.Show("Отзыв не был оставлен");
+                    MessageBox.Show("Не получилось оставить отзыв(");
                 }
             }
             catch (Exception)
@@ -473,10 +479,32 @@ namespace Freelance_IT.Forms
             switch (_selectedTab)
             {
                 case MainFormTabs.Clients:
-                    MessageBox.Show("Пока клиентов удалять нельзя!");
+                    try
+                    {
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedClients[_selectedRow].login);
+                        if (!ban_result.result)
+                        {
+                            MessageBox.Show("Не получилось заблокировать клиента!\nСделайте это через поддержку");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                    }
                     break;
                 case MainFormTabs.Masters:
-                    MessageBox.Show("Пока исполнителей удалять нельзя!");
+                    try
+                    {
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedMasters[_selectedRow].login);
+                        if (!ban_result.result)
+                        {
+                            MessageBox.Show("Не получилось заблокировать исполнителя!\nСделайте это через поддержку");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                    }
                     break;
                 case MainFormTabs.Orders:
                     if (_searchedOrders[_selectedRow].status == "created" ||
@@ -545,8 +573,9 @@ namespace Freelance_IT.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                return;
             }
+
+            searchTextBox.Text = "";
             return;
         }
     }

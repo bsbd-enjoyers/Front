@@ -49,7 +49,6 @@ namespace Freelance_IT.Forms
                 var user_info = await backendClient.getMyInfo();
 
                 switch (user_info.role)
-                //switch("client")
                 {
                     case "admin":
                         _user = new Admin(user_info);

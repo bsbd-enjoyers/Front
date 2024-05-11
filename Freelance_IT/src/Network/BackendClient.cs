@@ -156,10 +156,11 @@ namespace Freelance_IT.Network
         public async Task<List<Client>> searchClients(string search_info)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("search")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
+                    entity = "client",
                     search_info = search_info
                 })
                 .ReceiveBytes();
@@ -180,10 +181,11 @@ namespace Freelance_IT.Network
         public async Task<List<Master>> searchMasters(string search_info)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("search")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
+                    entity = "master",
                     search_info = search_info
                 })
                 .ReceiveBytes();
@@ -262,7 +264,6 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        // not Checked
         public async Task<RequestResult> deleteOrder(uint order_id)
         {
             var response_bytes = await _client.Request()
@@ -308,6 +309,22 @@ namespace Freelance_IT.Network
                     id_order = order_id,
                     action = "submit",
                     submit = submit_or_refuse
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> banUser(string login)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("manage")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    login = login
                 })
                 .ReceiveBytes();
 
