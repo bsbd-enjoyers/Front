@@ -10,6 +10,6 @@ namespace Freelance_IT.Network
 {
     public class MasterList
     {
-        public List<UserInfo> masters { get; set; }
+        public List<UserInfo> users { get; set; }
     }
 }

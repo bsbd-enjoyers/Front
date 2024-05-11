@@ -296,6 +296,7 @@ namespace Freelance_IT.Forms
 
         private void orderButton_Click(object sender, EventArgs e)
         {
+
             initializeOrderTable();
             updateOrderTable();
         }
@@ -481,7 +482,7 @@ namespace Freelance_IT.Forms
                 case MainFormTabs.Clients:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedClients[_selectedRow].login);
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedClients[_selectedRow].login, "client");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать клиента!\nСделайте это через поддержку");
@@ -495,7 +496,7 @@ namespace Freelance_IT.Forms
                 case MainFormTabs.Masters:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedMasters[_selectedRow].login);
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedMasters[_selectedRow].login, "master");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать исполнителя!\nСделайте это через поддержку");

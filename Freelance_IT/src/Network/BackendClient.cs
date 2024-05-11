@@ -152,7 +152,6 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<UserInfo>(json_body);
         }
 
-        // not Checked
         public async Task<List<Client>> searchClients(string search_info)
         {
             var response_bytes = await _client.Request()
@@ -161,7 +160,7 @@ namespace Freelance_IT.Network
                 .PostJsonAsync(new
                 {
                     entity = "client",
-                    search_info = search_info
+                    query = search_info
                 })
                 .ReceiveBytes();
 
@@ -169,7 +168,7 @@ namespace Freelance_IT.Network
 
             List<Client> client_list = new List<Client>();
 
-            foreach (UserInfo client_data in JsonSerializer.Deserialize<ClientList>(json_body).clients)
+            foreach (UserInfo client_data in JsonSerializer.Deserialize<ClientList>(json_body).users)
             {
                 client_list.Add(new Client(client_data));
             }
@@ -177,7 +176,6 @@ namespace Freelance_IT.Network
             return client_list;
         }
 
-        // not Checked
         public async Task<List<Master>> searchMasters(string search_info)
         {
             var response_bytes = await _client.Request()
@@ -186,7 +184,7 @@ namespace Freelance_IT.Network
                 .PostJsonAsync(new
                 {
                     entity = "master",
-                    search_info = search_info
+                    query = search_info
                 })
                 .ReceiveBytes();
 
@@ -194,7 +192,7 @@ namespace Freelance_IT.Network
 
             List<Master> master_list = new List<Master>();
 
-            foreach (UserInfo master_data in JsonSerializer.Deserialize<MasterList>(json_body).masters)
+            foreach (UserInfo master_data in JsonSerializer.Deserialize<MasterList>(json_body).users)
             {
                 master_list.Add(new Master(master_data));
             }
@@ -316,15 +314,15 @@ namespace Freelance_IT.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        // not Checked
-        public async Task<RequestResult> banUser(string login)
+        public async Task<RequestResult> banUser(string login, string role)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("manage")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
-                    login = login
+                    id = login,
+                    entity = role
                 })
                 .ReceiveBytes();
 
