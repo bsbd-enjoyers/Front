@@ -54,6 +54,7 @@ namespace Freelance_IT.Forms
         private HandleOrderForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Normal;
         }
 
         private void prepareOnlyShowing()
