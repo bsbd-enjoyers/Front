@@ -334,11 +334,11 @@ namespace Freelance_IT.Network
         public async Task<RequestResult> leaveFeedback(Feedback feedback)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("reviews")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
-                    id_order = feedback.id_order,
+                    order_id = feedback.id_order,
                     score = feedback.score,
                     comment = feedback.comment
                 })
@@ -352,7 +352,7 @@ namespace Freelance_IT.Network
         public async Task<UserInfo> getMasterInfo(uint master_id)
         {
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("info")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {

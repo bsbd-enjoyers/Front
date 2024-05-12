@@ -32,20 +32,21 @@ namespace Freelance_IT.Forms
         }
 
         // public
-        public static Feedback getFeedback(Feedback feedback = null)
+        public static Feedback getFeedback(Feedback feedback)
         {
             FeedbackForm feedbackForm = new FeedbackForm();
 
-            if (feedback != null)
+            if (feedback == null)
             {
-                feedbackForm.scoreNumericUpDown.Value = feedback.score;
-                feedbackForm.commentBox.Text = feedback.comment;
-                feedbackForm.orderIDLinkLabel.Text = feedback.id_order.ToString();
+                MessageBox.Show("Невозможно оставить отзыв(");
+                return null;              
             }
-            else
-            {
-                feedbackForm._feedback = new Feedback();
-            }
+
+            feedbackForm.scoreNumericUpDown.Value = feedback.score;
+            feedbackForm.commentBox.Text = feedback.comment;
+            feedbackForm.orderIDLinkLabel.Text = feedback.id_order.ToString();
+
+            feedbackForm._feedback = feedback;
 
             if (feedbackForm.ShowDialog() == DialogResult.OK)
             {
