@@ -112,7 +112,7 @@ namespace Freelance_IT.Forms
                     aboutMasterWindow.skillDataTable.Rows.Add(skill.Key, skill.Value);
                 }
 
-                if(master.score != null)
+                if(master.score != null && master.score != 0)
                 {
                     aboutMasterWindow.scoreLinkLabel.Text = master.score.ToString();
                 }

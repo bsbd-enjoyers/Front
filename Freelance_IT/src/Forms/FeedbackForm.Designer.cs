@@ -128,6 +128,11 @@ namespace Freelance_IT.Forms
             0,
             0,
             0});
+            this.scoreNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.scoreNumericUpDown.Name = "scoreNumericUpDown";
             this.scoreNumericUpDown.Size = new System.Drawing.Size(81, 44);
             this.scoreNumericUpDown.TabIndex = 15;
@@ -151,6 +156,7 @@ namespace Freelance_IT.Forms
             this.Controls.Add(this.fillfieldsLabel);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(145)))), ((int)(((byte)(128)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(0, 1);
             this.Name = "FeedbackForm";
             ((System.ComponentModel.ISupportInitialize)(this.scoreNumericUpDown)).EndInit();
             this.ResumeLayout(false);

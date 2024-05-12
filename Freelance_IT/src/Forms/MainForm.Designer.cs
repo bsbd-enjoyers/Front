@@ -82,6 +82,7 @@ namespace Freelance_IT.Forms
             this.loginLabel.Size = new System.Drawing.Size(157, 29);
             this.loginLabel.TabIndex = 4;
             this.loginLabel.Text = "Нажми сюда";
+            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // avatarPictureBox
             // 

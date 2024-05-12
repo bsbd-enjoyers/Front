@@ -42,7 +42,11 @@ namespace Freelance_IT.Forms
                 return null;              
             }
 
-            feedbackForm.scoreNumericUpDown.Value = feedback.score;
+            if (feedback.score != 0)
+            {
+                feedbackForm.scoreNumericUpDown.Value = feedback.score;
+            }
+
             feedbackForm.commentBox.Text = feedback.comment;
             feedbackForm.orderIDLinkLabel.Text = feedback.id_order.ToString();
 
