@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D88BC0D-9723-4C24-9497-2F15CE3116FF}</ProjectGuid>
+    <ProjectGuid>{E06BA436-9163-4AF1-A485-B306CF4FFC70}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Avito</RootNamespace>
     <AssemblyName>Avito</AssemblyName>
