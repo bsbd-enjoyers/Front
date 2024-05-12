@@ -132,7 +132,7 @@ namespace Freelance_IT.Forms
 
             _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
-            _dataTable.Columns.Add("ID клиента", typeof(string));
+            _dataTable.Columns.Add("Логин клиента", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
             _dataTable.Columns.Add("Адрес эл почты", typeof(string));
             _dataTable.Columns.Add("Номер телефона", typeof(string));
@@ -147,7 +147,7 @@ namespace Freelance_IT.Forms
 
             foreach (Client client in _searchedClients)
             {
-                _dataTable.Rows.Add(client.id, client.fullname, client.email, client.phone);
+                _dataTable.Rows.Add(client.login, client.fullname, client.email, client.phone);
             }
         }
 
@@ -157,7 +157,7 @@ namespace Freelance_IT.Forms
 
             _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
-            _dataTable.Columns.Add("ID исполнителя", typeof(string));
+            _dataTable.Columns.Add("Логин исполнителя", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
             _dataTable.Columns.Add("Адрес эл почты", typeof(string));
             _dataTable.Columns.Add("Номер телефона", typeof(string));
@@ -172,7 +172,7 @@ namespace Freelance_IT.Forms
 
             foreach (Master master in _searchedMasters)
             {
-                _dataTable.Rows.Add(master.id, master.fullname, master.email, master.phone);
+                _dataTable.Rows.Add(master.login, master.fullname, master.email, master.phone);
             }
         }
 

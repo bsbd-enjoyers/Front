@@ -77,11 +77,11 @@ namespace Freelance_IT.Forms
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.Location = new System.Drawing.Point(90, 146);
+            this.loginLabel.Location = new System.Drawing.Point(56, 146);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(83, 29);
+            this.loginLabel.Size = new System.Drawing.Size(157, 29);
             this.loginLabel.TabIndex = 4;
-            this.loginLabel.Text = "Логин";
+            this.loginLabel.Text = "Нажми сюда";
             // 
             // avatarPictureBox
             // 
