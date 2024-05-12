@@ -130,6 +130,7 @@ namespace Freelance_IT.Forms
         {
             _selectedTab = MainFormTabs.Clients;
 
+            _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
             _dataTable.Columns.Add("ID клиента", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
@@ -154,6 +155,7 @@ namespace Freelance_IT.Forms
         {
             _selectedTab = MainFormTabs.Masters;
 
+            _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
             _dataTable.Columns.Add("ID исполнителя", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
@@ -178,6 +180,7 @@ namespace Freelance_IT.Forms
         {
             _selectedTab = MainFormTabs.Orders;
 
+            _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
             _dataTable.Columns.Add("ID заказа", typeof(string));
             _dataTable.Columns.Add("Тип продукта", typeof(string));
