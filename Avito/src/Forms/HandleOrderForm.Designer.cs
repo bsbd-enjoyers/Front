@@ -269,7 +269,7 @@ namespace Avito.Forms
             // declineButton
             // 
             this.declineButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.declineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.declineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.declineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.declineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.declineButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -284,7 +284,7 @@ namespace Avito.Forms
             // orderButton
             // 
             this.orderButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.orderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.orderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.orderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.orderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -356,7 +356,7 @@ namespace Avito.Forms
             this.clientIDLinkLabel.AutoSize = true;
             this.clientIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.clientIDLinkLabel.ForeColor = System.Drawing.Color.White;
-            this.clientIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.clientIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.clientIDLinkLabel.Location = new System.Drawing.Point(261, 144);
             this.clientIDLinkLabel.Name = "clientIDLinkLabel";
             this.clientIDLinkLabel.Size = new System.Drawing.Size(138, 29);
@@ -371,7 +371,7 @@ namespace Avito.Forms
             this.masterIDLinkLabel.AutoSize = true;
             this.masterIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.masterIDLinkLabel.ForeColor = System.Drawing.Color.White;
-            this.masterIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.masterIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.masterIDLinkLabel.Location = new System.Drawing.Point(261, 97);
             this.masterIDLinkLabel.Name = "masterIDLinkLabel";
             this.masterIDLinkLabel.Size = new System.Drawing.Size(198, 29);

@@ -183,7 +183,7 @@ namespace Avito.Forms
             // 
             // deleteButton
             // 
-            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.deleteButton.Location = new System.Drawing.Point(953, 365);
@@ -196,7 +196,7 @@ namespace Avito.Forms
             // 
             // checkButton
             // 
-            this.checkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.checkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.checkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.checkButton.Location = new System.Drawing.Point(953, 295);
@@ -209,7 +209,7 @@ namespace Avito.Forms
             // 
             // createButton
             // 
-            this.createButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.createButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.createButton.Location = new System.Drawing.Point(953, 435);
@@ -222,7 +222,7 @@ namespace Avito.Forms
             // 
             // feedbackButton
             // 
-            this.feedbackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.feedbackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.feedbackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.feedbackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.feedbackButton.Location = new System.Drawing.Point(953, 225);

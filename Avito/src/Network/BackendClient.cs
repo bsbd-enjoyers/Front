@@ -57,20 +57,19 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async Task<RequestResult> registerMaster(Master master, string password)
+        public async Task<RequestResult> registerCustomer(Customer customer, string password)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("register")
                 .PostJsonAsync(new
                 {
-                    login = master.login,
+                    login = customer.login,
                     password = password,
-                    fullname = master.fullname,
-                    email = master.email,
-                    phone = master.phone,
-                    about_me = master.about_me,
-                    skills = master.skills,
-                    role = "master"
+                    fullname = customer.customer_name,
+                    email = customer.customer_email,
+                    phone = customer.customer_phone,
+                    customer.customer_desc,
+                    role = "customer"
                 })
                 .ReceiveBytes();
 
@@ -78,18 +77,19 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async Task<RequestResult> registerClient(Client client, string password)
+        public async Task<RequestResult> registerSeller(Seller seller, string password)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("register")
                 .PostJsonAsync(new
                 {
-                    login = client.login,
+                    login = seller.login,
                     password = password,
-                    fullname = client.fullname,
-                    email = client.email,
-                    phone = client.phone,
-                    role = "client"
+                    fullname = seller.seller_name,
+                    email = seller.seller_email,
+                    phone = seller.seller_phone,
+                    seller.seller_desc,
+                    role = "seller"
                 })
                 .ReceiveBytes();
 
@@ -97,7 +97,8 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async Task<RequestResult> login(string login, string password)
+
+        public async Task<Role> login(string login, string password)
         {
             var response =  await _client.Request()
                 .AppendPathSegment("login")
@@ -107,15 +108,16 @@ namespace Avito.Network
                     password = password
                 });
 
-            // Shitted
-            if (response.Cookies.Count() > 0)
+            if (response.Cookies.Count() == 0)
             {
-                _cookie = response.Cookies.First();
+                return null;
             }
+
+            _cookie = response.Cookies.First();
 
             var json_body = Encoding.UTF8.GetString(await response.GetBytesAsync());
 
-            return JsonSerializer.Deserialize<RequestResult>(json_body);
+            return JsonSerializer.Deserialize<Role>(json_body);
         }
 
         public bool isAuthorized()
@@ -139,7 +141,7 @@ namespace Avito.Network
 
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
-
+/*
         public async Task<UserInfo> getMyInfo()
         {
             var response_bytes = await _client.Request()
@@ -241,9 +243,9 @@ namespace Avito.Network
             }
 
             return order_list;
-        }
+        }*/
 
-        public async Task<RequestResult> createOrder(Order order)
+/*        public async Task<RequestResult> createOrder(Order order)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("orders")
@@ -260,7 +262,7 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }
+        }*/
 
         public async Task<RequestResult> deleteOrder(uint order_id)
         {
@@ -278,7 +280,7 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async Task<RequestResult> masterRespondOrder(Order order)
+/*        public async Task<RequestResult> masterRespondOrder(Order order)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("orders")
@@ -295,7 +297,7 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }
+        }*/
 
         public async Task<RequestResult> clientHandleOrder(uint order_id, bool submit_or_refuse)
         {
@@ -331,7 +333,7 @@ namespace Avito.Network
         }
 
         // not Checked
-        public async Task<RequestResult> leaveFeedback(Feedback feedback)
+/*        public async Task<RequestResult> leaveFeedback(Feedback feedback)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("reviews")
@@ -346,7 +348,7 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }
+        }*/
 
         // not Checked
         public async Task<UserInfo> getMasterInfo(uint master_id)

@@ -55,7 +55,7 @@ namespace Avito.Forms
             // acceptButton
             // 
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -110,7 +110,7 @@ namespace Avito.Forms
             this.orderIDLinkLabel.AutoSize = true;
             this.orderIDLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderIDLinkLabel.ForeColor = System.Drawing.Color.White;
-            this.orderIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.orderIDLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.orderIDLinkLabel.Location = new System.Drawing.Point(310, 19);
             this.orderIDLinkLabel.Name = "orderIDLinkLabel";
             this.orderIDLinkLabel.Size = new System.Drawing.Size(176, 40);

@@ -1,7 +1,7 @@
 ﻿
 namespace Avito.Forms
 {
-    partial class AboutMeClientForm
+    partial class AboutMeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,8 @@ namespace Avito.Forms
             this.phoneLabel = new System.Windows.Forms.Label();
             this.fullnameLlabel = new System.Windows.Forms.Label();
             this.fullnameTextBox = new System.Windows.Forms.TextBox();
+            this.aboutMeLabel = new System.Windows.Forms.Label();
+            this.aboutMeBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // fillfieldsLabel
@@ -45,21 +47,21 @@ namespace Avito.Forms
             this.fillfieldsLabel.AutoSize = true;
             this.fillfieldsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fillfieldsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fillfieldsLabel.Location = new System.Drawing.Point(38, 59);
+            this.fillfieldsLabel.Location = new System.Drawing.Point(55, 60);
             this.fillfieldsLabel.Name = "fillfieldsLabel";
-            this.fillfieldsLabel.Size = new System.Drawing.Size(415, 40);
+            this.fillfieldsLabel.Size = new System.Drawing.Size(514, 40);
             this.fillfieldsLabel.TabIndex = 0;
-            this.fillfieldsLabel.Text = "Информация о клиенте";
+            this.fillfieldsLabel.Text = "Информация о пользователе";
             this.fillfieldsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // acceptButton
             // 
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.acceptButton.Location = new System.Drawing.Point(78, 464);
+            this.acceptButton.Location = new System.Drawing.Point(54, 455);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(322, 72);
             this.acceptButton.TabIndex = 1;
@@ -72,7 +74,7 @@ namespace Avito.Forms
             this.emailBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailBox.BackColor = System.Drawing.SystemColors.Window;
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailBox.Location = new System.Drawing.Point(86, 268);
+            this.emailBox.Location = new System.Drawing.Point(62, 259);
             this.emailBox.Multiline = true;
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(308, 54);
@@ -82,7 +84,7 @@ namespace Avito.Forms
             // 
             this.phoneBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phoneBox.Location = new System.Drawing.Point(86, 375);
+            this.phoneBox.Location = new System.Drawing.Point(62, 366);
             this.phoneBox.Multiline = true;
             this.phoneBox.Name = "phoneBox";
             this.phoneBox.Size = new System.Drawing.Size(308, 54);
@@ -94,7 +96,7 @@ namespace Avito.Forms
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.emailLabel.Location = new System.Drawing.Point(81, 236);
+            this.emailLabel.Location = new System.Drawing.Point(57, 227);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(125, 29);
             this.emailLabel.TabIndex = 0;
@@ -107,7 +109,7 @@ namespace Avito.Forms
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.phoneLabel.Location = new System.Drawing.Point(81, 343);
+            this.phoneLabel.Location = new System.Drawing.Point(57, 334);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(119, 29);
             this.phoneLabel.TabIndex = 0;
@@ -120,7 +122,7 @@ namespace Avito.Forms
             this.fullnameLlabel.AutoSize = true;
             this.fullnameLlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fullnameLlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.fullnameLlabel.Location = new System.Drawing.Point(81, 124);
+            this.fullnameLlabel.Location = new System.Drawing.Point(57, 115);
             this.fullnameLlabel.Name = "fullnameLlabel";
             this.fullnameLlabel.Size = new System.Drawing.Size(70, 29);
             this.fullnameLlabel.TabIndex = 0;
@@ -132,28 +134,54 @@ namespace Avito.Forms
             this.fullnameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fullnameTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.fullnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fullnameTextBox.Location = new System.Drawing.Point(86, 156);
+            this.fullnameTextBox.Location = new System.Drawing.Point(62, 147);
             this.fullnameTextBox.Multiline = true;
             this.fullnameTextBox.Name = "fullnameTextBox";
             this.fullnameTextBox.Size = new System.Drawing.Size(308, 54);
             this.fullnameTextBox.TabIndex = 2;
             // 
-            // AboutMeClientForm
+            // aboutMeLabel
+            // 
+            this.aboutMeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.aboutMeLabel.AutoSize = true;
+            this.aboutMeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.aboutMeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.aboutMeLabel.Location = new System.Drawing.Point(424, 115);
+            this.aboutMeLabel.Name = "aboutMeLabel";
+            this.aboutMeLabel.Size = new System.Drawing.Size(129, 29);
+            this.aboutMeLabel.TabIndex = 0;
+            this.aboutMeLabel.Text = "Подробно";
+            this.aboutMeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // aboutMeBox
+            // 
+            this.aboutMeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.aboutMeBox.BackColor = System.Drawing.SystemColors.Window;
+            this.aboutMeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.aboutMeBox.Location = new System.Drawing.Point(429, 147);
+            this.aboutMeBox.Multiline = true;
+            this.aboutMeBox.Name = "aboutMeBox";
+            this.aboutMeBox.Size = new System.Drawing.Size(478, 273);
+            this.aboutMeBox.TabIndex = 2;
+            // 
+            // AboutMeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 576);
+            this.ClientSize = new System.Drawing.Size(973, 576);
             this.Controls.Add(this.phoneBox);
+            this.Controls.Add(this.aboutMeBox);
             this.Controls.Add(this.fullnameTextBox);
             this.Controls.Add(this.emailBox);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.phoneLabel);
+            this.Controls.Add(this.aboutMeLabel);
             this.Controls.Add(this.fullnameLlabel);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.fillfieldsLabel);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(145)))), ((int)(((byte)(128)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AboutMeClientForm";
+            this.Name = "AboutMeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +197,7 @@ namespace Avito.Forms
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label fullnameLlabel;
         private System.Windows.Forms.TextBox fullnameTextBox;
+        private System.Windows.Forms.Label aboutMeLabel;
+        private System.Windows.Forms.TextBox aboutMeBox;
     }
 }

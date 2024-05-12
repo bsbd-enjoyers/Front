@@ -24,15 +24,16 @@ namespace Avito.Forms
 
     public partial class MainForm : Form
     {
-        // public
+        /*// public
         public MainForm()
         {
             InitializeComponent();
 
             DataGridView.DataSource = _dataTable;
-            _searchedClients = new List<Client>();
-            _searchedMasters = new List<Master>();
+            _searchedCustomers = new List<Customer>();
+            _searchedSellers = new List<Seller>();
             _searchedOrders = new List<Order>();
+            _searchedProducts = new List<Product>();
 
             deinitializeUser();
         }
@@ -41,8 +42,9 @@ namespace Avito.Forms
         private User _user;
 
         private List<Order> _searchedOrders;
-        private List<Client> _searchedClients;
-        private List<Master> _searchedMasters;
+        private List<Customer> _searchedCustomers;
+        private List<Seller> _searchedSellers;
+        private List<Product> _searchedProducts;
 
 
         private DataTable _dataTable = new DataTable();
@@ -581,6 +583,6 @@ namespace Avito.Forms
 
             searchTextBox.Text = "";
             return;
-        }
+        }*/
     }
 }

@@ -263,7 +263,7 @@ namespace Avito.Forms
             // skipButton
             // 
             this.skipButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.skipButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.skipButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skipButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.skipButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -278,7 +278,7 @@ namespace Avito.Forms
             // respondButton
             // 
             this.respondButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.respondButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.respondButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.respondButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.respondButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.respondButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));

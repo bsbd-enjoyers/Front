@@ -16,7 +16,6 @@ namespace Avito.Forms
     public partial class LoginForm : Form
     {
         // Private
-
         private User _user;
 
         private LoginForm()
@@ -40,27 +39,15 @@ namespace Avito.Forms
 
                 var login_result = await backendClient.login(this.loginBox.Text, this.passwordBox.Text);
 
-                if (!login_result.result)
+                if (login_result.role == null)
                 {
                     MessageBox.Show("Не получилось авторизоваться");
                     return;
                 }
 
-                var user_info = await backendClient.getMyInfo();
-
-                switch (user_info.role)
-                {
-                    case "admin":
-                        _user = new Admin(user_info);
-                        break;
-                    case "master":
-                        _user = new Master(user_info);
-                        break;
-                    case "client":
-                        _user = new Client(user_info);
-                        break;
-                }
+                _user = new User();
                 _user.login = loginBox.Text;
+                _user.role = login_result.role;                
 
                 DialogResult = DialogResult.OK;
                 Close();

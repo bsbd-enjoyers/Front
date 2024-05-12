@@ -15,7 +15,7 @@ namespace Avito.Forms
     public partial class MasterHandleOrderForm : Form
     {
 
-        // public
+        /*// public
         public static Order masterRespondOrder(Order order)
         {
             MasterHandleOrderForm masterHandleOrderForm = new MasterHandleOrderForm();
@@ -72,6 +72,6 @@ namespace Avito.Forms
         {
             DialogResult = DialogResult.No;
             Close();
-        }
+        }*/
     }
 }

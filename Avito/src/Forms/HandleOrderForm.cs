@@ -15,7 +15,7 @@ namespace Avito.Forms
 {
     public partial class HandleOrderForm : Form
     {
-        // Функция для принятия/отказа заказа клиентом на последнем (третьем) этапе согласования 
+        /*// Функция для принятия/отказа заказа клиентом на последнем (третьем) этапе согласования 
         public static DialogResult lastStepAcceptingOrder(Order order)
         {
             if (order == null)
@@ -110,6 +110,6 @@ namespace Avito.Forms
             {
                 MessageBox.Show("Не удалось получить информацию об исполнителе(");
             }
-        }
+        }*/
     }
 }

@@ -54,7 +54,7 @@ namespace Avito.Forms
             // enter
             // 
             this.enter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -93,7 +93,7 @@ namespace Avito.Forms
             this.registerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerLabel.AutoSize = true;
             this.registerLabel.ForeColor = System.Drawing.Color.White;
-            this.registerLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.registerLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.registerLabel.Location = new System.Drawing.Point(201, 358);
             this.registerLabel.Name = "registerLabel";
             this.registerLabel.Size = new System.Drawing.Size(106, 20);

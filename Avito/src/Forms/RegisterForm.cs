@@ -24,7 +24,7 @@ namespace Avito.Forms
             passwordBox.Size = new Size(loginBox.Size.Width, loginBox.Size.Height);
         }
 
-        private async void client_registration_Click(object sender, EventArgs e)
+        private async void registerCutomerOrSeller(string role)
         {
             BackendClient backendClient = BackendClient.getInstance();
 
@@ -44,8 +44,17 @@ namespace Avito.Forms
                 return;
             }
 
-
-            _user = AboutMeClientForm.getDetailedInfo((Client)_user);
+            switch (role)
+            {
+                case "seller":
+                    _user = AboutMeForm.getDetailedInfoSeller();
+                    _user.role = "seller";
+                    break;
+                case "customer":
+                    _user = AboutMeForm.getDetailedInfoCustomer();
+                    _user.role = "customer";
+                    break;
+            }
 
             if (_user == null)
             {
@@ -57,7 +66,19 @@ namespace Avito.Forms
 
             try
             {
-                var register_result = await backendClient.registerClient((Client)_user, passwordBox.Text);
+                RequestResult register_result;
+
+                switch (role)
+                {
+                    case "seller":
+                        register_result = await backendClient.registerSeller((Seller)_user, passwordBox.Text);
+                        break;
+                    case "customer":
+                        register_result = await backendClient.registerCustomer((Customer)_user, passwordBox.Text);
+                        break;
+                    default:
+                        throw new Exception("Неизвестная роль");
+                }
 
                 if (!register_result.result)
                 {
@@ -78,70 +99,21 @@ namespace Avito.Forms
             return;
         }
 
-        private async void master_registration_Click(object sender, EventArgs e)
+        private void client_registration_Click(object sender, EventArgs e)
         {
-            BackendClient backendClient = BackendClient.getInstance();
+            registerCutomerOrSeller("customer");
+        }
 
-            try
-            {
-                var check_result = await backendClient.checkLoginOccupied(this.loginBox.Text);
-
-                if (check_result.result)
-                {
-                    MessageBox.Show("Логин занят, придумайте другой");
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                return;
-            }
-
-            _user = AboutMeMasterForm.getDetailedInfo((Master)_user);
-
-            if (_user == null)
-            {
-                MessageBox.Show("Заполните информацию о себе");
-                return;
-            }
-
-            _user.login = loginBox.Text;
-
-            try
-            {
-                var register_result = await backendClient.registerMaster((Master)_user, passwordBox.Text);
-
-                if (!register_result.result)
-                {
-                    MessageBox.Show("Регистрация не прошла, попробуйте еще раз");
-                    return;
-                }
-
-                MessageBox.Show("Вы зарегестрированы, поздравляем");
-
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                return;
-            }
-            return;
+        private void master_registration_Click(object sender, EventArgs e)
+        {
+            registerCutomerOrSeller("seller");
         }
 
         // Public
-        public static User registerOrUpdate(User user)
+        public static User registerUser()
         {
             var registerWindow = new RegisterForm();
 
-            if (user != null)
-            {
-                registerWindow._user = user;
-                registerWindow.loginBox.Text = user.login;
-            }
-            
             if (registerWindow.ShowDialog() == DialogResult.OK)
             {
                 return registerWindow._user;

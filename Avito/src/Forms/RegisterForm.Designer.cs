@@ -54,7 +54,7 @@ namespace Avito.Forms
             // master_registration
             // 
             this.master_registration.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.master_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.master_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.master_registration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.master_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.master_registration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
@@ -62,7 +62,7 @@ namespace Avito.Forms
             this.master_registration.Name = "master_registration";
             this.master_registration.Size = new System.Drawing.Size(330, 49);
             this.master_registration.TabIndex = 1;
-            this.master_registration.Text = "Я исполнитель";
+            this.master_registration.Text = "Я продавец";
             this.master_registration.UseVisualStyleBackColor = false;
             this.master_registration.Click += new System.EventHandler(this.master_registration_Click);
             // 
@@ -117,7 +117,7 @@ namespace Avito.Forms
             // client_registration
             // 
             this.client_registration.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.client_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(163)))), ((int)(((byte)(81)))));
+            this.client_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.client_registration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.client_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.client_registration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));

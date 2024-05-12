@@ -84,24 +84,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\Classes\Admin.cs" />
-    <Compile Include="src\Classes\Client.cs" />
-    <Compile Include="src\Classes\Feedback.cs" />
-    <Compile Include="src\Classes\Master.cs" />
+    <Compile Include="src\Classes\Customer.cs" />
+    <Compile Include="src\Classes\Review.cs" />
+    <Compile Include="src\Classes\Seller.cs" />
     <Compile Include="src\Classes\Order.cs" />
     <Compile Include="src\Classes\Product.cs" />
     <Compile Include="src\Classes\User.cs" />
-    <Compile Include="src\Forms\AboutMeClientForm.cs">
+    <Compile Include="src\Forms\AboutMeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\AboutMeClientForm.Designer.cs">
-      <DependentUpon>AboutMeClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Forms\AboutMeMasterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Forms\AboutMeMasterForm.Designer.cs">
-      <DependentUpon>AboutMeMasterForm.cs</DependentUpon>
+    <Compile Include="src\Forms\AboutMeForm.Designer.cs">
+      <DependentUpon>AboutMeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Forms\ClientCreateOrderForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +142,7 @@
     <Compile Include="src\Network\Contracts\ClientList.cs" />
     <Compile Include="src\Network\Contracts\MasterList.cs" />
     <Compile Include="src\Network\Contracts\OrderList.cs" />
+    <Compile Include="src\Network\Contracts\Role.cs" />
     <Compile Include="src\Network\Contracts\RequestResult.cs" />
     <Compile Include="src\Network\Contracts\UserInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -161,11 +155,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\Forms\AboutMeClientForm.resx">
-      <DependentUpon>AboutMeClientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\AboutMeMasterForm.resx">
-      <DependentUpon>AboutMeMasterForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Forms\AboutMeForm.resx">
+      <DependentUpon>AboutMeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\ClientCreateOrderForm.resx">
       <DependentUpon>ClientCreateOrderForm.cs</DependentUpon>
@@ -203,12 +194,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin.png" />
-    <Content Include="client.png" />
     <Content Include="images\admin.png" />
     <Content Include="images\customer.png" />
     <Content Include="images\seller.png" />
-    <Content Include="master.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

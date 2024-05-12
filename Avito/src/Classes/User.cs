@@ -9,5 +9,6 @@ namespace Avito.Classes
     public class User
     {
         public string login;
+        public string role;
     }
 }

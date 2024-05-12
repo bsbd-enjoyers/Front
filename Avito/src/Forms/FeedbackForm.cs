@@ -15,7 +15,7 @@ namespace Avito.Forms
     public partial class FeedbackForm : Form
     {
         // private
-        private Feedback _feedback;
+        /*private Feedback _feedback;
 
         private FeedbackForm()
         {
@@ -58,6 +58,6 @@ namespace Avito.Forms
             }
 
             return null;
-        }
+        }*/
     }
 }

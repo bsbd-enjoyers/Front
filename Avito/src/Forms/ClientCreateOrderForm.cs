@@ -15,7 +15,7 @@ namespace Avito.Forms
     public partial class ClientCreateOrderForm : Form
     {
 
-        public ClientCreateOrderForm()
+        /*public ClientCreateOrderForm()
         {
             InitializeComponent();
             monthCalendar.MinDate = DateTime.Now;
@@ -62,6 +62,6 @@ namespace Avito.Forms
             DialogResult = DialogResult.OK;
             Close();
 
-        }
+        }*/
     }
 }

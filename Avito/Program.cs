@@ -18,7 +18,8 @@ namespace Avito
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            LoginForm.authenticate();
+            //Application.Run(new MainForm());
         }
     }
 }
