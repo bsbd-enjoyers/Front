@@ -1,7 +1,7 @@
 ﻿
 namespace Avito.Forms
 {
-    partial class HandleOrderForm
+    partial class OrderForm
     {
         /// <summary>
         /// Required designer variable.

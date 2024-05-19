@@ -30,26 +30,28 @@ namespace Avito.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.userPanel = new System.Windows.Forms.Panel();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.avatarPictureBox = new System.Windows.Forms.PictureBox();
-            this.logutLabel = new System.Windows.Forms.LinkLabel();
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.clientButton = new System.Windows.Forms.Button();
+            this.customerButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.masterButton = new System.Windows.Forms.Button();
+            this.sellerButton = new System.Windows.Forms.Button();
+            this.productButton = new System.Windows.Forms.Button();
             this.orderButton = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.deleteButton = new System.Windows.Forms.Button();
             this.checkButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
-            this.feedbackButton = new System.Windows.Forms.Button();
+            this.buyButton = new System.Windows.Forms.Button();
+            this.logutLabel = new System.Windows.Forms.LinkLabel();
+            this.avatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.walletLabel = new System.Windows.Forms.Label();
+            this.userPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.userPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
+            this.userPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,73 +64,29 @@ namespace Avito.Forms
             this.panel1.Size = new System.Drawing.Size(1118, 208);
             this.panel1.TabIndex = 0;
             // 
-            // userPanel
-            // 
-            this.userPanel.Controls.Add(this.loginLabel);
-            this.userPanel.Controls.Add(this.avatarPictureBox);
-            this.userPanel.Controls.Add(this.logutLabel);
-            this.userPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userPanel.Location = new System.Drawing.Point(858, 0);
-            this.userPanel.Name = "userPanel";
-            this.userPanel.Size = new System.Drawing.Size(260, 208);
-            this.userPanel.TabIndex = 1;
-            // 
-            // loginLabel
-            // 
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.Location = new System.Drawing.Point(56, 146);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(157, 29);
-            this.loginLabel.TabIndex = 4;
-            this.loginLabel.Text = "Нажми сюда";
-            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // avatarPictureBox
-            // 
-            this.avatarPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.avatarPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.avatarPictureBox.Location = new System.Drawing.Point(71, 23);
-            this.avatarPictureBox.Name = "avatarPictureBox";
-            this.avatarPictureBox.Size = new System.Drawing.Size(120, 120);
-            this.avatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.avatarPictureBox.TabIndex = 3;
-            this.avatarPictureBox.TabStop = false;
-            this.avatarPictureBox.Click += new System.EventHandler(this.avatarPictureBox_Click);
-            // 
-            // logutLabel
-            // 
-            this.logutLabel.AutoSize = true;
-            this.logutLabel.Location = new System.Drawing.Point(100, 175);
-            this.logutLabel.Name = "logutLabel";
-            this.logutLabel.Size = new System.Drawing.Size(58, 20);
-            this.logutLabel.TabIndex = 2;
-            this.logutLabel.TabStop = true;
-            this.logutLabel.Text = "Выйти";
-            this.logutLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logutLabel_LinkClicked);
-            // 
             // headerPanel
             // 
-            this.headerPanel.Controls.Add(this.clientButton);
+            this.headerPanel.Controls.Add(this.customerButton);
             this.headerPanel.Controls.Add(this.searchTextBox);
             this.headerPanel.Controls.Add(this.searchButton);
-            this.headerPanel.Controls.Add(this.masterButton);
+            this.headerPanel.Controls.Add(this.sellerButton);
+            this.headerPanel.Controls.Add(this.productButton);
             this.headerPanel.Controls.Add(this.orderButton);
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.headerPanel.Location = new System.Drawing.Point(0, 0);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(858, 208);
+            this.headerPanel.Size = new System.Drawing.Size(789, 208);
             this.headerPanel.TabIndex = 1;
             // 
-            // clientButton
+            // customerButton
             // 
-            this.clientButton.Location = new System.Drawing.Point(311, 23);
-            this.clientButton.Name = "clientButton";
-            this.clientButton.Size = new System.Drawing.Size(138, 71);
-            this.clientButton.TabIndex = 0;
-            this.clientButton.Text = "Клиенты";
-            this.clientButton.UseVisualStyleBackColor = true;
-            this.clientButton.Click += new System.EventHandler(this.clientButton_Click);
+            this.customerButton.Location = new System.Drawing.Point(455, 23);
+            this.customerButton.Name = "customerButton";
+            this.customerButton.Size = new System.Drawing.Size(138, 71);
+            this.customerButton.TabIndex = 0;
+            this.customerButton.Text = "Клиенты";
+            this.customerButton.UseVisualStyleBackColor = true;
+            this.customerButton.Click += new System.EventHandler(this.customerButton_Click);
             // 
             // searchTextBox
             // 
@@ -148,15 +106,25 @@ namespace Avito.Forms
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // masterButton
+            // sellerButton
             // 
-            this.masterButton.Location = new System.Drawing.Point(167, 23);
-            this.masterButton.Name = "masterButton";
-            this.masterButton.Size = new System.Drawing.Size(138, 71);
-            this.masterButton.TabIndex = 0;
-            this.masterButton.Text = "Исполнители";
-            this.masterButton.UseVisualStyleBackColor = true;
-            this.masterButton.Click += new System.EventHandler(this.masterButton_Click);
+            this.sellerButton.Location = new System.Drawing.Point(311, 23);
+            this.sellerButton.Name = "sellerButton";
+            this.sellerButton.Size = new System.Drawing.Size(138, 71);
+            this.sellerButton.TabIndex = 0;
+            this.sellerButton.Text = "Продавцы";
+            this.sellerButton.UseVisualStyleBackColor = true;
+            this.sellerButton.Click += new System.EventHandler(this.sellerButton_Click);
+            // 
+            // productButton
+            // 
+            this.productButton.Location = new System.Drawing.Point(167, 23);
+            this.productButton.Name = "productButton";
+            this.productButton.Size = new System.Drawing.Size(138, 71);
+            this.productButton.TabIndex = 0;
+            this.productButton.Text = "Продукты";
+            this.productButton.UseVisualStyleBackColor = true;
+            this.productButton.Click += new System.EventHandler(this.productButton_Click);
             // 
             // orderButton
             // 
@@ -186,7 +154,7 @@ namespace Avito.Forms
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.deleteButton.Location = new System.Drawing.Point(953, 365);
+            this.deleteButton.Location = new System.Drawing.Point(953, 435);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(141, 64);
             this.deleteButton.TabIndex = 9;
@@ -199,7 +167,7 @@ namespace Avito.Forms
             this.checkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.checkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.checkButton.Location = new System.Drawing.Point(953, 295);
+            this.checkButton.Location = new System.Drawing.Point(953, 365);
             this.checkButton.Name = "checkButton";
             this.checkButton.Size = new System.Drawing.Size(141, 64);
             this.checkButton.TabIndex = 10;
@@ -212,7 +180,7 @@ namespace Avito.Forms
             this.createButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.createButton.Location = new System.Drawing.Point(953, 435);
+            this.createButton.Location = new System.Drawing.Point(953, 295);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(141, 64);
             this.createButton.TabIndex = 11;
@@ -220,18 +188,75 @@ namespace Avito.Forms
             this.createButton.UseVisualStyleBackColor = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
-            // feedbackButton
+            // buyButton
             // 
-            this.feedbackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
-            this.feedbackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.feedbackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
-            this.feedbackButton.Location = new System.Drawing.Point(953, 225);
-            this.feedbackButton.Name = "feedbackButton";
-            this.feedbackButton.Size = new System.Drawing.Size(141, 64);
-            this.feedbackButton.TabIndex = 10;
-            this.feedbackButton.Text = "Оставить отзыв";
-            this.feedbackButton.UseVisualStyleBackColor = false;
-            this.feedbackButton.Click += new System.EventHandler(this.feedbackButton_Click);
+            this.buyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
+            this.buyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.buyButton.Location = new System.Drawing.Point(953, 225);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(141, 64);
+            this.buyButton.TabIndex = 10;
+            this.buyButton.Text = "Заказать";
+            this.buyButton.UseVisualStyleBackColor = false;
+            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
+            // 
+            // logutLabel
+            // 
+            this.logutLabel.AutoSize = true;
+            this.logutLabel.Location = new System.Drawing.Point(53, 169);
+            this.logutLabel.Name = "logutLabel";
+            this.logutLabel.Size = new System.Drawing.Size(58, 20);
+            this.logutLabel.TabIndex = 2;
+            this.logutLabel.TabStop = true;
+            this.logutLabel.Text = "Выйти";
+            this.logutLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logutLabel_LinkClicked);
+            // 
+            // avatarPictureBox
+            // 
+            this.avatarPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.avatarPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.avatarPictureBox.Location = new System.Drawing.Point(24, 41);
+            this.avatarPictureBox.Name = "avatarPictureBox";
+            this.avatarPictureBox.Size = new System.Drawing.Size(120, 120);
+            this.avatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.avatarPictureBox.TabIndex = 3;
+            this.avatarPictureBox.TabStop = false;
+            this.avatarPictureBox.Click += new System.EventHandler(this.avatarPictureBox_Click);
+            // 
+            // loginLabel
+            // 
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Location = new System.Drawing.Point(160, 65);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(157, 29);
+            this.loginLabel.TabIndex = 4;
+            this.loginLabel.Text = "Нажми сюда";
+            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // walletLabel
+            // 
+            this.walletLabel.AutoSize = true;
+            this.walletLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.walletLabel.Location = new System.Drawing.Point(193, 97);
+            this.walletLabel.Name = "walletLabel";
+            this.walletLabel.Size = new System.Drawing.Size(96, 29);
+            this.walletLabel.TabIndex = 4;
+            this.walletLabel.Text = "Баланс";
+            this.walletLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // userPanel
+            // 
+            this.userPanel.Controls.Add(this.walletLabel);
+            this.userPanel.Controls.Add(this.loginLabel);
+            this.userPanel.Controls.Add(this.avatarPictureBox);
+            this.userPanel.Controls.Add(this.logutLabel);
+            this.userPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userPanel.Location = new System.Drawing.Point(789, 0);
+            this.userPanel.Name = "userPanel";
+            this.userPanel.Size = new System.Drawing.Size(329, 208);
+            this.userPanel.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -240,19 +265,19 @@ namespace Avito.Forms
             this.ClientSize = new System.Drawing.Size(1118, 550);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.feedbackButton);
+            this.Controls.Add(this.buyButton);
             this.Controls.Add(this.checkButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.panel1.ResumeLayout(false);
-            this.userPanel.ResumeLayout(false);
-            this.userPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).EndInit();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).EndInit();
+            this.userPanel.ResumeLayout(false);
+            this.userPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,17 +288,19 @@ namespace Avito.Forms
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button orderButton;
-        private System.Windows.Forms.Button masterButton;
-        private System.Windows.Forms.Button clientButton;
-        private System.Windows.Forms.LinkLabel logutLabel;
+        private System.Windows.Forms.Button sellerButton;
+        private System.Windows.Forms.Button customerButton;
         private System.Windows.Forms.Panel headerPanel;
-        private System.Windows.Forms.Panel userPanel;
-        private System.Windows.Forms.PictureBox avatarPictureBox;
-        private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button checkButton;
         private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Button feedbackButton;
+        private System.Windows.Forms.Button buyButton;
+        private System.Windows.Forms.Button productButton;
+        private System.Windows.Forms.Panel userPanel;
+        private System.Windows.Forms.Label walletLabel;
+        private System.Windows.Forms.Label loginLabel;
+        private System.Windows.Forms.PictureBox avatarPictureBox;
+        private System.Windows.Forms.LinkLabel logutLabel;
     }
 }

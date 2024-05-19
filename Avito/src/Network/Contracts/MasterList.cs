@@ -8,8 +8,8 @@ using Avito.Classes;
 
 namespace Avito.Network
 {
-    public class MasterList
+    public class SellerList
     {
-        public List<UserInfo> users { get; set; }
+        public List<Seller> users { get; set; }
     }
 }

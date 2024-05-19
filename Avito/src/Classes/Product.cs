@@ -9,10 +9,15 @@ namespace Avito.Classes
     public class Product
     {
         public uint? product_id;
-        public uint? seller_id;
-        public string product_name;
-        public uint? product_quantity;
-        public string product_desc;
+
         public uint? price;
+
+        public string desc;
+
+        public uint? quantity;
+
+        public string name;  
+
+        public Product() { }
     }
 }

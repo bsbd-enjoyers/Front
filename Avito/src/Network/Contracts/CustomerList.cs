@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Avito.Classes;
+
 namespace Avito.Network
 {
-    public class Role
+    public class CustomerList
     {
-        public string role { get; set; }
+        public List<Customer> users { get; set; }
     }
 }

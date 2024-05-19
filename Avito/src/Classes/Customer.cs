@@ -10,12 +10,15 @@ namespace Avito.Classes
 {
     public class Customer : User
     {
-        public uint? customer_id;
-        public string customer_name;
-        public string customer_phone;
-        public string customer_desc;
-        public string customer_email;
-        public uint? amount;
+        public uint? id;
+
+        public string name;
+
+        public string phone;
+
+        public string desc;
+
+        public string email;
 
         public Customer() { }
 

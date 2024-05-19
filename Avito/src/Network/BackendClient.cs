@@ -65,10 +65,10 @@ namespace Avito.Network
                 {
                     login = customer.login,
                     password = password,
-                    fullname = customer.customer_name,
-                    email = customer.customer_email,
-                    phone = customer.customer_phone,
-                    customer.customer_desc,
+                    name = customer.name,
+                    email = customer.email,
+                    phone = customer.phone,
+                    desc = customer.desc,
                     role = "customer"
                 })
                 .ReceiveBytes();
@@ -85,10 +85,10 @@ namespace Avito.Network
                 {
                     login = seller.login,
                     password = password,
-                    fullname = seller.seller_name,
-                    email = seller.seller_email,
-                    phone = seller.seller_phone,
-                    seller.seller_desc,
+                    name = seller.name,
+                    email = seller.email,
+                    phone = seller.phone,
+                    desc = seller.desc,
                     role = "seller"
                 })
                 .ReceiveBytes();
@@ -98,7 +98,7 @@ namespace Avito.Network
         }
 
 
-        public async Task<Role> login(string login, string password)
+        public async Task<User> login(string login, string password)
         {
             var response =  await _client.Request()
                 .AppendPathSegment("login")
@@ -117,7 +117,7 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(await response.GetBytesAsync());
 
-            return JsonSerializer.Deserialize<Role>(json_body);
+            return JsonSerializer.Deserialize<User>(json_body);
         }
 
         public bool isAuthorized()
@@ -141,8 +141,213 @@ namespace Avito.Network
 
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
-/*
-        public async Task<UserInfo> getMyInfo()
+
+        // not Checked
+        public List<Product> getMyProducts()
+        {
+            var task_response_bytes = _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .GetBytesAsync();
+
+            var json_body = Encoding.UTF8.GetString(task_response_bytes.Result);
+
+            return JsonSerializer.Deserialize<ProductList>(json_body).products;
+        }
+
+        // not Checked
+        public async Task<RequestResult> createProduct(Product product)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("products")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    action="create",
+                    price = product.price,
+                    desc = product.desc,
+                    quantity = product.quantity,
+                    name = product.name
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> createOrder(uint product_id, Order order)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    action = "create",
+                    product_id = product_id,
+                    quantity = order.quantity,
+                    delivery_date = order.delivery_date
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
+        // not Checked
+        public List<Order> getMyOrders()
+        {
+            var task_response_bytes = _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .GetBytesAsync();
+
+            var json_body = Encoding.UTF8.GetString(task_response_bytes.Result);
+
+            return JsonSerializer.Deserialize<OrderList>(json_body).orders;
+        }
+
+        // not Checked
+        public async Task<Seller> getSellerInfo(uint product_id, uint order_id)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("info")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    product_id = product_id,
+                    order_id = order_id
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<Seller>(json_body);
+        }
+
+        // not Checked
+        public async Task<Seller> getSellerInfoByProduct(uint product_id)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("info")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    product_id = product_id
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<Seller>(json_body);
+        }
+
+        // not Checked
+        public async Task<Customer> getCustomerInfoByOrder(uint order_id)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("info")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    order_id = order_id
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<Customer>(json_body);
+        }
+
+        // not Checked
+        public List<Product> searchProducts(string search_info)
+        {
+            var response_bytes = _client.Request()
+                .AppendPathSegment("/search")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    entity = "product",
+                    query = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes.Result);
+
+            return JsonSerializer.Deserialize<ProductList>(json_body).products;
+        }
+
+        // not Checked
+        public List<Order> searchOrders(string search_info)
+        {
+            var response_bytes = _client.Request()
+                .AppendPathSegment("/search")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    entity = "order",
+                    query = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes.Result);
+
+            return JsonSerializer.Deserialize<OrderList>(json_body).orders;
+        }
+
+        // not Checked
+        public List<Customer> searchCustomers(string search_info)
+        {
+            var response_bytes = _client.Request()
+                .AppendPathSegment("/search")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    entity = "customer",
+                    query = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes.Result);
+
+            return JsonSerializer.Deserialize<CustomerList>(json_body).users;
+        }
+
+        // not Checked
+        public List<Seller> searchSellers(string search_info)
+        {
+            var response_bytes = _client.Request()
+                .AppendPathSegment("/search")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    entity = "seller",
+                    query = search_info
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes.Result);
+
+            return JsonSerializer.Deserialize<SellerList>(json_body).users;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*public async Task<UserInfo> getMyInfo()
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("session")
@@ -202,67 +407,7 @@ namespace Avito.Network
             return master_list;
         }
 
-        public List<Order> getOrders()
-        {
-            var task_response_bytes = _client.Request()
-                .AppendPathSegment("orders")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .GetBytesAsync();
 
-            var json_body = Encoding.UTF8.GetString(task_response_bytes.Result);
-
-            List<Order> order_list = new List<Order>();
-
-            foreach (OrderData order_data in JsonSerializer.Deserialize<OrderList>(json_body).orders)
-            {
-                order_list.Add(new Order(order_data));
-            }
-
-            return order_list;
-        }
-
-        public async Task<List<Order>> searchOrders(string search_info)
-        {
-            var response_bytes = await _client.Request()
-                .AppendPathSegment("/search")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .PostJsonAsync(new
-                {
-                    entity="order",
-                    query = search_info
-                })
-                .ReceiveBytes();
-
-            var json_body = Encoding.UTF8.GetString(response_bytes);
-
-            List<Order> order_list = new List<Order>();
-
-            foreach (OrderData order_data in JsonSerializer.Deserialize<OrderList>(json_body).orders)
-            {
-                order_list.Add(new Order(order_data));
-            }
-
-            return order_list;
-        }*/
-
-/*        public async Task<RequestResult> createOrder(Order order)
-        {
-            var response_bytes = await _client.Request()
-                .AppendPathSegment("orders")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .PostJsonAsync(new
-                {
-                    action="create",
-                    deadline = order.deadline,
-                    cost = order.client_cost,
-                    name = order.product.fullname,
-                    desc = order.product.client_description
-                })
-                .ReceiveBytes();
-
-            var json_body = Encoding.UTF8.GetString(response_bytes);
-            return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }*/
 
         public async Task<RequestResult> deleteOrder(uint order_id)
         {
@@ -280,7 +425,7 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-/*        public async Task<RequestResult> masterRespondOrder(Order order)
+        public async Task<RequestResult> masterRespondOrder(Order order)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("orders")
@@ -297,7 +442,7 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }*/
+        }
 
         public async Task<RequestResult> clientHandleOrder(uint order_id, bool submit_or_refuse)
         {
@@ -333,7 +478,7 @@ namespace Avito.Network
         }
 
         // not Checked
-/*        public async Task<RequestResult> leaveFeedback(Feedback feedback)
+        public async Task<RequestResult> leaveFeedback(Feedback feedback)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("reviews")
@@ -349,21 +494,5 @@ namespace Avito.Network
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }*/
-
-        // not Checked
-        public async Task<UserInfo> getMasterInfo(uint master_id)
-        {
-            var response_bytes = await _client.Request()
-                .AppendPathSegment("info")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .PostJsonAsync(new
-                {
-                    id_master = master_id
-                })
-                .ReceiveBytes();
-
-            var json_body = Encoding.UTF8.GetString(response_bytes);
-            return JsonSerializer.Deserialize<UserInfo>(json_body);
-        }
     }
 }

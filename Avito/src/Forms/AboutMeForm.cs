@@ -26,17 +26,17 @@ namespace Avito.Forms
         {
             if (_seller == null)
             {
-                _customer.customer_name = fullnameTextBox.Text;
-                _customer.customer_phone = phoneBox.Text;
-                _customer.customer_email = emailBox.Text;
-                _customer.customer_desc = aboutMeBox.Text;
+                _customer.name = fullnameTextBox.Text;
+                _customer.phone = phoneBox.Text;
+                _customer.email = emailBox.Text;
+                _customer.desc = aboutMeBox.Text;
             }
             else
             {
-                _seller.seller_name = fullnameTextBox.Text;
-                _seller.seller_phone = phoneBox.Text;
-                _seller.seller_email = emailBox.Text;
-                _seller.seller_desc = aboutMeBox.Text;
+                _seller.name = fullnameTextBox.Text;
+                _seller.phone = phoneBox.Text;
+                _seller.email = emailBox.Text;
+                _seller.desc = aboutMeBox.Text;
             }
 
             DialogResult = DialogResult.OK;
@@ -51,10 +51,10 @@ namespace Avito.Forms
             if (customer != null)
             {
                 aboutMeWindow._customer = customer;
-                aboutMeWindow.fullnameTextBox.Text = customer.customer_name;
-                aboutMeWindow.phoneBox.Text = customer.customer_phone;
-                aboutMeWindow.emailBox.Text = customer.customer_email;
-                aboutMeWindow.aboutMeBox.Text = customer.customer_desc;
+                aboutMeWindow.fullnameTextBox.Text = customer.name;
+                aboutMeWindow.phoneBox.Text = customer.phone;
+                aboutMeWindow.emailBox.Text = customer.email;
+                aboutMeWindow.aboutMeBox.Text = customer.desc;
             }
             else
             {
@@ -76,10 +76,10 @@ namespace Avito.Forms
             if (seller != null)
             {
                 aboutMeWindow._seller = seller;
-                aboutMeWindow.fullnameTextBox.Text = seller.seller_name;
-                aboutMeWindow.phoneBox.Text = seller.seller_phone;
-                aboutMeWindow.emailBox.Text = seller.seller_email;
-                aboutMeWindow.aboutMeBox.Text = seller.seller_desc;
+                aboutMeWindow.fullnameTextBox.Text = seller.name;
+                aboutMeWindow.phoneBox.Text = seller.phone;
+                aboutMeWindow.emailBox.Text = seller.email;
+                aboutMeWindow.aboutMeBox.Text = seller.desc;
             }
             else
             {

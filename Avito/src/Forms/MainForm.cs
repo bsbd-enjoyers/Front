@@ -15,16 +15,17 @@ namespace Avito.Forms
 {
     public enum MainFormTabs
     {
-        Clients,
-        Masters,
+        Sellers,
+        Customers,
         Orders,
+        Products,
 
         Unknown
     }
 
     public partial class MainForm : Form
     {
-        /*// public
+        // public
         public MainForm()
         {
             InitializeComponent();
@@ -57,60 +58,43 @@ namespace Avito.Forms
             avatarPictureBox.Image = Avito.Properties.Resources.admin;
 
             initializeOrderTable();
-            updateOrderTable();
+            //updateOrderTable();
 
             orderButton.Show();
-            masterButton.Show();
-            clientButton.Show();
+            sellerButton.Show();
+            customerButton.Show();
+            productButton.Hide();
 
             DataGridView.Show();
-
-            deleteButton.Show();
-            checkButton.Show();
-
-            searchButton.Show();
-            searchTextBox.Show();
         }
 
-        private void initializeMaster()
+        private void initializeSeller()
         {
             avatarPictureBox.Image = Avito.Properties.Resources.seller;
 
             initializeOrderTable();
-            updateOrderTable();
+            //updateOrderTable();
 
             orderButton.Show();
-            masterButton.Hide();
-            clientButton.Hide();
+            productButton.Show();
+            sellerButton.Hide();
+            customerButton.Hide();
 
             DataGridView.Show();
-
-            checkButton.Show();
-
-            searchButton.Show();
-            searchTextBox.Show();
         }
 
-        private void initializeClient()
+        private void initializeCustomer()
         {
             avatarPictureBox.Image = Avito.Properties.Resources.customer;
 
             initializeOrderTable();
-            updateOrderTable();
+            //updateOrderTable();
 
             orderButton.Show();
-            masterButton.Hide();
-            clientButton.Hide();
+            sellerButton.Hide();
+            customerButton.Hide();
 
             DataGridView.Show();
-
-            createButton.Show();
-            deleteButton.Show();
-            checkButton.Show();
-            feedbackButton.Show();
-
-            searchButton.Hide();
-            searchTextBox.Hide();
         }
 
         private void deinitializeUser()
@@ -119,79 +103,124 @@ namespace Avito.Forms
             createButton.Hide();
             deleteButton.Hide();
             checkButton.Hide();
-            feedbackButton.Hide();
+            buyButton.Hide();
             searchTextBox.Text = "";
+            loginLabel.Text = "Нажми сюда";
+            walletLabel.Text = "Баланс";
 
-            _searchedClients.Clear();
-            _searchedMasters.Clear();
+            _searchedCustomers.Clear();
+            _searchedProducts.Clear();
+            _searchedSellers.Clear();
             _searchedOrders.Clear();
             _user = null;
+
         }
 
-        private void initializeClientTable()
+        private void initializeCustomerTable()
         {
-            _selectedTab = MainFormTabs.Clients;
+            _selectedTab = MainFormTabs.Customers;
+
+            deleteButton.Show();
+            checkButton.Show();
+            buyButton.Hide();
+            createButton.Hide();
+
+
+            searchButton.Show();
+            searchTextBox.Show();
 
             _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
-            _dataTable.Columns.Add("Логин клиента", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
-            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
             _dataTable.Columns.Add("Номер телефона", typeof(string));
+            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
 
             _selectedRow = -1;
         }
 
-        private void updateClientTable()
+        private void updateCustomerTable()
         {
             _dataTable.Rows.Clear();
             _selectedRow = -1;
 
-            foreach (Client client in _searchedClients)
+            foreach (Customer customer in _searchedCustomers)
             {
-                _dataTable.Rows.Add(client.login, client.fullname, client.email, client.phone);
+                _dataTable.Rows.Add(customer.name, customer.phone, customer.email);
             }
         }
 
-        private void initializeMasterTable()
+        private void initializeSellerTable()
         {
-            _selectedTab = MainFormTabs.Masters;
+            _selectedTab = MainFormTabs.Sellers;
+
+            deleteButton.Show();
+            checkButton.Show();
+            buyButton.Hide();
+            createButton.Hide();
+
+
+            searchButton.Show();
+            searchTextBox.Show();
+
+            _dataTable.Rows.Clear();
 
             _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
-            _dataTable.Columns.Add("Логин исполнителя", typeof(string));
             _dataTable.Columns.Add("ФИО", typeof(string));
-            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
             _dataTable.Columns.Add("Номер телефона", typeof(string));
+            _dataTable.Columns.Add("Адрес эл почты", typeof(string));
 
             _selectedRow = -1;
         }
 
-        private void updateMasterTable()
+        private void updateSellerTable()
         {
             _dataTable.Rows.Clear();
             _selectedRow = -1;
 
-            foreach (Master master in _searchedMasters)
+            foreach (Seller seller in _searchedSellers)
             {
-                _dataTable.Rows.Add(master.login, master.fullname, master.email, master.phone);
+                _dataTable.Rows.Add(seller.name, seller.phone, seller.email);
             }
         }
 
         private void initializeOrderTable()
         {
             _selectedTab = MainFormTabs.Orders;
+      
+            checkButton.Show();
+            buyButton.Hide();
+            createButton.Hide();
+
+            switch (_user.role)
+            {
+                case "customer":
+                case "seller":
+                    deleteButton.Hide();
+
+                    searchButton.Hide();
+                    searchTextBox.Hide();
+                    break;
+                case "admin":
+                    deleteButton.Show();
+
+                    searchButton.Show();
+                    searchTextBox.Show();
+                    break;
+            }
+            
+            _dataTable.Rows.Clear();
+
 
             _dataTable.Rows.Clear();
             _dataTable.Columns.Clear();
-            _dataTable.Columns.Add("ID заказа", typeof(string));
-            _dataTable.Columns.Add("Тип продукта", typeof(string));
-            _dataTable.Columns.Add("Полное название продукта", typeof(string));
-            _dataTable.Columns.Add("Статус заказа", typeof(string));
+            _dataTable.Columns.Add("Наименование", typeof(string));
+            _dataTable.Columns.Add("Количество", typeof(string));
+            _dataTable.Columns.Add("Стоимость", typeof(string));
 
             _selectedRow = -1;
 
-            if (_user.GetType().ToString() == "Freelance_IT.Classes.Admin")
+/*            if (_user.GetType().ToString() == "Freelance_IT.Classes.Admin")
             {
                 return;
             }
@@ -205,7 +234,7 @@ namespace Avito.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-            }
+            }*/
         }
 
         private void updateOrderTable()
@@ -215,13 +244,76 @@ namespace Avito.Forms
 
             foreach (Order order in _searchedOrders)
             {
-                _dataTable.Rows.Add(order.id_order, order.product.type, order.product.fullname, order.status);
+                _dataTable.Rows.Add(order.name, order.quantity, order.price);
             }
         }
 
+        private void initializeProductTable()
+        {
+            _selectedTab = MainFormTabs.Products;
+
+            switch (_user.role)
+            {
+                case "customer":
+                    buyButton.Show();
+                    checkButton.Hide();
+                    deleteButton.Hide();
+                    createButton.Hide();
+
+                    searchButton.Show();
+                    searchTextBox.Show();
+                    break;
+                case "seller":
+                    buyButton.Hide();
+                    checkButton.Show();
+                    deleteButton.Show();
+                    createButton.Show();
+
+                    searchButton.Hide();
+                    searchTextBox.Hide();
+                    break;
+                case "admin":
+                    buyButton.Hide();
+                    checkButton.Hide();
+                    deleteButton.Hide();
+                    createButton.Hide();
+
+                    searchButton.Hide();
+                    searchTextBox.Hide();
+                    break;
+            }
+
+
+            _dataTable.Rows.Clear();
+            _dataTable.Columns.Clear();
+            _dataTable.Columns.Add("Наименование", typeof(string));
+            _dataTable.Columns.Add("Количество доступных", typeof(string));
+            _dataTable.Columns.Add("Цена за шт.", typeof(string));
+
+            _selectedRow = -1;
+        }
+
+        private void updateProductTable()
+        {
+            _dataTable.Rows.Clear();
+            _selectedRow = -1;
+
+            foreach (Product product in _searchedProducts)
+            {
+                _dataTable.Rows.Add(product.name, product.quantity, product.price);
+            }
+        }
+
+
         private int authenticateUser()
         {
-            _user = LoginForm.authenticate();
+            // _user = LoginForm.authenticate();
+
+            _user = new User();
+            _user.login = "seller";
+            _user.role = "seller";
+            _user.wallet = 300;
+
 
             if (_user == null)
             {
@@ -231,10 +323,19 @@ namespace Avito.Forms
 
             this.loginLabel.Text = _user.login;
 
+            if (_user.role != "admin")
+            {
+                this.walletLabel.Text = _user.wallet.ToString();
+            }
+            else
+            {
+                this.walletLabel.Text = "";
+            }
+
             return 0;
         }
 
-        private void logOrShowUser()
+        private void logUser()
         {
             if (_user == null)
             {
@@ -244,32 +345,16 @@ namespace Avito.Forms
                     return;
                 }
 
-                switch (_user.GetType().ToString())
+                switch (_user.role)
                 {
-                    case "Freelance_IT.Classes.Admin":
+                    case "admin":
                         initializeAdmin();
                         break;
-                    case "Freelance_IT.Classes.Master":
-                        initializeMaster();
+                    case "seller":
+                        initializeSeller();
                         break;
-                    case "Freelance_IT.Classes.Client":
-                        initializeClient();
-                        break;
-                }
-            }
-            else
-            {
-                switch (_user.GetType().ToString())
-                {
-                    case "Freelance_IT.Classes.Admin":
-                        break;
-                    case "Freelance_IT.Classes.Master":
-                        AboutMeMasterForm.getDetailedInfo((Master)_user);
-                        // Возможно, тут надо заапдейтить инфо о мастере запросом
-                        break;
-                    case "Freelance_IT.Classes.Client":
-                        AboutMeClientForm.getDetailedInfo((Client)_user);
-                        // Возможно, тут надо заапдейтить инфо о клиенте запросом
+                    case "customer":
+                        initializeCustomer();
                         break;
                 }
             }
@@ -277,8 +362,7 @@ namespace Avito.Forms
 
         private async void logutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _user = null;
-            loginLabel.Text = "Логин";
+            loginLabel.Text = "Нажми сюда";
             avatarPictureBox.Image = null;
             deinitializeUser();
 
@@ -291,66 +375,35 @@ namespace Avito.Forms
                 // Без понятия, должно ли тут быть что-то
             }
 
-            logOrShowUser();
+            logUser();
         }
 
         private void avatarPictureBox_Click(object sender, EventArgs e)
         {
-            logOrShowUser();
+            logUser();
         }
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-
             initializeOrderTable();
-            updateOrderTable();
+            //updateOrderTable();
         }
 
-        private void masterButton_Click(object sender, EventArgs e)
+        private void sellerButton_Click(object sender, EventArgs e)
         {
-            initializeMasterTable();
+            initializeSellerTable();
         }
 
-        private void clientButton_Click(object sender, EventArgs e)
+        private void customerButton_Click(object sender, EventArgs e)
         {
-            initializeClientTable();
+            initializeCustomerTable();
         }
-
-        private async void createButton_Click(object sender, EventArgs e)
+        private void productButton_Click(object sender, EventArgs e)
         {
-            Order order = ClientCreateOrderForm.createOrder();
-
-            if (order == null)
-            {
-                MessageBox.Show("Заказ не был создан");
-                return;
-            }
-
-            order.status = "created";
-            order.id_client = _user.id;
-
-            try
-            {
-                BackendClient backendClient = BackendClient.getInstance();
-
-                var create_order_result = await backendClient.createOrder(order);
-
-                if (!create_order_result.result)
-                {
-                    MessageBox.Show("Заказ не был создан");
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-            }
-
-            _searchedOrders.Add(order);
-            return;
+            initializeProductTable();
         }
 
-        private async void feedbackButton_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -358,40 +411,26 @@ namespace Avito.Forms
                 return;
             }
 
-            if(_searchedOrders[_selectedRow].status != "accepted")
-            {
-                MessageBox.Show("Оставлять отзыв можно только к заказам со статусом \"accepted\"!");
-                return;
-            }
-
-            Feedback feedback = new Feedback();
-            feedback.id_order = _searchedOrders[_selectedRow].id_order;
-
-            feedback = FeedbackForm.getFeedback(feedback);
+            ProductForm.createProduct();
 
             _selectedRow = -1;
-
-            if (feedback == null)
-            {
-                MessageBox.Show("Отзыв не был оставлен");
-                return;
-            }
-            try
-            {
-                var feedback_res = await BackendClient.getInstance().leaveFeedback(feedback);
-
-                if (feedback_res.result == false)
-                {
-                    MessageBox.Show("Не получилось оставить отзыв(");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-            }
         }
 
-        private async void checkButton_Click(object sender, EventArgs e)
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            if (_selectedRow == -1)
+            {
+                MessageBox.Show("Ничего не было выбрано");
+                return;
+            }
+
+
+            ProductForm.buyProduct(_searchedProducts[_selectedRow]);
+
+            _selectedRow = -1;
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -401,80 +440,23 @@ namespace Avito.Forms
 
             switch (_selectedTab)
             {
-                case MainFormTabs.Clients:
-                    AboutMeClientForm.getDetailedInfo(_searchedClients[_selectedRow]);
+                case MainFormTabs.Customers:
+                    AboutMeForm.getDetailedInfoCustomer(_searchedCustomers[_selectedRow]);
                     break;
-                case MainFormTabs.Masters:
-                    AboutMeMasterForm.getDetailedInfo(_searchedMasters[_selectedRow]);
+                case MainFormTabs.Sellers:
+                    AboutMeForm.getDetailedInfoSeller(_searchedSellers[_selectedRow]);
                     break;
                 case MainFormTabs.Orders:
-                    BackendClient backendClient = BackendClient.getInstance();
-
-                    if (_user.GetType().ToString() == "Freelance_IT.Classes.Master" &&
-                        _searchedOrders[_selectedRow].status == "created")
-                    {
-
-                        try
-                        {
-                            Order order = MasterHandleOrderForm.masterRespondOrder(_searchedOrders[_selectedRow]);
-                            if (order != null)
-                            {
-                                order.status = "updated";
-                                order.id_master = _user.id;
-                                var respond_result = await backendClient.masterRespondOrder(order);
-                                if (!respond_result.result)
-                                {
-                                    MessageBox.Show("Не получилось обновить статус заказа(");
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                        }
-                        break;
-                    }
-
-                    if (_user.GetType().ToString() == "Freelance_IT.Classes.Client" &&
-                        _searchedOrders[_selectedRow].status == "updated")
-                    {
-                        try
-                        {
-                            switch (HandleOrderForm.lastStepAcceptingOrder(_searchedOrders[_selectedRow]))
-                            {
-                                case DialogResult.Yes:
-                                    _searchedOrders[_selectedRow].status = "accepted";
-                                    var handle_result = await backendClient.clientHandleOrder(_searchedOrders[_selectedRow].id_order, true);
-                                    if (!handle_result.result)
-                                    {
-                                        MessageBox.Show("Не получилось обновить статус заказа(");
-                                    }
-                                    break;
-
-                                case DialogResult.No:
-                                    _searchedOrders[_selectedRow].status = "created";
-                                    handle_result = await backendClient.clientHandleOrder(_searchedOrders[_selectedRow].id_order, false);
-                                    if (!handle_result.result)
-                                    {
-                                        MessageBox.Show("Не получилось обновить статус заказа(");
-                                    }
-                                    break;
-                            }
-                        }
-                        catch(Exception)
-                        {
-                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                        }
-                        break;
-                    }
-
-                    HandleOrderForm.showOrderInfo(_searchedOrders[_selectedRow]);
+                    //OrderForm.checkOrder(_searchedOrders[_selectedRow]);
+                    break;
+                case MainFormTabs.Products:
+                    ProductForm.checkProduct(_searchedProducts[_selectedRow]);
                     break;
             }
             _selectedRow = -1;
         }
 
-        private async void deleteButton_Click(object sender, EventArgs e)
+        private void deleteButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -482,12 +464,12 @@ namespace Avito.Forms
                 return;
             }
 
-            switch (_selectedTab)
+            /*switch (_selectedTab)
             {
-                case MainFormTabs.Clients:
+                case MainFormTabs.Customers:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedClients[_selectedRow].login, "client");
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedCustomers[_selectedRow].login, "client");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать клиента!\nСделайте это через поддержку");
@@ -498,10 +480,10 @@ namespace Avito.Forms
                         MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                     }
                     break;
-                case MainFormTabs.Masters:
+                case MainFormTabs.Sellers:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedMasters[_selectedRow].login, "master");
+                        var ban_result = await BackendClient.getInstance().banUser(_searchedSellers[_selectedRow].login, "master");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать исполнителя!\nСделайте это через поддержку");
@@ -513,26 +495,36 @@ namespace Avito.Forms
                     }
                     break;
                 case MainFormTabs.Orders:
-                    if (_searchedOrders[_selectedRow].status == "created" ||
-                        _searchedOrders[_selectedRow].status == "updated"
-                        )
+                    try
                     {
-                        try
+                        var delete_result = await BackendClient.getInstance().banOrder(_searchedOrders[_selectedRow].order_id);
+                        if (!delete_result.result)
                         {
-                            var delete_result = await BackendClient.getInstance().deleteOrder(_searchedOrders[_selectedRow].id_order);
-                            if (!delete_result.result)
-                            {
-                                MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
-                            }
+                            MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
                         }
-                        
-                        catch (Exception)
-                        {
-                            MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                     }
                     break;
-            }
+                case MainFormTabs.Products:
+                    try
+                    {
+                        var delete_result = await BackendClient.getInstance().deleteProduct(_searchedProducts[_selectedRow].product_id);
+                        if (!delete_result.result)
+                        {
+                            MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                    }
+                    break;
+            }*/
             _selectedRow = -1;
         }
 
@@ -546,7 +538,7 @@ namespace Avito.Forms
             }
         }
 
-        private async void searchButton_Click(object sender, EventArgs e)
+        private void searchButton_Click(object sender, EventArgs e)
         {            
             try
             {
@@ -554,25 +546,32 @@ namespace Avito.Forms
 
                 switch (_selectedTab)
                 {
-                    case MainFormTabs.Clients:
-                        _searchedClients.Clear();
-                        _searchedClients.AddRange(await backendClient.searchClients(searchTextBox.Text));
+                    case MainFormTabs.Customers:
+                        _searchedCustomers.Clear();
+                        _searchedCustomers.AddRange(backendClient.searchCustomers(searchTextBox.Text));
                         
-                        updateClientTable();
+                        updateCustomerTable();
 
                         break;
-                    case MainFormTabs.Masters:
-                        _searchedMasters.Clear();
-                        _searchedMasters.AddRange(await backendClient.searchMasters(searchTextBox.Text));
+                    case MainFormTabs.Sellers:
+                        _searchedSellers.Clear();
+                        _searchedSellers.AddRange(backendClient.searchSellers(searchTextBox.Text));
 
-                        updateMasterTable();
+                        updateSellerTable();
 
                         break;
                     case MainFormTabs.Orders:
                         _searchedOrders.Clear();
-                        _searchedOrders.AddRange(await backendClient.searchOrders(searchTextBox.Text));
+                        _searchedOrders.AddRange(backendClient.searchOrders(searchTextBox.Text));
 
                         updateOrderTable();
+                        break;
+                    case MainFormTabs.Products:
+                        _searchedProducts.Clear();
+                        _searchedProducts.AddRange(backendClient.searchProducts(searchTextBox.Text));
+
+                        updateProductTable();
+
                         break;
                 }
             }
@@ -583,6 +582,6 @@ namespace Avito.Forms
 
             searchTextBox.Text = "";
             return;
-        }*/
+        }
     }
 }

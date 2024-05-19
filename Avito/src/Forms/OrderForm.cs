@@ -13,9 +13,9 @@ using Avito.Network;
 
 namespace Avito.Forms
 {
-    public partial class HandleOrderForm : Form
+    public partial class OrderForm : Form
     {
-        /*// Функция для принятия/отказа заказа клиентом на последнем (третьем) этапе согласования 
+        // Функция для принятия/отказа заказа клиентом на последнем (третьем) этапе согласования 
         public static DialogResult lastStepAcceptingOrder(Order order)
         {
             if (order == null)
@@ -23,7 +23,7 @@ namespace Avito.Forms
                 throw new Exception("Заказ пуст, показывать нечего");
             }
 
-            HandleOrderForm handleOrderWindow = new HandleOrderForm();
+            OrderForm handleOrderWindow = new OrderForm();
             handleOrderWindow._order = order;
 
             handleOrderWindow.fillOrderFileds();
@@ -39,7 +39,7 @@ namespace Avito.Forms
                 throw new Exception("Заказ пуст, показывать нечего");
             }
 
-            HandleOrderForm handleOrderWindow = new HandleOrderForm();
+            OrderForm handleOrderWindow = new OrderForm();
             handleOrderWindow._order = order;
 
             handleOrderWindow.prepareOnlyShowing();
@@ -51,7 +51,7 @@ namespace Avito.Forms
         // private
         private Order _order;
 
-        private HandleOrderForm()
+        private OrderForm()
         {
             InitializeComponent();
             WindowState = FormWindowState.Normal;
@@ -68,7 +68,7 @@ namespace Avito.Forms
 
         private void fillOrderFileds()
         {
-            statusLabel.Text = _order.status;
+            /*statusLabel.Text = _order.status;
 
             masterIDLinkLabel.Text = _order.id_master.ToString();
             clientIDLinkLabel.Text = _order.id_client.ToString();
@@ -78,7 +78,7 @@ namespace Avito.Forms
             fullnameTextBox.Text = _order.product.fullname;
             clientDescriptionTextBox.Text = _order.product.client_description;
             productTypeBox.Text = _order.product.type;
-            masterDescriptionTextBox.Text = _order.product.master_specification;
+            masterDescriptionTextBox.Text = _order.product.master_specification;*/
         }
 
         private void orderButton_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace Avito.Forms
 
         private async void masterIDLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(_order.id_master == null)
+            /*if(_order.id_master == null)
             {
                 throw new Exception("No master in updated order!");
             }
@@ -109,7 +109,7 @@ namespace Avito.Forms
             catch (Exception)
             {
                 MessageBox.Show("Не удалось получить информацию об исполнителе(");
-            }
-        }*/
+            }*/
+        }
     }
 }
