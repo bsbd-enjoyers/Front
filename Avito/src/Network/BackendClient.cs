@@ -146,7 +146,7 @@ namespace Avito.Network
         public List<Product> getMyProducts()
         {
             var task_response_bytes = _client.Request()
-                .AppendPathSegment("orders")
+                .AppendPathSegment("products")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
 

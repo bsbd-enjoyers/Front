@@ -15,7 +15,7 @@ namespace Avito.Forms
 {
     public partial class ProductForm : Form
     {
-        public static int createProduct()
+        public static async void createProduct()
         {
             ProductForm productForm = new ProductForm();
 
@@ -33,23 +33,22 @@ namespace Avito.Forms
 
                 try
                 {
-                    var create_result = BackendClient.getInstance().createProduct(product);
-                    if (create_result.Result.result)
+                    var create_result = await BackendClient.getInstance().createProduct(product);
+                    if (create_result.result)
                     {
-                        return 0;
+                        return;
                     }
-                    MessageBox.Show("Не получилось создать заказ");
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-
-            return -1;
+            MessageBox.Show("Не получилось создать заказ");
+            return;
         }
 
-        public static int buyProduct(Product product)
+        public static async void buyProduct(Product product)
         {
             ProductForm productForm = new ProductForm();
 
@@ -68,20 +67,20 @@ namespace Avito.Forms
 
                 try
                 {
-                    var buy_result = BackendClient.getInstance().createOrder((uint)product.product_id, order);
-                    if (buy_result.Result.result)
+                    var buy_result = await BackendClient.getInstance().createOrder((uint)product.product_id, order);
+                    if (buy_result.result)
                     {
-                        return 0;
+                        return;
                     }
-                    MessageBox.Show("Не получилось создать заказ");
+                    
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-
-            return -1;
+            MessageBox.Show("Не получилось создать заказ");
+            return;
         }
 
         public static void checkProduct(Product product)
@@ -121,13 +120,13 @@ namespace Avito.Forms
             Close();
         }
 
-        private void sellerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void sellerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var seller = BackendClient.getInstance().getSellerInfoByProduct(_product_id);
+                var seller = await BackendClient.getInstance().getSellerInfoByProduct(_product_id);
 
-                AboutMeForm.getDetailedInfoSeller(seller.Result);
+                AboutMeForm.getDetailedInfoSeller(seller);
             }
             catch (Exception)
             {

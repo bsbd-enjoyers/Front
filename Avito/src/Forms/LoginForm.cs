@@ -39,7 +39,7 @@ namespace Avito.Forms
 
                 var login_result = await backendClient.login(this.loginBox.Text, this.passwordBox.Text);
 
-                if (login_result.role == null)
+                if (login_result == null)
                 {
                     MessageBox.Show("Не получилось авторизоваться");
                     return;
@@ -47,7 +47,8 @@ namespace Avito.Forms
 
                 _user = new User();
                 _user.login = loginBox.Text;
-                _user.role = login_result.role;                
+                _user.role = login_result.role;
+                _user.wallet = login_result.wallet;
 
                 DialogResult = DialogResult.OK;
                 Close();

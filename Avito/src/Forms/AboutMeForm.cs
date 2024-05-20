@@ -83,7 +83,7 @@ namespace Avito.Forms
             }
             else
             {
-                aboutMeWindow._customer = new Customer();
+                aboutMeWindow._seller = new Seller();
             }
 
             if (aboutMeWindow.ShowDialog() == DialogResult.OK)

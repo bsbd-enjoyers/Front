@@ -33,7 +33,7 @@ namespace Avito.Forms
         }
 
         // Функция демонстрации всей информации о заказе
-        public static int checkCustomerOrder(Order order)
+        public static async void checkCustomerOrder(Order order)
         {
             if (order == null)
             {
@@ -50,23 +50,23 @@ namespace Avito.Forms
             {
                 try
                 {
-                    var create_result = BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "received");
-                    if (create_result.Result.result)
+                    var create_result = await BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "received");
+                    if (create_result.result)
                     {
-                        return 0;
+                        return;
                     }
-                    MessageBox.Show("Не получилось обновить статус заказа");
+                    
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-
-            return -1;
+            MessageBox.Show("Не получилось обновить статус заказа");
+            return;
         }
 
-        public static int checkSellerOrder(Order order)
+        public static async void checkSellerOrder(Order order)
         {
             if (order == null)
             {
@@ -83,20 +83,20 @@ namespace Avito.Forms
             {
                 try
                 {
-                    var create_result = BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "delivery");
-                    if (create_result.Result.result)
+                    var create_result = await BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "delivery");
+                    if (create_result.result)
                     {
-                        return 0;
+                        return;
                     }
-                    MessageBox.Show("Не получилось обновить статус заказа");
+                    
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-
-            return -1;
+            MessageBox.Show("Не получилось обновить статус заказа");
+            return;
         }
 
         // private

@@ -10,19 +10,19 @@ namespace Avito.Classes
 {
     public class Order
     {
-        public uint? order_id;
+        public uint? order_id { get; set; }
 
-        public uint? price;
+        public uint? price { get; set; }
 
-        public string desc;
+        public string desc { get; set; }
 
-        public uint? quantity;
-      
-        public string delivery_date;
-        
-        public string status;
+        public uint? quantity { get; set; }
 
-        public string name;
+        public string delivery_date { get; set; }
+
+        public string status { get; set; }
+
+        public string name { get; set; }
 
         public Order() { 
         }

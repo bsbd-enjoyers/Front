@@ -200,6 +200,16 @@ namespace Avito.Forms
 
                     searchButton.Hide();
                     searchTextBox.Hide();
+
+                    try
+                    {
+                        _searchedOrders.Clear();
+                        _searchedOrders.AddRange(BackendClient.getInstance().getMyOrders());
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Не получилось получить список своих заказов(");
+                    }
                     break;
                 case "admin":
                     deleteButton.Show();
@@ -219,22 +229,6 @@ namespace Avito.Forms
             _dataTable.Columns.Add("Стоимость", typeof(string));
 
             _selectedRow = -1;
-
-/*            if (_user.GetType().ToString() == "Freelance_IT.Classes.Admin")
-            {
-                return;
-            }
-
-            try
-            {
-                _searchedOrders.Clear();
-                var orders_task = BackendClient.getInstance().getOrders();
-                _searchedOrders.AddRange(orders_task);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
-            }*/
         }
 
         private void updateOrderTable()
@@ -271,6 +265,17 @@ namespace Avito.Forms
 
                     searchButton.Hide();
                     searchTextBox.Hide();
+
+                    try
+                    {
+                        _searchedProducts.Clear();
+                        _searchedProducts.AddRange(BackendClient.getInstance().getMyProducts());
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Не получилось получить список своих продуктов(");
+                    }
+
                     break;
                 case "admin":
                     buyButton.Hide();
@@ -307,12 +312,12 @@ namespace Avito.Forms
 
         private int authenticateUser()
         {
-            // _user = LoginForm.authenticate();
+            _user = LoginForm.authenticate();
 
-            _user = new User();
-            _user.login = "seller";
-            _user.role = "seller";
-            _user.wallet = 300;
+            //_user = new User();
+            //_user.login = "seller";
+            //_user.role = "seller";
+            //_user.wallet = 300;
 
 
             if (_user == null)
@@ -386,7 +391,7 @@ namespace Avito.Forms
         private void orderButton_Click(object sender, EventArgs e)
         {
             initializeOrderTable();
-            //updateOrderTable();
+            updateOrderTable();
         }
 
         private void sellerButton_Click(object sender, EventArgs e)
@@ -401,16 +406,11 @@ namespace Avito.Forms
         private void productButton_Click(object sender, EventArgs e)
         {
             initializeProductTable();
+            updateProductTable();
         }
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (_selectedRow == -1)
-            {
-                MessageBox.Show("Ничего не было выбрано");
-                return;
-            }
-
             ProductForm.createProduct();
 
             _selectedRow = -1;
