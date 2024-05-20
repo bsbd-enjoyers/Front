@@ -15,41 +15,92 @@ namespace Avito.Forms
 {
     public partial class OrderForm : Form
     {
-        // Функция для принятия/отказа заказа клиентом на последнем (третьем) этапе согласования 
-        public static DialogResult lastStepAcceptingOrder(Order order)
+        public static void checkAdminOrder(Order order)
         {
             if (order == null)
             {
                 throw new Exception("Заказ пуст, показывать нечего");
             }
 
-            OrderForm handleOrderWindow = new OrderForm();
-            handleOrderWindow._order = order;
+            OrderForm orderForm = new OrderForm();
+            orderForm.actionButton.Hide();
+            orderForm.cancelButton.Hide();
 
-            handleOrderWindow.fillOrderFileds();
+            orderForm.initOrder(order);
 
-            return handleOrderWindow.ShowDialog();
+
+            orderForm.ShowDialog();
         }
 
         // Функция демонстрации всей информации о заказе
-        public static void showOrderInfo(Order order)
+        public static int checkCustomerOrder(Order order)
         {
             if (order == null)
             {
                 throw new Exception("Заказ пуст, показывать нечего");
             }
 
-            OrderForm handleOrderWindow = new OrderForm();
-            handleOrderWindow._order = order;
+            OrderForm orderForm = new OrderForm();
+            orderForm.customerLinkLabel.Hide();
+            orderForm.actionButton.Text = "Подтвердить получение";
 
-            handleOrderWindow.prepareOnlyShowing();
+            orderForm.initOrder(order);
 
-            handleOrderWindow.ShowDialog();
-            return;
+            if (orderForm.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var create_result = BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "received");
+                    if (create_result.Result.result)
+                    {
+                        return 0;
+                    }
+                    MessageBox.Show("Не получилось обновить статус заказа");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                }
+            }
+
+            return -1;
+        }
+
+        public static int checkSellerOrder(Order order)
+        {
+            if (order == null)
+            {
+                throw new Exception("Заказ пуст, показывать нечего");
+            }
+
+            OrderForm orderForm = new OrderForm();
+            orderForm.sellerLinkLabel.Hide();
+            orderForm.actionButton.Text = "Подтвердить отправку";
+
+            orderForm.initOrder(order);
+
+            if (orderForm.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var create_result = BackendClient.getInstance().updateOrderStatus((uint)order.order_id, "delivery");
+                    if (create_result.Result.result)
+                    {
+                        return 0;
+                    }
+                    MessageBox.Show("Не получилось обновить статус заказа");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+                }
+            }
+
+            return -1;
         }
 
         // private
-        private Order _order;
+        private uint _order_id;
 
         private OrderForm()
         {
@@ -57,59 +108,52 @@ namespace Avito.Forms
             WindowState = FormWindowState.Normal;
         }
 
-        private void prepareOnlyShowing()
+        private void initOrder(Order order)
         {
-            declineButton.Hide();
-            orderButton.Hide();
-            // В зависимости от статуса тут что-то можно понаписать в виджеты
+            statusLabel.Text = order.status;
 
-            fillOrderFileds();
+            dateTextBox.Text = order.delivery_date;
+            fullnameTextBox.Text = order.name;
+            numberTextBox.Text = order.quantity.ToString();
+            costTextBox.Text = order.price.ToString();
         }
 
-        private void fillOrderFileds()
+        private void actionButton_Click(object sender, EventArgs e)
         {
-            /*statusLabel.Text = _order.status;
-
-            masterIDLinkLabel.Text = _order.id_master.ToString();
-            clientIDLinkLabel.Text = _order.id_client.ToString();
-            dateTextBox.Text = _order.deadline;
-            masterCostTextBox.Text = _order.master_cost.ToString();
-
-            fullnameTextBox.Text = _order.product.fullname;
-            clientDescriptionTextBox.Text = _order.product.client_description;
-            productTypeBox.Text = _order.product.type;
-            masterDescriptionTextBox.Text = _order.product.master_specification;*/
-        }
-
-        private void orderButton_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Yes;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void declineButton_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.No;
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private async void masterIDLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void customerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            /*if(_order.id_master == null)
-            {
-                throw new Exception("No master in updated order!");
-            }
-
             try
             {
-                AboutMeMasterForm.getDetailedInfo(new Master(
-                    await BackendClient.getInstance().getMasterInfo((uint)_order.id_master)
-                    ));
+                var seller = BackendClient.getInstance().getSellerInfoByOrder(_order_id);
+                AboutMeForm.getDetailedInfoSeller(seller.Result);
             }
             catch (Exception)
             {
                 MessageBox.Show("Не удалось получить информацию об исполнителе(");
-            }*/
+            }
+        }
+
+        private void sellerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                var customer = BackendClient.getInstance().getCustomerInfoByOrder(_order_id);
+                AboutMeForm.getDetailedInfoCustomer(customer.Result);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось получить информацию об исполнителе(");
+            }
         }
     }
 }

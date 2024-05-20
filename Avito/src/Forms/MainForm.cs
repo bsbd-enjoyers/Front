@@ -447,7 +447,19 @@ namespace Avito.Forms
                     AboutMeForm.getDetailedInfoSeller(_searchedSellers[_selectedRow]);
                     break;
                 case MainFormTabs.Orders:
-                    //OrderForm.checkOrder(_searchedOrders[_selectedRow]);
+
+                    switch (_user.role)
+                    {
+                        case "admin":
+                            OrderForm.checkAdminOrder(_searchedOrders[_selectedRow]);
+                            break;
+                        case "seller":
+                            OrderForm.checkSellerOrder(_searchedOrders[_selectedRow]);
+                            break;
+                        case "customer":
+                            OrderForm.checkCustomerOrder(_searchedOrders[_selectedRow]);
+                            break;
+                    }
                     break;
                 case MainFormTabs.Products:
                     ProductForm.checkProduct(_searchedProducts[_selectedRow]);
@@ -464,16 +476,16 @@ namespace Avito.Forms
                 return;
             }
 
-            /*switch (_selectedTab)
+            switch (_selectedTab)
             {
                 case MainFormTabs.Customers:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedCustomers[_selectedRow].login, "client");
+                        /*var ban_result = await BackendClient.getInstance().banUser(_searchedCustomers[_selectedRow].login, "client");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать клиента!\nСделайте это через поддержку");
-                        }
+                        }*/
                     }
                     catch (Exception)
                     {
@@ -483,11 +495,11 @@ namespace Avito.Forms
                 case MainFormTabs.Sellers:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banUser(_searchedSellers[_selectedRow].login, "master");
+                        /*var ban_result = await BackendClient.getInstance().banUser(_searchedSellers[_selectedRow].login, "master");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось заблокировать исполнителя!\nСделайте это через поддержку");
-                        }
+                        }*/
                     }
                     catch (Exception)
                     {
@@ -497,11 +509,11 @@ namespace Avito.Forms
                 case MainFormTabs.Orders:
                     try
                     {
-                        var delete_result = await BackendClient.getInstance().banOrder(_searchedOrders[_selectedRow].order_id);
+                        /*var delete_result = await BackendClient.getInstance().banOrder(_searchedOrders[_selectedRow].order_id);
                         if (!delete_result.result)
                         {
                             MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
-                        }
+                        }*/
 
                     }
                     catch (Exception)
@@ -512,11 +524,11 @@ namespace Avito.Forms
                 case MainFormTabs.Products:
                     try
                     {
-                        var delete_result = await BackendClient.getInstance().deleteProduct(_searchedProducts[_selectedRow].product_id);
+                        /*var delete_result = await BackendClient.getInstance().deleteProduct(_searchedProducts[_selectedRow].product_id);
                         if (!delete_result.result)
                         {
                             MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
-                        }
+                        }*/
 
                     }
                     catch (Exception)
@@ -524,7 +536,7 @@ namespace Avito.Forms
                         MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                     }
                     break;
-            }*/
+            }
             _selectedRow = -1;
         }
 

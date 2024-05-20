@@ -101,7 +101,7 @@ namespace Avito.Forms
         }
 
         // private
-        uint _product_id;
+        private uint _product_id;
 
         private ProductForm()
         {

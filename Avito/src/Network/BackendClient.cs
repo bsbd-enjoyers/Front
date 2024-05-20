@@ -208,14 +208,13 @@ namespace Avito.Network
         }
 
         // not Checked
-        public async Task<Seller> getSellerInfo(uint product_id, uint order_id)
+        public async Task<Seller> getSellerInfoByOrder(uint order_id)
         {
             var response_bytes = await _client.Request()
                 .AppendPathSegment("info")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .PostJsonAsync(new
                 {
-                    product_id = product_id,
                     order_id = order_id
                 })
                 .ReceiveBytes();
@@ -254,6 +253,24 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<Customer>(json_body);
+        }
+
+        // not Checked
+        public async Task<RequestResult> updateOrderStatus(uint order_id, string new_status)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("orders")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    action = "update",
+                    order_id = order_id,
+                    status=new_status
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
         // not Checked
