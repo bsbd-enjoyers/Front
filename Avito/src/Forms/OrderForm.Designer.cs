@@ -88,7 +88,7 @@ namespace Avito.Forms
             this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.cancelButton.Location = new System.Drawing.Point(309, 459);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(208, 72);
+            this.cancelButton.Size = new System.Drawing.Size(208, 84);
             this.cancelButton.TabIndex = 24;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@ namespace Avito.Forms
             this.actionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.actionButton.Location = new System.Drawing.Point(62, 459);
             this.actionButton.Name = "actionButton";
-            this.actionButton.Size = new System.Drawing.Size(223, 72);
+            this.actionButton.Size = new System.Drawing.Size(223, 84);
             this.actionButton.TabIndex = 25;
             this.actionButton.Text = "Подтвердить";
             this.actionButton.UseVisualStyleBackColor = false;

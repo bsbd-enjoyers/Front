@@ -28,6 +28,7 @@ namespace Avito.Forms
 
             orderForm.initOrder(order);
 
+            orderForm._order_id = (uint)order.order_id;
 
             orderForm.ShowDialog();
         }
@@ -42,7 +43,18 @@ namespace Avito.Forms
 
             OrderForm orderForm = new OrderForm();
             orderForm.customerLinkLabel.Hide();
-            orderForm.actionButton.Text = "Подтвердить получение";
+
+            if(order.status == "delivery")
+            {
+                orderForm.actionButton.Text = "Подтвердить получение";
+            }
+            else
+            {
+                orderForm.actionButton.Hide();
+                orderForm.cancelButton.Hide();
+            }
+
+            orderForm._order_id = (uint)order.order_id;
 
             orderForm.initOrder(order);
 
@@ -75,7 +87,18 @@ namespace Avito.Forms
 
             OrderForm orderForm = new OrderForm();
             orderForm.sellerLinkLabel.Hide();
-            orderForm.actionButton.Text = "Подтвердить отправку";
+
+            if (order.status == "created")
+            {
+                orderForm.actionButton.Text = "Подтвердить отправку";
+            }
+            else
+            {
+                orderForm.actionButton.Hide();
+                orderForm.cancelButton.Hide();
+            }            
+
+            orderForm._order_id = (uint)order.order_id;
 
             orderForm.initOrder(order);
 
@@ -130,29 +153,29 @@ namespace Avito.Forms
             Close();
         }
 
-        private void customerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void customerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var seller = BackendClient.getInstance().getSellerInfoByOrder(_order_id);
-                AboutMeForm.getDetailedInfoSeller(seller.Result);
+                var customer = await BackendClient.getInstance().getCustomerInfoByOrder(_order_id);
+                AboutMeForm.getDetailedInfoCustomer(customer);
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось получить информацию об исполнителе(");
+                MessageBox.Show("Не удалось получить информацию о покупателе(");
             }
         }
 
-        private void sellerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void sellerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var customer = BackendClient.getInstance().getCustomerInfoByOrder(_order_id);
-                AboutMeForm.getDetailedInfoCustomer(customer.Result);
+                var seller = await BackendClient.getInstance().getSellerInfoByOrder(_order_id);
+                AboutMeForm.getDetailedInfoSeller(seller);
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось получить информацию об исполнителе(");
+                MessageBox.Show("Не удалось получить информацию о продавце(");
             }
         }
     }

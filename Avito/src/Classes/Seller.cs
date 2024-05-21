@@ -20,6 +20,8 @@ namespace Avito.Classes
 
         public string email { get; set; }
 
+        public float? score { get; set; }
+
         public Seller() {
         }
     }

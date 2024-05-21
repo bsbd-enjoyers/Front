@@ -22,6 +22,12 @@ namespace Avito.Forms
         {
             InitializeComponent();
         }
+
+        private void reviewButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void acceptButton_Click(object sender, EventArgs e)
         {
             if (_seller == null)
@@ -48,6 +54,11 @@ namespace Avito.Forms
         {
             AboutMeForm aboutMeWindow = new AboutMeForm();
 
+            aboutMeWindow.fillfieldsLabel.Text = "Информация о покупателе";
+            aboutMeWindow.scoreLinkLabel.Hide();
+            aboutMeWindow.scoreLabel.Hide();
+            aboutMeWindow.reviewButton.Hide();
+
             if (customer != null)
             {
                 aboutMeWindow._customer = customer;
@@ -73,16 +84,28 @@ namespace Avito.Forms
         {
             AboutMeForm aboutMeWindow = new AboutMeForm();
 
+            aboutMeWindow.fillfieldsLabel.Text = "Информация о продавце";
+
             if (seller != null)
             {
+
                 aboutMeWindow._seller = seller;
                 aboutMeWindow.fullnameTextBox.Text = seller.name;
                 aboutMeWindow.phoneBox.Text = seller.phone;
                 aboutMeWindow.emailBox.Text = seller.email;
                 aboutMeWindow.aboutMeBox.Text = seller.desc;
+
+                if (seller.score != null)
+                {
+                    aboutMeWindow.scoreLinkLabel.Text = seller.score.ToString();
+                }
             }
             else
             {
+                aboutMeWindow.reviewButton.Hide();
+                aboutMeWindow.scoreLinkLabel.Hide();
+                aboutMeWindow.scoreLabel.Hide();
+
                 aboutMeWindow._seller = new Seller();
             }
 

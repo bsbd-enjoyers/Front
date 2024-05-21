@@ -39,6 +39,9 @@ namespace Avito.Forms
             this.fullnameTextBox = new System.Windows.Forms.TextBox();
             this.aboutMeLabel = new System.Windows.Forms.Label();
             this.aboutMeBox = new System.Windows.Forms.TextBox();
+            this.scoreLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.scoreLabel = new System.Windows.Forms.Label();
+            this.reviewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fillfieldsLabel
@@ -63,7 +66,7 @@ namespace Avito.Forms
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.acceptButton.Location = new System.Drawing.Point(24, 460);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(322, 72);
+            this.acceptButton.Size = new System.Drawing.Size(308, 72);
             this.acceptButton.TabIndex = 1;
             this.acceptButton.Text = "Подтвердить";
             this.acceptButton.UseVisualStyleBackColor = false;
@@ -164,15 +167,61 @@ namespace Avito.Forms
             this.aboutMeBox.Size = new System.Drawing.Size(478, 273);
             this.aboutMeBox.TabIndex = 2;
             // 
+            // scoreLinkLabel
+            // 
+            this.scoreLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoreLinkLabel.AutoSize = true;
+            this.scoreLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLinkLabel.ForeColor = System.Drawing.Color.White;
+            this.scoreLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
+            this.scoreLinkLabel.Location = new System.Drawing.Point(769, 60);
+            this.scoreLinkLabel.Name = "scoreLinkLabel";
+            this.scoreLinkLabel.Size = new System.Drawing.Size(79, 40);
+            this.scoreLinkLabel.TabIndex = 15;
+            this.scoreLinkLabel.TabStop = true;
+            this.scoreLinkLabel.Text = "Нет";
+            this.scoreLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.scoreLabel.Location = new System.Drawing.Point(618, 60);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(154, 40);
+            this.scoreLabel.TabIndex = 14;
+            this.scoreLabel.Text = "Оценка:";
+            this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // reviewButton
+            // 
+            this.reviewButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.reviewButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
+            this.reviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reviewButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
+            this.reviewButton.Location = new System.Drawing.Point(391, 460);
+            this.reviewButton.Name = "reviewButton";
+            this.reviewButton.Size = new System.Drawing.Size(308, 72);
+            this.reviewButton.TabIndex = 1;
+            this.reviewButton.Text = "Оставить отзыв";
+            this.reviewButton.UseVisualStyleBackColor = false;
+            this.reviewButton.Click += new System.EventHandler(this.reviewButton_Click);
+            // 
             // AboutMeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 576);
+            this.Controls.Add(this.scoreLinkLabel);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.phoneBox);
             this.Controls.Add(this.aboutMeBox);
             this.Controls.Add(this.fullnameTextBox);
             this.Controls.Add(this.emailBox);
+            this.Controls.Add(this.reviewButton);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.aboutMeLabel);
@@ -199,5 +248,8 @@ namespace Avito.Forms
         private System.Windows.Forms.TextBox fullnameTextBox;
         private System.Windows.Forms.Label aboutMeLabel;
         private System.Windows.Forms.TextBox aboutMeBox;
+        private System.Windows.Forms.LinkLabel scoreLinkLabel;
+        private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Button reviewButton;
     }
 }

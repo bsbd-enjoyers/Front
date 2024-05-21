@@ -345,6 +345,23 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<SellerList>(json_body).users;
         }
 
+        // not Checked
+        public async Task<RequestResult> banOrDelete(uint id, string entity)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("manage")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    id = id,
+                    entity = entity
+                })
+                .ReceiveBytes();
+
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
+
 
 
 
@@ -478,21 +495,7 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
-        public async Task<RequestResult> banUser(string login, string role)
-        {
-            var response_bytes = await _client.Request()
-                .AppendPathSegment("manage")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .PostJsonAsync(new
-                {
-                    id = login,
-                    entity = role
-                })
-                .ReceiveBytes();
-
-            var json_body = Encoding.UTF8.GetString(response_bytes);
-            return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }
+        
 
         // not Checked
         public async Task<RequestResult> leaveFeedback(Feedback feedback)

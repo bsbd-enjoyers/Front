@@ -468,7 +468,7 @@ namespace Avito.Forms
             _selectedRow = -1;
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private async void deleteButton_Click(object sender, EventArgs e)
         {
             if (_selectedRow == -1)
             {
@@ -481,11 +481,11 @@ namespace Avito.Forms
                 case MainFormTabs.Customers:
                     try
                     {
-                        /*var ban_result = await BackendClient.getInstance().banUser(_searchedCustomers[_selectedRow].login, "client");
+                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedCustomers[_selectedRow].id, "customer");
                         if (!ban_result.result)
                         {
-                            MessageBox.Show("Не получилось заблокировать клиента!\nСделайте это через поддержку");
-                        }*/
+                            MessageBox.Show("Не получилось заблокировать покупателя!\nСделайте это через поддержку");
+                        }
                     }
                     catch (Exception)
                     {
@@ -495,11 +495,11 @@ namespace Avito.Forms
                 case MainFormTabs.Sellers:
                     try
                     {
-                        /*var ban_result = await BackendClient.getInstance().banUser(_searchedSellers[_selectedRow].login, "master");
+                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedSellers[_selectedRow].id, "seller");
                         if (!ban_result.result)
                         {
-                            MessageBox.Show("Не получилось заблокировать исполнителя!\nСделайте это через поддержку");
-                        }*/
+                            MessageBox.Show("Не получилось заблокировать продавца!\nСделайте это через поддержку");
+                        }
                     }
                     catch (Exception)
                     {
@@ -509,12 +509,11 @@ namespace Avito.Forms
                 case MainFormTabs.Orders:
                     try
                     {
-                        /*var delete_result = await BackendClient.getInstance().banOrder(_searchedOrders[_selectedRow].order_id);
-                        if (!delete_result.result)
+                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedOrders[_selectedRow].order_id, "order");
+                        if (!ban_result.result)
                         {
-                            MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
-                        }*/
-
+                            MessageBox.Show("Не получилось заблокировать заказ!\nСделайте это через поддержку");
+                        }
                     }
                     catch (Exception)
                     {
@@ -524,12 +523,11 @@ namespace Avito.Forms
                 case MainFormTabs.Products:
                     try
                     {
-                        /*var delete_result = await BackendClient.getInstance().deleteProduct(_searchedProducts[_selectedRow].product_id);
-                        if (!delete_result.result)
+                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedProducts[_selectedRow].product_id, "order");
+                        if (!ban_result.result)
                         {
-                            MessageBox.Show("Не получилось удалить заказ!\nУдалять можно заказы только со статусами \"created\" и \"updated\"");
-                        }*/
-
+                            MessageBox.Show("Не получилось удалить продукт!\nСделайте это через поддержку");
+                        }
                     }
                     catch (Exception)
                     {

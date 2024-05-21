@@ -48,19 +48,23 @@ namespace Avito.Forms
             {
                 case "seller":
                     _user = AboutMeForm.getDetailedInfoSeller();
+                    if (_user == null)
+                    {
+                        MessageBox.Show("Заполните информацию о себе");
+                        return;
+                    }
                     _user.role = "seller";
                     break;
                 case "customer":
                     _user = AboutMeForm.getDetailedInfoCustomer();
+                    if (_user == null)
+                    {
+                        MessageBox.Show("Заполните информацию о себе");
+                        return;
+                    }
                     _user.role = "customer";
                     break;
-            }
-
-            if (_user == null)
-            {
-                MessageBox.Show("Заполните информацию о себе");
-                return;
-            }
+            }            
 
             _user.login = loginBox.Text;
 
