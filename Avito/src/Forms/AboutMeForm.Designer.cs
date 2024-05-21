@@ -62,11 +62,11 @@ namespace Avito.Forms
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.acceptButton.Location = new System.Drawing.Point(24, 460);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(308, 72);
+            this.acceptButton.Size = new System.Drawing.Size(289, 83);
             this.acceptButton.TabIndex = 1;
             this.acceptButton.Text = "Подтвердить";
             this.acceptButton.UseVisualStyleBackColor = false;
@@ -200,11 +200,11 @@ namespace Avito.Forms
             this.reviewButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.reviewButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(142)))));
             this.reviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.reviewButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(65)))));
             this.reviewButton.Location = new System.Drawing.Point(391, 460);
             this.reviewButton.Name = "reviewButton";
-            this.reviewButton.Size = new System.Drawing.Size(308, 72);
+            this.reviewButton.Size = new System.Drawing.Size(308, 83);
             this.reviewButton.TabIndex = 1;
             this.reviewButton.Text = "Оставить отзыв";
             this.reviewButton.UseVisualStyleBackColor = false;

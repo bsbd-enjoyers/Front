@@ -25,6 +25,8 @@ namespace Avito.Forms
             OrderForm orderForm = new OrderForm();
             orderForm.actionButton.Hide();
             orderForm.cancelButton.Hide();
+            orderForm.customerLinkLabel.Hide();
+            orderForm.sellerLinkLabel.Hide();
 
             orderForm.initOrder(order);
 

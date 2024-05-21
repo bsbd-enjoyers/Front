@@ -362,7 +362,22 @@ namespace Avito.Network
             return JsonSerializer.Deserialize<RequestResult>(json_body);
         }
 
+        // not Checked
+        public async Task<RequestResult> leaveReview(uint id_seller, int score)
+        {
+            var response_bytes = await _client.Request()
+                .AppendPathSegment("reviews")
+                .WithCookie("AuthTokenJWT", _cookie.Value)
+                .PostJsonAsync(new
+                {
+                    seller_id = id_seller,
+                    rating = score
+                })
+                .ReceiveBytes();
 
+            var json_body = Encoding.UTF8.GetString(response_bytes);
+            return JsonSerializer.Deserialize<RequestResult>(json_body);
+        }
 
 
 
@@ -493,26 +508,10 @@ namespace Avito.Network
 
             var json_body = Encoding.UTF8.GetString(response_bytes);
             return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }
+        }*/
 
         
 
-        // not Checked
-        public async Task<RequestResult> leaveFeedback(Feedback feedback)
-        {
-            var response_bytes = await _client.Request()
-                .AppendPathSegment("reviews")
-                .WithCookie("AuthTokenJWT", _cookie.Value)
-                .PostJsonAsync(new
-                {
-                    order_id = feedback.id_order,
-                    score = feedback.score,
-                    comment = feedback.comment
-                })
-                .ReceiveBytes();
-
-            var json_body = Encoding.UTF8.GetString(response_bytes);
-            return JsonSerializer.Deserialize<RequestResult>(json_body);
-        }*/
+        
     }
 }

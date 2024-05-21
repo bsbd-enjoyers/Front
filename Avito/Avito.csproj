@@ -96,6 +96,12 @@
     <Compile Include="src\Forms\AboutMeForm.Designer.cs">
       <DependentUpon>AboutMeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Forms\FeedbackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\FeedbackForm.designer.cs">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Forms\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="src\Forms\AboutMeForm.resx">
       <DependentUpon>AboutMeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\FeedbackForm.resx">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Avito.Classes;
+using Avito.Network;
 
 namespace Avito.Forms
 {
@@ -23,9 +24,29 @@ namespace Avito.Forms
             InitializeComponent();
         }
 
-        private void reviewButton_Click(object sender, EventArgs e)
+        private async void reviewButton_Click(object sender, EventArgs e)
         {
+            int score = FeedbackForm.getFeedback();
 
+            if(score == -1)
+            {
+                MessageBox.Show("Вы не оставили отзыв");
+                return;
+            }
+
+            try
+            {
+                var check_result = await BackendClient.getInstance().leaveReview((uint)_seller.id, score);
+
+                if (check_result.result)
+                {
+                    MessageBox.Show("Не получилось оставить отзыв(");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
+            }
         }
 
         private void acceptButton_Click(object sender, EventArgs e)

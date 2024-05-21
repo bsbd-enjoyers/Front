@@ -523,7 +523,7 @@ namespace Avito.Forms
                 case MainFormTabs.Products:
                     try
                     {
-                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedProducts[_selectedRow].product_id, "order");
+                        var ban_result = await BackendClient.getInstance().banOrDelete((uint)_searchedProducts[_selectedRow].product_id, "product");
                         if (!ban_result.result)
                         {
                             MessageBox.Show("Не получилось удалить продукт!\nСделайте это через поддержку");
