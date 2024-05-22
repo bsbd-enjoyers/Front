@@ -69,14 +69,15 @@ namespace Avito.Forms
                     {
                         return;
                     }
-                    
+                    MessageBox.Show("Не получилось обновить статус заказа");
+
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-            MessageBox.Show("Не получилось обновить статус заказа");
+            
             return;
         }
 
@@ -113,14 +114,15 @@ namespace Avito.Forms
                     {
                         return;
                     }
-                    
+                    MessageBox.Show("Не получилось обновить статус заказа");
+
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-            MessageBox.Show("Не получилось обновить статус заказа");
+            
             return;
         }
 
