@@ -129,7 +129,6 @@ namespace Avito.Network
         // not Checked
         public async Task<RequestResult> logout()
         {
-
             var response_bytes = await _client.Request()
                 .AppendPathSegment("session")
                 .WithCookie("AuthTokenJWT", _cookie.Value)

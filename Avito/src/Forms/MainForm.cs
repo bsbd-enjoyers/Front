@@ -70,6 +70,7 @@ namespace Avito.Forms
 
         private void initializeSeller()
         {
+
             avatarPictureBox.Image = Avito.Properties.Resources.seller;
 
             initializeOrderTable();
@@ -118,6 +119,11 @@ namespace Avito.Forms
 
         private void initializeCustomerTable()
         {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             _selectedTab = MainFormTabs.Customers;
 
             deleteButton.Show();
@@ -151,6 +157,11 @@ namespace Avito.Forms
 
         private void initializeSellerTable()
         {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             _selectedTab = MainFormTabs.Sellers;
 
             deleteButton.Show();
@@ -186,6 +197,11 @@ namespace Avito.Forms
 
         private void initializeOrderTable()
         {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             _selectedTab = MainFormTabs.Orders;
       
             checkButton.Show();
@@ -244,6 +260,11 @@ namespace Avito.Forms
 
         private void initializeProductTable()
         {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             _selectedTab = MainFormTabs.Products;
 
             switch (_user.role)
@@ -367,6 +388,11 @@ namespace Avito.Forms
 
         private async void logutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             loginLabel.Text = "Нажми сюда";
             avatarPictureBox.Image = null;
             deinitializeUser();
@@ -549,7 +575,12 @@ namespace Avito.Forms
         }
 
         private void searchButton_Click(object sender, EventArgs e)
-        {            
+        {
+            if (_user is null)
+            {
+                MessageBox.Show("Авторизуйтесь");
+                return;
+            }
             try
             {
                 BackendClient backendClient = BackendClient.getInstance();

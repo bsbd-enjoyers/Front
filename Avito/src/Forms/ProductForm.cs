@@ -38,13 +38,13 @@ namespace Avito.Forms
                     {
                         return;
                     }
+                    MessageBox.Show("Не получилось создать заказ");
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-            MessageBox.Show("Не получилось создать заказ");
             return;
         }
 
@@ -72,14 +72,14 @@ namespace Avito.Forms
                     {
                         return;
                     }
-                    
+                    MessageBox.Show("Не получилось создать заказ");
+
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ой, что-то пошло не так...\nПопробуйте еще раз");
                 }
             }
-            MessageBox.Show("Не получилось создать заказ");
             return;
         }
 
