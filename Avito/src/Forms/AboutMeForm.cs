@@ -38,7 +38,7 @@ namespace Avito.Forms
             {
                 var check_result = await BackendClient.getInstance().leaveReview((uint)_seller.id, score);
 
-                if (check_result.result)
+                if (!check_result.result)
                 {
                     MessageBox.Show("Не получилось оставить отзыв(");
                 }

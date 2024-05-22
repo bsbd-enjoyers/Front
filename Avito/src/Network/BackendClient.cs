@@ -131,7 +131,7 @@ namespace Avito.Network
         {
 
             var response_bytes = await _client.Request()
-                .AppendPathSegment("")
+                .AppendPathSegment("session")
                 .WithCookie("AuthTokenJWT", _cookie.Value)
                 .GetBytesAsync();
 
